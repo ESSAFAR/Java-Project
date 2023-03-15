@@ -1,7 +1,9 @@
-import javax.swing.*;
+import com.Style.MyButtons;
+import com.Style.MyFrame;
+
 import java.awt.*;
 
-public class Login extends MyFrame{
+public class Login extends MyFrame {
 
     public Login() {
         setTitle("Login");
