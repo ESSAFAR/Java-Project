@@ -1,3 +1,5 @@
+package com.Style;
+
 import javax.swing.*;
 /*
 This class is for styling buttons, the constructor takes the text, the color as arguments
