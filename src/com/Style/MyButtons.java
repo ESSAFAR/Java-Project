@@ -10,16 +10,22 @@ public class MyButtons extends JButton {
     java.awt.Color color;
     java.awt.Color backgroundColor;
     java.awt.Color textColor;
+    int x,y,width,height;
 
 
     public MyButtons(String text , java.awt.Color backgroundColor , java.awt.Color textColor) {
         super(text);
-        setBorder(BorderFactory.createEmptyBorder(5, 15, 5, 15));
         setFont(getFont().deriveFont(16f));
         setBackground(backgroundColor);
         setForeground(textColor);
+        setBounds(190 , 250 , 250 , 50);
         setFocusPainted(false);
         setFocusable(false);
+    }
+
+    public MyButtons(String text , java.awt.Color backgroundColor , java.awt.Color textColor , int x, int y, int width, int height) {
+        this(text , backgroundColor , textColor);
+        setBounds(x , y , width , height);
     }
 
 }
