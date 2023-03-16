@@ -1,3 +1,5 @@
+package com.GUI;
+
 import com.Style.MyButtons;
 import com.Style.MyFrame;
 
