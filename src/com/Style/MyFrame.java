@@ -16,5 +16,8 @@ public class MyFrame extends JFrame {
         setBounds(90 , 50 , 1100 , 750);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLayout(null);
+        ImageIcon logo = new ImageIcon("images\\SchoolEase2.png");
+        setIconImage(logo.getImage());
+
     }
 }
