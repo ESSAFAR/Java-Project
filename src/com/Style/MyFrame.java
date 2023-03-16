@@ -13,7 +13,7 @@ public class MyFrame extends JFrame {
         getContentPane().setBackground(new Color(236, 242, 255));
         setVisible(true);
         setResizable(false);
-        setBounds(10 , 40 , 1300 , 700);
+        setBounds(90 , 50 , 1100 , 750);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLayout(null);
     }
