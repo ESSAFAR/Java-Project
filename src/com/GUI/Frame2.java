@@ -1,6 +1,6 @@
-package Com.GUI;
+package com.GUI;
 
-import Com.Style.MyFrame;
+import com.Style.MyFrame;
 
 import java.awt.*;
 

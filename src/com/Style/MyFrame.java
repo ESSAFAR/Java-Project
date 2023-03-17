@@ -1,4 +1,4 @@
-package Com.Style;
+package com.Style;
 
 import javax.swing.*;
 import java.awt.*;

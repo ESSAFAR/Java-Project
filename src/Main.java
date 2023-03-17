@@ -1,4 +1,4 @@
-import Com.GUI.Login;
+import com.GUI.Login;
 
 public class Main {
     public static void main(String[] args) {
