@@ -1,7 +1,7 @@
-package com.GUI;
+package Com.GUI;
 
-import com.Style.MyButtons;
-import com.Style.MyFrame;
+import Com.Style.MyButtons;
+import Com.Style.MyFrame;
 
 
 import javax.swing.*;

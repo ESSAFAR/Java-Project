@@ -1,4 +1,4 @@
-package com.DataBase;
+package Com.DataBase;
 
 public class Test {
 }
