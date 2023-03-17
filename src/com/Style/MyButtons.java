@@ -20,6 +20,7 @@ public class MyButtons extends JButton {
         setForeground(textColor);
         setBounds(190 , 250 , 250 , 50);
         setFocusPainted(false);
+
         setFocusable(false);
     }
 
