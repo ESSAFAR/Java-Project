@@ -20,7 +20,7 @@ public class Login extends MyFrame {
         if(true){
             loginBtn.addActionListener(e -> {
                 dispose();
-                Frame2 frame2 = new Frame2()  ;
+                AdminFrame1 frame2 = new AdminFrame1()  ;
             });
         }
 
