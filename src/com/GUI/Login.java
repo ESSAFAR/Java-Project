@@ -1,5 +1,7 @@
 package com.GUI;
 
+import com.GUI.AdminFrames.AdminFrame1;
+import com.GUI.AdminFrames.AdminFrame2;
 import com.Style.MyButtons;
 import com.Style.MyFrame;
 
@@ -14,13 +16,15 @@ public class Login extends MyFrame {
         setTitle("Login");
 
         //Log in button
-        MyButtons loginBtn = new MyButtons("Log in" , Color.BLUE , Color.WHITE , 170 , 650 , 250 , 50) ;
+        MyButtons loginBtn = new MyButtons("Log in" , Color.BLUE , Color.WHITE , (int)(MyFrame.frameWidth/8) , (int)(MyFrame.frameHeight*0.75) , 250 , 50) ;
         add(loginBtn);
         //Next frame if button is pressed and id + password correct
         if(true){
             loginBtn.addActionListener(e -> {
                 dispose();
-                AdminFrame1 frame2 = new AdminFrame1()  ;
+                AdminFrame1 frame = new AdminFrame1();
+               // StudentFrame1 frame2 =new StudentFrame1() ;
+
             });
         }
 
@@ -39,7 +43,7 @@ public class Login extends MyFrame {
 
         //Logo
         JPanel logoContainer = new JPanel();
-        logoContainer.setBounds(90 , 50 , 400 , 158);
+        logoContainer.setBounds((int)frameWidth/15 , 0, 400 , 158);
         JLabel logo = new JLabel();
         logo.setIcon(new ImageIcon("images/SchoolEase4resized.png"));
         logoContainer.setBackground(new Color(0,0,0,0));
@@ -49,7 +53,7 @@ public class Login extends MyFrame {
 
         //Connectz-vous text
         JPanel connectez = new JPanel();
-        connectez.setBounds(120 , 280 , 350 , 70);
+        connectez.setBounds(120 , (int)frameHeight/3 , 350 , 70);
         JLabel connectezText = new JLabel();
         connectezText.setText("Connectez vous");
         connectezText.setFont(new Font(Font.DIALOG_INPUT, Font.BOLD,  38));
@@ -66,7 +70,7 @@ public class Login extends MyFrame {
         JLabel identifiantText = new JLabel();
         identifiantText.setText("Entrer votre ID");
         identifiantText.setFont(new Font(Font.SANS_SERIF, Font.BOLD,  17));
-        identifiant.setBounds(58 , 400 , 250 , 30);
+        identifiant.setBounds(58 , frameHeight/2 , 250 , 30);
         identifiant.setBackground(new Color(0,0,0,0));
         identifiant.add(identifiantText);
         add(identifiant);
@@ -74,7 +78,7 @@ public class Login extends MyFrame {
 
         //identifiant text field
         JTextField identifiantField = new JTextField();
-        identifiantField.setBounds(120 , 435 , 180 , 30);
+        identifiantField.setBounds(120 , frameHeight/2 + 35 , 180 , 30);
         add(identifiantField);
 
 
@@ -85,14 +89,14 @@ public class Login extends MyFrame {
         JLabel passwordText = new JLabel();
         passwordText.setText("Entrer votre mot de passe");
         passwordText.setFont(new Font(Font.SANS_SERIF, Font.BOLD,  17));
-        passwordPanel.setBounds(103 , 500 , 250 , 30);
+        passwordPanel.setBounds(103 , frameHeight/2 + 70 , 250 , 30);
         passwordPanel.add(passwordText);
         add(passwordPanel);
 
 
         //password field
         JPasswordField passwordField = new JPasswordField();
-        passwordField.setBounds(120 , 535 , 180 , 30);
+        passwordField.setBounds(120 , frameHeight/2 + 105 , 180 , 30);
         add(passwordField);
 
 
@@ -102,7 +106,7 @@ public class Login extends MyFrame {
 
         JLabel adviceLabel = new JLabel();
         adviceLabel.setFont(new Font("Arial", Font.BOLD, 14));
-        adviceLabel.setBounds(200 , 710 , 900 , 30);
+        adviceLabel.setBounds(frameWidth / 8 , (int)(MyFrame.frameHeight*0.75) + 70 , 900 , 30);
         add(adviceLabel);
 
         Timer timer = new Timer();

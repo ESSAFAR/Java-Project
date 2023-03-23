@@ -15,9 +15,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class StudentHome extends MyFrame {
+public class StudentFrame1 extends MyFrame {
 
-    public StudentHome() {
+    public StudentFrame1() {
 
         // Create a new JFrame object to serve as the main window of the dashboard
         JFrame dashboard = new JFrame("SchoolEase");

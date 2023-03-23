@@ -6,7 +6,7 @@ Entrer les notes
 Communiquer les avis
  */
 
-package com.GUI;
+package com.GUI.AdminFrames;
 
 import com.Style.MyButtons;
 import com.Style.MyFrame;
