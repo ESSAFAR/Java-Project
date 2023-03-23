@@ -5,8 +5,8 @@ import java.awt.*;
 
 public class MyFrame extends JFrame {
 
-    public static int frameWidth = 1200;
-    public static int frameHeight = 700;
+    public static int frameWidth = 1050;
+    public static int frameHeight = 650;
 
 
     /*
