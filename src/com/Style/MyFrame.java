@@ -14,11 +14,12 @@ public class MyFrame extends JFrame {
     */
 
     public MyFrame(){
-        getContentPane().setBackground(new Color(236, 242, 255));
+        getContentPane().setBackground(new Color(255, 255, 255));
+
         setResizable(false);
         setBounds(0 , 0 , frameWidth , frameHeight);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setLayout(null);
+        //setLayout(null);
         ImageIcon logo = new ImageIcon("images\\SchoolEase2.png");
         setIconImage(logo.getImage());
     }
