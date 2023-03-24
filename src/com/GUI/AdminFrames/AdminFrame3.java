@@ -8,12 +8,14 @@ import com.GUI.AdminFrames.AdminFrame1;
 import com.Style.MyButtons;
 import com.Style.MyFrame;
 
+import javax.swing.*;
 import java.awt.*;
 
 public class AdminFrame3 extends MyFrame {
 
     public AdminFrame3(String matricule) {
         MyButtons btn = new MyButtons("Eleve de Matricule " + matricule , Color.blue , Color.white);
+        btn.setIcon(new ImageIcon("images/sideImage.jpg"));
         add(btn);
 
 
