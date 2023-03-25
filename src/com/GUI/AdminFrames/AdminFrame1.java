@@ -43,17 +43,30 @@ public class AdminFrame1 extends MyFrame {
         //Gestion prof
         MyButtons btn_professeurs = new MyButtons("Gestion professeurs" , Color.blue , Color.white ,570 , 380 , 250 , 50);
         add(btn_professeurs);
+        btn_professeurs .addActionListener(e -> {
+            dispose();
+            AdminFrame4 adminFrame4 = new AdminFrame4();
+        });
 
 
 
         //Gestion notes
         MyButtons btn_notes = new MyButtons("Gestion Notes" , Color.blue , Color.white , 290 , 530 , 250 , 50);
         add(btn_notes);
+        btn_notes.addActionListener(e -> {
+            dispose();
+            AdminFrame6 adminFrame6 = new AdminFrame6();
+        });
 
 
         //Communiquer un avis
         MyButtons btn_avis= new MyButtons("Gestion avis" , Color.blue , Color.white , 700 , 530 , 250 , 50);
         add(btn_avis);
+        btn_avis.addActionListener(e -> {
+            dispose();
+            AnnouncementsFrame AnnouncementsFrame = new AnnouncementsFrame();
+        });
+
 
 
         //centre image
