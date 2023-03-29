@@ -14,17 +14,17 @@ import com.Style.MyFrame;
 import javax.swing.*;
 import java.awt.*;
 
-public class AdminFrame1 extends MyFrame {
-    public AdminFrame1(){
+public class AcceuilAdmin extends MyFrame {
+    public AcceuilAdmin(){
 
         //Logo
-        //JPanel logoContainer = new JPanel();
-        //logoContainer.setBounds(90 , 50 , 400 , 158);
-        //JLabel logo = new JLabel();
-        //logo.setIcon(new ImageIcon("images/SchoolEase4resized.png"));
-        //logoContainer.setBackground(new Color(0,0,0,0));
-        //logoContainer.add(logo);
-        //add(logoContainer);
+        JPanel logoContainer = new JPanel();
+        logoContainer.setBounds(500 , 50 , 400 , 158);
+        JLabel logo = new JLabel();
+        logo.setIcon(new ImageIcon("images/SchoolEase4resized.png"));
+        logoContainer.setBackground(new Color(0,0,0,0));
+        logoContainer.add(logo);
+        add(logoContainer);
 
 
         //Gestion eleves
@@ -32,7 +32,7 @@ public class AdminFrame1 extends MyFrame {
         add(btn_eleves);
         btn_eleves.addActionListener(e -> {
             dispose();
-            AdminFrame2 adminFrame2 = new AdminFrame2();
+            GestionEtudiants gestionEtudiants = new GestionEtudiants();
         });
 
 
@@ -45,7 +45,7 @@ public class AdminFrame1 extends MyFrame {
         add(btn_professeurs);
         btn_professeurs .addActionListener(e -> {
             dispose();
-            AdminFrame4 adminFrame4 = new AdminFrame4();
+            GestionProfesseursJFrame adminFrame4 = new GestionProfesseursJFrame();
         });
 
 
@@ -55,7 +55,7 @@ public class AdminFrame1 extends MyFrame {
         add(btn_notes);
         btn_notes.addActionListener(e -> {
             dispose();
-            AdminFrame6 adminFrame6 = new AdminFrame6();
+            GestionNotes gestionNotes = new GestionNotes();
         });
 
 
@@ -64,17 +64,15 @@ public class AdminFrame1 extends MyFrame {
         add(btn_avis);
         btn_avis.addActionListener(e -> {
             dispose();
-            AnnouncementsFrame AnnouncementsFrame = new AnnouncementsFrame();
+            Avis Avis = new Avis();
         });
 
 
 
         //centre image
         JPanel imageContainer = new JPanel();
-        imageContainer.setBounds(600 , 0 , 920 , 770);
-        JLabel sideImage = new JLabel();
-        sideImage.setIcon(new ImageIcon("images/2.jpeg"));
-        imageContainer.add(sideImage);
+        imageContainer.setBounds(getWidth()-400 , 0 , 400 , getHeight());
+        imageContainer.setBackground(Color.pink);
         add(imageContainer);
 
 

@@ -8,9 +8,9 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import java.awt.*;
 
-public class AdminFrame4 extends MyFrame {
+public class GestionEtudiants extends MyFrame {
 
-    public AdminFrame4(){
+    public GestionEtudiants(){
 
 
 
@@ -25,11 +25,11 @@ public class AdminFrame4 extends MyFrame {
         String[] columnNames = {"Matricule", "Prenom","Nom" , "Email"};
 
         JTable table = new JTable(data, columnNames);
-        table.setBounds(560, 10, 600, 900);
+        table.setBounds(360, 120, 600, 900);
 
         JScrollPane scrollPane = new JScrollPane(table);
 
-        scrollPane.setBounds(560, 10, 600, 600);
+        scrollPane.setBounds(360, 120, 600, 600);
         add(scrollPane);
 
 
@@ -44,7 +44,7 @@ public class AdminFrame4 extends MyFrame {
                     int column = table.getSelectedColumn();
                     String matricule = (String) table.getValueAt(row , 0 );
                     dispose();
-                    AdminFrame5 frame = new AdminFrame5(matricule);
+                    FicheEtudiant frame = new FicheEtudiant(matricule);
                 }
             }
         });
@@ -56,28 +56,35 @@ public class AdminFrame4 extends MyFrame {
 
 
         //Add a student
-        MyButtons Ajouter = new MyButtons("Ajouter" , Color.blue , Color.white , 100 , 100 , 150 , 50);
+        MyButtons Ajouter = new MyButtons("Ajouter" , Color.blue , Color.white , 90 , 170 , 150 , 50);
         add(Ajouter);
 
         //Search a student
-        MyButtons Rechercher = new MyButtons("Rechercher" , Color.blue , Color.white , 100 , 200 , 150 , 50);
+        MyButtons Rechercher = new MyButtons("Rechercher" , Color.blue , Color.white , 90 , 270 , 150 , 50);
         add(Rechercher);
 
 
         //delete a student
-        MyButtons supprimer = new MyButtons("supprimer" , Color.blue , Color.white , 100 , 300 , 150 , 50);
+        MyButtons supprimer = new MyButtons("supprimer" , Color.blue , Color.white , 90 , 370 , 150 , 50);
         add(supprimer);
 
 
         //Retour
-        MyButtons Retour = new MyButtons("Retour" , Color.blue , Color.white , 100 , 400 , 150 , 50);
+        MyButtons Retour = new MyButtons("Retour" , Color.blue , Color.white , 90 , 470 , 150 , 50);
         Retour.addActionListener(e -> {
             dispose();
-            AdminFrame1 frame = new AdminFrame1();
+            AcceuilAdmin frame = new AcceuilAdmin();
         });
         add(Retour);
 
 
+
+        JPanel imageContainer = new JPanel();
+        imageContainer.setBounds(0 , 0 , 1050 , 650);
+        JLabel sideImage = new JLabel();
+        sideImage.setIcon(new ImageIcon("images/3.jpeg"));
+        imageContainer.add(sideImage);
+        add(imageContainer);
 
 
 

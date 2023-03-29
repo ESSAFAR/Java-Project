@@ -8,10 +8,10 @@ import com.Style.MyFrame;
 
 import javax.swing.*;
 
-public class AdminFrame6 extends MyFrame {
+public class GestionNotes extends MyFrame {
 
 
-    public AdminFrame6() {
+    public GestionNotes() {
         //Combobox to choose 1ere annee, 2eme annee or 3eme annee
          String[] classes = {"1ere annee", "2eme annee", "3eme annee"};
          JComboBox<String> yearComboBox = new JComboBox<>(classes);
@@ -62,13 +62,42 @@ public class AdminFrame6 extends MyFrame {
                 {"102","Akram","Talibi" , "4" , "4" , "4", "4" , "4" , "4" ,"4" , "4" ,"4"},
                 {"103","Salah","Jouhaini" , "4" , "4" , "4", "4" , "4" , "4" ,"4" , "4" ,"4"},
                 {"104","Soufian","Erraoudi" , "4" , "4" , "4", "4" , "4" , "4" ,"4" , "4" ,"4"},
+                {"104","Soufian","Erraoudi" , "2" , "4" , "4", "4" , "4" , "4" ,"4" , "4" ,"4"},
+                {"104","Soufian","Erraoudi" , "2" , "4" , "4", "4" , "4" , "4" ,"4" , "4" ,"4"},
+                {"104","Soufian","Erraoudi" , "2" , "4" , "4", "4" , "4" , "4" ,"4" , "4" ,"4"},
+                {"104","Soufian","Erraoudi" , "2" , "4" , "4", "4" , "4" , "4" ,"4" , "4" ,"4"},
+                {"104","Soufian","Erraoudi" , "2" , "4" , "4", "4" , "4" , "4" ,"4" , "4" ,"4"},
+                {"104","Soufian","Erraoudi" , "2" , "4" , "4", "4" , "4" , "4" ,"4" , "4" ,"4"},
+                {"104","Soufian","Erraoudi" , "2" , "4" , "4", "4" , "4" , "4" ,"4" , "4" ,"4"},
+                {"104","Soufian","Erraoudi" , "2" , "4" , "4", "4" , "4" , "4" ,"4" , "4" ,"4"},
+                {"104","Soufian","Erraoudi" , "2" , "4" , "4", "4" , "4" , "4" ,"4" , "4" ,"4"},
+                {"104","Soufian","Erraoudi" , "2" , "4" , "4", "4" , "4" , "4" ,"4" , "4" ,"4"},
+                {"104","Soufian","Erraoudi" , "2" , "4" , "4", "4" , "4" , "4" ,"4" , "4" ,"4"},
+                {"104","Soufian","Erraoudi" , "2" , "4" , "4", "4" , "4" , "4" ,"4" , "4" ,"4"},
+                {"104","Soufian","Erraoudi" , "2" , "4" , "4", "4" , "4" , "4" ,"4" , "4" ,"4"},
+                {"104","Soufian","Erraoudi" , "2" , "4" , "4", "4" , "4" , "4" ,"4" , "4" ,"4"},
+                {"104","Soufian","Erraoudi" , "2" , "4" , "4", "4" , "4" , "4" ,"4" , "4" ,"4"},
+                {"104","Soufian","Erraoudi" , "2" , "4" , "4", "4" , "4" , "4" ,"4" , "4" ,"4"},
+                {"104","Soufian","Erraoudi" , "2" , "4" , "4", "4" , "4" , "4" ,"4" , "4" ,"4"},
+                {"104","Soufian","Erraoudi" , "2" , "4" , "4", "4" , "4" , "4" ,"4" , "4" ,"4"},
+                {"104","Soufian","Erraoudi" , "2" , "4" , "4", "4" , "4" , "4" ,"4" , "4" ,"4"},
+                {"104","Soufian","Erraoudi" , "2" , "4" , "4", "4" , "4" , "4" ,"4" , "4" ,"4"},
+                {"104","Soufian","Erraoudi" , "2" , "4" , "4", "4" , "4" , "4" ,"4" , "4" ,"4"},
+                {"104","Soufian","Erraoudi" , "2" , "4" , "4", "4" , "4" , "4" ,"4" , "4" ,"4"},
+                {"104","Soufian","Erraoudi" , "2" , "4" , "4", "4" , "4" , "4" ,"4" , "4" ,"4"},
+                {"104","Soufian","Erraoudi" , "2" , "4" , "4", "4" , "4" , "4" ,"4" , "4" ,"4"},
+                {"104","Soufian","Erraoudi" , "2" , "4" , "4", "4" , "4" , "4" ,"4" , "4" ,"4"},
+                {"104","Soufian","Erraoudi" , "2" , "4" , "4", "4" , "4" , "4" ,"4" , "4" ,"4"},
+                {"000","EOF","EOF" , "1" , "4" , "4", "4" , "4" , "4" ,"4" , "4" ,"4"},
+
+
         };
 
         String[] columnNames = {"Matricule", "Prenom","Nom" , "Base de donnees" , "Base de donnees" , "Base de donnees" , "Base de donnees" , "Base de donnees" , "OS" , "Base de donnees" , "Base de donnees" , "Base de donnees"};
         JTable tableNotes = new JTable(data, columnNames);
-        tableNotes.setBounds(0, 30, this.getWidth(), 900);
+        tableNotes.setBounds(0, 30, this.getWidth(), 400);
         JScrollPane scrollPane = new JScrollPane(tableNotes);
-        scrollPane.setBounds(0, 30,  this.getWidth(), 600);
+        scrollPane.setBounds(0, 30,  this.getWidth(), 550);
         add(scrollPane);
 
 
