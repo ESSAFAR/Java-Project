@@ -18,13 +18,13 @@ public class AdminFrame1 extends MyFrame {
     public AdminFrame1(){
 
         //Logo
-        //JPanel logoContainer = new JPanel();
-        //logoContainer.setBounds(90 , 50 , 400 , 158);
-        //JLabel logo = new JLabel();
-        //logo.setIcon(new ImageIcon("images/SchoolEase4resized.png"));
-        //logoContainer.setBackground(new Color(0,0,0,0));
-        //logoContainer.add(logo);
-        //add(logoContainer);
+        JPanel logoContainer = new JPanel();
+        logoContainer.setBounds(90 , 50 , 400 , 158);
+        JLabel logo = new JLabel();
+        logo.setIcon(new ImageIcon("images/SchoolEase4resized.png"));
+        logoContainer.setBackground(new Color(0,0,0,0));
+        logoContainer.add(logo);
+        add(logoContainer);
 
 
         //Gestion eleves
@@ -71,9 +71,9 @@ public class AdminFrame1 extends MyFrame {
 
         //centre image
         JPanel imageContainer = new JPanel();
-        imageContainer.setBounds(600 , 0 , 920 , 770);
+        imageContainer.setBounds(600 , 0 , 1050 , 650);
         JLabel sideImage = new JLabel();
-        sideImage.setIcon(new ImageIcon("images/2.jpeg"));
+        sideImage.setIcon(new ImageIcon("images/blueBack.jpeg"));
         imageContainer.add(sideImage);
         add(imageContainer);
 
