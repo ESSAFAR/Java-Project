@@ -21,8 +21,8 @@ public class Login extends MyFrame {
         if(true){
             loginBtn.addActionListener(e -> {
                 dispose();
-                 //   AcceuilAdmin frame = new AcceuilAdmin();
-                 AcceuilEtudiant frame2 =new AcceuilEtudiant("100") ;
+                //   AcceuilAdmin frame = new AcceuilAdmin();
+                AcceuilEtudiant frame2 =new AcceuilEtudiant("100") ;
 
             });
         }

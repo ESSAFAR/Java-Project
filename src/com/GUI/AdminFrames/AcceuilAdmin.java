@@ -20,6 +20,7 @@ public class AcceuilAdmin extends MyFrame {
         //Logo
         JPanel logoContainer = new JPanel();
         logoContainer.setBounds(500 , 50 , 400 , 158);
+        logoContainer.setBounds(90 , 50 , 400 , 158);
         JLabel logo = new JLabel();
         logo.setIcon(new ImageIcon("images/SchoolEase4resized.png"));
         logoContainer.setBackground(new Color(0,0,0,0));
@@ -73,6 +74,10 @@ public class AcceuilAdmin extends MyFrame {
         JPanel imageContainer = new JPanel();
         imageContainer.setBounds(getWidth()-400 , 0 , 400 , getHeight());
         imageContainer.setBackground(Color.pink);
+        imageContainer.setBounds(600 , 0 , 1050 , 650);
+        JLabel sideImage = new JLabel();
+        sideImage.setIcon(new ImageIcon("images/blueBack.jpeg"));
+        imageContainer.add(sideImage);
         add(imageContainer);
 
 
