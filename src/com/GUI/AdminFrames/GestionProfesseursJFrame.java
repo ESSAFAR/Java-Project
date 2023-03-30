@@ -25,11 +25,11 @@ public class GestionProfesseursJFrame extends MyFrame {
         String[] columnNames = {"Matricule", "Prenom","Nom" , "Email"};
 
         JTable table = new JTable(data, columnNames);
-        table.setBounds(560, 10, 600, 900);
+        table.setBounds(360, 120, 600, 900);
 
         JScrollPane scrollPane = new JScrollPane(table);
 
-        scrollPane.setBounds(560, 10, 600, 600);
+        scrollPane.setBounds(360, 120, 600, 600);
         add(scrollPane);
 
 
@@ -56,21 +56,21 @@ public class GestionProfesseursJFrame extends MyFrame {
 
 
         //Add a student
-        MyButtons Ajouter = new MyButtons("Ajouter" , Color.blue , Color.white , 100 , 100 , 150 , 50);
+        MyButtons Ajouter = new MyButtons("Ajouter" , Color.blue , Color.white , 90 , 170 , 150 , 50);
         add(Ajouter);
 
         //Search a student
-        MyButtons Rechercher = new MyButtons("Rechercher" , Color.blue , Color.white , 100 , 200 , 150 , 50);
+        MyButtons Rechercher = new MyButtons("Rechercher" , Color.blue , Color.white , 90 , 270 , 150 , 50);
         add(Rechercher);
 
 
         //delete a student
-        MyButtons supprimer = new MyButtons("supprimer" , Color.blue , Color.white , 100 , 300 , 150 , 50);
+        MyButtons supprimer = new MyButtons("supprimer" , Color.blue , Color.white , 90 , 370 , 150 , 50);
         add(supprimer);
 
 
         //Retour
-        MyButtons Retour = new MyButtons("Retour" , Color.blue , Color.white , 100 , 400 , 150 , 50);
+        MyButtons Retour = new MyButtons("Retour" , Color.blue , Color.white , 90 , 470 , 150 , 50);
         Retour.addActionListener(e -> {
             dispose();
             AcceuilAdmin frame = new AcceuilAdmin();
@@ -83,7 +83,7 @@ public class GestionProfesseursJFrame extends MyFrame {
         JPanel imageContainer = new JPanel();
         imageContainer.setBounds(0 , 0 , 1050 , 650);
         JLabel sideImage = new JLabel();
-        sideImage.setIcon(new ImageIcon("images/3.jpeg"));
+        sideImage.setIcon(new ImageIcon("images/03.jpg"));
         imageContainer.add(sideImage);
         add(imageContainer);
 
