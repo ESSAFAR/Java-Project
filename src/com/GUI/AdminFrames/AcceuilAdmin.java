@@ -28,7 +28,7 @@ public class AcceuilAdmin extends MyFrame {
 
 
         //Gestion eleves
-        MyButtons btn_eleves = new MyButtons("Gestion eleves" , Color.blue , Color.white , 50 , 380 , 250 , 50);
+        MyButtons btn_eleves = new MyButtons("Gestion eleves" , Color.blue , Color.white , 250 , 300 , 250 , 50);
         add(btn_eleves);
         btn_eleves.addActionListener(e -> {
             dispose();
@@ -41,7 +41,7 @@ public class AcceuilAdmin extends MyFrame {
 
 
         //Gestion prof
-        MyButtons btn_professeurs = new MyButtons("Gestion professeurs" , Color.blue , Color.white ,570 , 380 , 250 , 50);
+        MyButtons btn_professeurs = new MyButtons("Gestion professeurs" , Color.blue , Color.white ,550 , 300 , 250 , 50);
         add(btn_professeurs);
         btn_professeurs .addActionListener(e -> {
             dispose();
@@ -51,7 +51,7 @@ public class AcceuilAdmin extends MyFrame {
 
 
         //Gestion notes
-        MyButtons btn_notes = new MyButtons("Gestion Notes" , Color.blue , Color.white , 290 , 530 , 250 , 50);
+        MyButtons btn_notes = new MyButtons("Gestion Notes" , Color.blue , Color.white , 250 , 430 , 250 , 50);
         add(btn_notes);
         btn_notes.addActionListener(e -> {
             dispose();
@@ -60,7 +60,7 @@ public class AcceuilAdmin extends MyFrame {
 
 
         //Communiquer un avis
-        MyButtons btn_avis= new MyButtons("Gestion avis" , Color.blue , Color.white , 700 , 530 , 250 , 50);
+        MyButtons btn_avis= new MyButtons("Gestion avis" , Color.blue , Color.white , 550 , 430 , 250 , 50);
         add(btn_avis);
         btn_avis.addActionListener(e -> {
             dispose();
