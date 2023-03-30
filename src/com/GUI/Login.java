@@ -2,7 +2,6 @@ package com.GUI;
 
 import com.GUI.AdminFrames.AcceuilAdmin;
 import com.GUI.StudentFrame.AcceuilEtudiant;
-import com.GUI.StudentFrames.StudentFrame1;
 import com.Style.MyButtons;
 import com.Style.MyFrame;
 import com.jdbc.DBConnection;
