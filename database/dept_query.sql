@@ -1,6 +1,6 @@
-DROP DATABASE IF EXISTS jdbs_course_db;
-CREATE DATABASE jdbs_course_db;
-USE jdbs_course_db;
+DROP DATABASE IF EXISTS departement;
+CREATE DATABASE departement;
+USE departement;
 -- Structure de la table `agent _scolarite`
 --
 
@@ -9,6 +9,7 @@ CREATE TABLE IF NOT EXISTS `agent _scolarite` (
   `nom` varchar(20) NOT NULL,
   `prenom` varchar(20) NOT NULL,
   `Id_scola` int(11) NOT NULL,
+  `mot_de_passe` varchar(20) NOT NULL,
   `email` varchar(20) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
@@ -69,6 +70,7 @@ CREATE TABLE IF NOT EXISTS `etudiant` (
   `nom` varchar(20) NOT NULL,
   `prenom` varchar(20) NOT NULL,
   `cin` varchar(10) NOT NULL,
+  `mot_de_passe` varchar(20) NOT NULL,
   `matricule` int(11) NOT NULL,
   `cne` varchar(20) NOT NULL,
   `genre` varchar(15) NOT NULL,
@@ -105,6 +107,7 @@ CREATE TABLE IF NOT EXISTS `professeur` (
   `nom` varchar(20) NOT NULL,
   `prenom` varchar(20) NOT NULL,
   `id_prof` int(11) NOT NULL,
+  `mot_de_passe` varchar(20) NOT NULL,
   `CIN` varchar(10) NOT NULL,
   `specialite` varchar(25) NOT NULL,
   `type_contrat` varchar(15) NOT NULL,
