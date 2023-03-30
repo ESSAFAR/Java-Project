@@ -36,7 +36,7 @@ public class AcceuilEtudiant extends MyFrame {
 
 
         //Voir les notes
-        MyButtons btn_eleves = new MyButtons("Mes notes" , Color.blue , Color.white , 50 , 380 , 250 , 50);
+        MyButtons btn_eleves = new MyButtons("Mes notes" , Color.blue , Color.white , 250 , 300 , 250 , 50);
         add(btn_eleves);
         btn_eleves.addActionListener(e -> {
             dispose();
@@ -49,7 +49,7 @@ public class AcceuilEtudiant extends MyFrame {
 
 
         //Avis
-        MyButtons btn_professeurs = new MyButtons("Avis" , Color.blue , Color.white ,570 , 380 , 250 , 50);
+        MyButtons btn_professeurs = new MyButtons("Avis" , Color.blue , Color.white ,550 , 300 , 250 , 50);
         add(btn_professeurs);
         btn_professeurs .addActionListener(e -> {
             dispose();
@@ -60,7 +60,7 @@ public class AcceuilEtudiant extends MyFrame {
 
 
         //Emploi
-        MyButtons btn_emploi = new MyButtons("Voir Emploi" , Color.blue , Color.white , 700 , 530 , 250 , 50);
+        MyButtons btn_emploi = new MyButtons("Voir Emploi" , Color.blue , Color.white ,250 , 430 , 250 , 50);
         add(btn_emploi);
         btn_emploi.addActionListener(e -> {
             dispose();
@@ -70,7 +70,7 @@ public class AcceuilEtudiant extends MyFrame {
 
 
         //Profil eleve
-        MyButtons btn_avis = new MyButtons("Ma fiche" , Color.blue , Color.white , 700 , 530 , 250 , 50);
+        MyButtons btn_avis = new MyButtons("Ma fiche" , Color.blue , Color.white , 550 , 430 , 250 , 50);
         add(btn_avis);
         btn_avis.addActionListener(e -> {
             dispose();
