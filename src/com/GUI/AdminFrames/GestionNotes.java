@@ -15,17 +15,15 @@ public class GestionNotes extends MyFrame {
         //Combobox to choose 1ere annee, 2eme annee or 3eme annee
          String[] classes = {"1ere annee", "2eme annee", "3eme annee"};
          JComboBox<String> yearComboBox = new JComboBox<>(classes);
-        yearComboBox.setBounds(5 , 5 , 80 ,24);
+        yearComboBox.setBounds(300 , 50 , 90 ,24);
         add(yearComboBox);
 
 
         //Combobox to choose semester
         String[] semester = {"1 ere semestre", "2eme semestre"};
         JComboBox<String> semesterComboBox = new JComboBox<>(semester);
-        semesterComboBox.setBounds(105 , 5 , 80 ,24);
+        semesterComboBox.setBounds(500 , 50 , 80 ,24);
         add(semesterComboBox);
-
-
 
 
         //Table of marks
@@ -95,21 +93,21 @@ public class GestionNotes extends MyFrame {
 
         String[] columnNames = {"Matricule", "Prenom","Nom" , "Base de donnees" , "Base de donnees" , "Base de donnees" , "Base de donnees" , "Base de donnees" , "OS" , "Base de donnees" , "Base de donnees" , "Base de donnees"};
         JTable tableNotes = new JTable(data, columnNames);
-        tableNotes.setBounds(0, 30, this.getWidth(), 400);
+        tableNotes.setBounds(20, 130, 1000, 400);
         JScrollPane scrollPane = new JScrollPane(tableNotes);
-        scrollPane.setBounds(0, 30,  this.getWidth(), 550);
+        scrollPane.setBounds(20, 130,  1000, 550);
         add(scrollPane);
+
+        JPanel imageContainer = new JPanel();
+        imageContainer.setBounds(0 , 0 , 1050 , 650);
+        JLabel sideImage = new JLabel();
+        sideImage.setIcon(new ImageIcon("images/05.jpg"));
+        imageContainer.add(sideImage);
+        add(imageContainer);
 
 
         setVisible(true);
 
     }
-
-
-
-
-
-
-
 
 }
