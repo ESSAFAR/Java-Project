@@ -22,14 +22,14 @@ public class AcceuilEtudiant extends MyFrame {
     public AcceuilEtudiant(String matricule){
         //
         JLabel salutation = new JLabel("Bonjour "+ matricule);
-        salutation.setBounds(100, 100, 400, 100);
+        salutation.setBounds(220, 200, 400, 100);
         add(salutation);
 
         //Logo
         JPanel logoContainer = new JPanel();
-        logoContainer.setBounds(500 , 50 , 400 , 158);
+        logoContainer.setBounds(330 , 20 , 400 , 158);
         JLabel logo = new JLabel();
-        logo.setIcon(new ImageIcon("images/SchoolEase4resized.png"));
+        logo.setIcon(new ImageIcon("images/skol.png"));
         logoContainer.setBackground(new Color(0,0,0,0));
         logoContainer.add(logo);
         add(logoContainer);
@@ -78,11 +78,12 @@ public class AcceuilEtudiant extends MyFrame {
         });
 
 
-
-        //centre image
+        //background
         JPanel imageContainer = new JPanel();
-        imageContainer.setBounds(getWidth()-400 , 0 , 400 , getHeight());
-        imageContainer.setBackground(Color.pink);
+        imageContainer.setBounds(0 , 0 , 1050 , 650);
+        JLabel sideImage = new JLabel();
+        sideImage.setIcon(new ImageIcon("images/02.jpeg"));
+        imageContainer.add(sideImage);
         add(imageContainer);
 
 
