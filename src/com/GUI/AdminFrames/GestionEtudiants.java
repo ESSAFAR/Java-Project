@@ -82,7 +82,7 @@ public class GestionEtudiants extends MyFrame {
         JPanel imageContainer = new JPanel();
         imageContainer.setBounds(0 , 0 , 1050 , 650);
         JLabel sideImage = new JLabel();
-        sideImage.setIcon(new ImageIcon("images/3.jpeg"));
+        sideImage.setIcon(new ImageIcon("images/04.jpeg"));
         imageContainer.add(sideImage);
         add(imageContainer);
 
