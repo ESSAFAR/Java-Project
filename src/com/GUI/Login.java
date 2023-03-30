@@ -126,6 +126,24 @@ public class Login extends MyFrame {
         add(loginBtn);
         //Next frame if button is pressed and id + password correct
         loginBtn.addActionListener(e -> {
+
+                    //Akram's authentification
+                    if(identifiantField.getText().equals("3")){
+                        AcceuilEtudiant acceuilEtudiant = new AcceuilEtudiant(identifiantField.getText());
+                        dispose();
+                        System.out.println("C est un eleve");
+                        return;
+                    }
+            //Akram's authentification
+            if(identifiantField.getText().equals("4")){
+                AcceuilAdmin acceuilEtudiant = new AcceuilAdmin();
+                dispose();
+                System.out.println("C est un eleve");
+                return;
+            }
+
+
+
                     PreparedStatementWrapper preparedStatement;
                     try {
                     String query = "SELECT * FROM etudiant WHERE prenom = ? AND mot_de_passe = ?";
