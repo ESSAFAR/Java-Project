@@ -1,5 +1,6 @@
 package com.GUI;
 
+import com.GUI.AdminFrames.AcceuilAdmin;
 import com.GUI.StudentFrame.AcceuilEtudiant;
 import com.Style.MyButtons;
 import com.Style.MyFrame;
@@ -21,8 +22,8 @@ public class Login extends MyFrame {
         if(true){
             loginBtn.addActionListener(e -> {
                 dispose();
-                //   AcceuilAdmin frame = new AcceuilAdmin();
-                AcceuilEtudiant frame2 =new AcceuilEtudiant("100") ;
+                   AcceuilAdmin frame = new AcceuilAdmin();
+                // AcceuilEtudiant frame2 =new AcceuilEtudiant("100") ;
 
             });
         }
