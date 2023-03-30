@@ -19,6 +19,13 @@ public class Avis extends MyFrame {
         avis = new ArrayList<>();
 
 
+        //Retour
+        MyButtons Retour = new MyButtons("Retour" , Color.blue , Color.white , 90 , 470 , 150 , 50);
+        Retour.addActionListener(e -> {
+            dispose();
+            AcceuilAdmin frame = new AcceuilAdmin();
+        });
+        add(Retour);
 
         // Ce button permet d'ajouter des nouveaux avis
         JButton AjouterAvisButton = new JButton("Ajouter un avis");

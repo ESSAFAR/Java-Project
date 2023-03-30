@@ -4,9 +4,11 @@ package com.GUI.AdminFrames;
 Gestion des notes
  */
 
+import com.Style.MyButtons;
 import com.Style.MyFrame;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class GestionNotes extends MyFrame {
 
@@ -15,15 +17,24 @@ public class GestionNotes extends MyFrame {
         //Combobox to choose 1ere annee, 2eme annee or 3eme annee
          String[] classes = {"1ere annee", "2eme annee", "3eme annee"};
          JComboBox<String> yearComboBox = new JComboBox<>(classes);
-        yearComboBox.setBounds(300 , 50 , 90 ,24);
+        yearComboBox.setBounds(300 , 50 , 130 ,32);
         add(yearComboBox);
 
 
         //Combobox to choose semester
         String[] semester = {"1 ere semestre", "2eme semestre"};
         JComboBox<String> semesterComboBox = new JComboBox<>(semester);
-        semesterComboBox.setBounds(500 , 50 , 80 ,24);
+        semesterComboBox.setBounds(450 , 50 , 130 ,32);
         add(semesterComboBox);
+
+
+        //Retour
+        MyButtons Retour = new MyButtons("Retour" , Color.blue , Color.white , 830 , 50 , 130 , 32);
+        Retour.addActionListener(e -> {
+            dispose();
+            AcceuilAdmin frame = new AcceuilAdmin();
+        });
+        add(Retour);
 
 
         //Table of marks
