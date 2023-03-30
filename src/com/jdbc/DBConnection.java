@@ -1,15 +1,14 @@
 package com.jdbc;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-
+import java.sql.*;
 public class DBConnection {
 
 
     private static final String USERNAME = "root";
     private static final String PASSWORD = "";
-    private static Connection connection;
+    public static Connection connection;
+    public static PreparedStatement preparedStatement ;
+    ResultSet resultSet ;
 
     public static Connection getConnection() {
         try {
@@ -20,6 +19,8 @@ public class DBConnection {
         }
         return connection;
     }
+
+
 }
 
 

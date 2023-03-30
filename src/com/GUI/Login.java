@@ -2,12 +2,17 @@ package com.GUI;
 
 import com.GUI.AdminFrames.AcceuilAdmin;
 import com.GUI.StudentFrame.AcceuilEtudiant;
+import com.GUI.StudentFrames.StudentFrame1;
 import com.Style.MyButtons;
 import com.Style.MyFrame;
+import com.jdbc.DBConnection;
+import com.mysql.cj.jdbc.PreparedStatementWrapper;
 
 
 import javax.swing.*;
 import java.awt.*;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Timer;
 import java.util.TimerTask;
 public class Login extends MyFrame {
@@ -15,18 +20,8 @@ public class Login extends MyFrame {
     public Login() {
         setTitle("Login");
 
-        //Log in button
-        MyButtons loginBtn = new MyButtons("Log in" , Color.BLUE , Color.WHITE , (int)(MyFrame.frameWidth/8) , (int)(MyFrame.frameHeight*0.75) , 250 , 50) ;
-        add(loginBtn);
-        //Next frame if button is pressed and id + password correct
-        if(true){
-            loginBtn.addActionListener(e -> {
-                dispose();
-                   AcceuilAdmin frame = new AcceuilAdmin();
-                // AcceuilEtudiant frame2 =new AcceuilEtudiant("100") ;
 
-            });
-        }
+
 
 
 
@@ -125,7 +120,90 @@ public class Login extends MyFrame {
             }
         }, 0, 3000);
 
+
+
+        //Log in button
+        MyButtons loginBtn = new MyButtons("Log in" , Color.BLUE , Color.WHITE , (int)(MyFrame.frameWidth/8) , (int)(MyFrame.frameHeight*0.75) , 250 , 50) ;
+        add(loginBtn);
+        //Next frame if button is pressed and id + password correct
+        loginBtn.addActionListener(e -> {
+                    PreparedStatementWrapper preparedStatement;
+                    try {
+                    String query = "SELECT * FROM etudiant WHERE prenom = ? AND mot_de_passe = ?";
+                    DBConnection.preparedStatement = DBConnection.getConnection().prepareStatement(query);
+                    DBConnection.preparedStatement.setString(1, identifiantField.getText());
+                    DBConnection.preparedStatement.setString(2, passwordField.getText());
+                    ResultSet resultSet = DBConnection.preparedStatement.executeQuery();
+                    if(resultSet.next()) {
+                        AcceuilEtudiant acceuilEtudiant = new AcceuilEtudiant(identifiantField.getText());
+                        dispose();
+                        System.out.println("C est un eleve");
+                        return;
+                    }
+                    else {
+                        System.out.println("C'est pas un eleve");
+                    }
+
+                } catch (SQLException exp) {
+                    exp.printStackTrace();
+                } finally {
+                        try {
+                            DBConnection.preparedStatement.close();
+                        } catch (SQLException ex) {
+                            throw new RuntimeException(ex);
+                        }
+                        try {
+                            DBConnection.connection.close();
+                        } catch (SQLException ex) {
+                            throw new RuntimeException(ex);
+                        }
+                    }
+            try {
+                 String query = "SELECT * FROM admin WHERE prenom = ? AND mot_de_passe = ?";
+                DBConnection.preparedStatement = DBConnection.getConnection().prepareStatement(query);
+                DBConnection.preparedStatement.setString(1, identifiantField.getText());
+                DBConnection.preparedStatement.setString(2, passwordField.getText());
+                ResultSet resultSet = DBConnection.preparedStatement.executeQuery();
+                if(resultSet.next()) {
+                    AcceuilAdmin acceuilAdmin = new AcceuilAdmin();
+                    dispose();
+                    System.out.println("mdp correct");
+                }
+                else {
+                    System.out.println("mdp incorrect");
+
+
+                }
+
+            } catch (SQLException exp) {
+                exp.printStackTrace();
+            } finally {
+                try {
+                    DBConnection.preparedStatement.close();
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                }
+                try {
+                    DBConnection.connection.close();
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
+
+
+
+
+
+
+            // AcceuilEtudiant frame2 =new AcceuilEtudiant("100") ;
+
+        });
+
         setVisible(true);
+
+
+
+
 
 
 

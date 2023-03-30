@@ -20,6 +20,10 @@ import java.awt.*;
 public class AcceuilEtudiant extends MyFrame {
     String matricule;
     public AcceuilEtudiant(String matricule){
+        //
+        JLabel salutation = new JLabel("Bonjour "+ matricule);
+        salutation.setBounds(100, 100, 400, 100);
+        add(salutation);
 
         //Logo
         JPanel logoContainer = new JPanel();
