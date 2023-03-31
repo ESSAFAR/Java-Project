@@ -1,7 +1,11 @@
 package com.jdbc;
 
+import com.GUI.AdminFrames.AcceuilAdmin;
+import com.GUI.StudentFrame.AcceuilEtudiant;
 import com.Model.Etudiant;
+import com.mysql.cj.jdbc.PreparedStatementWrapper;
 
+import javax.swing.*;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +13,7 @@ import java.util.List;
 public class EtudiantDAO {
     private Connection connection = DBConnection.getConnection();
 
-     //Teste si un eleve existe dans la BD
+    //Teste si un eleve existe dans la BD
     public boolean existe(Etudiant etudiant) {
         try {
             PreparedStatement ps = connection.prepareStatement("SELECT COUNT(*) FROM etudiants WHERE matricule = ?");
@@ -26,7 +30,7 @@ public class EtudiantDAO {
         }
     }
 
-    //Si l'etudiant existe, il est modifie, sino, il sera ajoute a la BD
+    //Si l'etudiant existe, il est modifie, sinon, il sera ajoute a la BD
     public void modifierEtudiant(Etudiant etudiant) {
         try {
             PreparedStatement ps;
@@ -48,7 +52,7 @@ public class EtudiantDAO {
         }
     }
 
-    public void ajouterEtudiant(Etudiant etudiant){
+    public void ajouterEtudiant(Etudiant etudiant) {
         modifierEtudiant(etudiant);
     }
 
@@ -63,7 +67,7 @@ public class EtudiantDAO {
         }
     }
 
-    public Etudiant getBymatricule(int matricule) {
+    public Etudiant getEtudiant(int matricule) {
         Etudiant etudiant = null;
         try {
             PreparedStatement ps = connection.prepareStatement("SELECT * FROM etudiants WHERE matricule=?");
@@ -83,7 +87,7 @@ public class EtudiantDAO {
         return etudiant;
     }
 
-    public List<Etudiant> getAll() {
+    public List<Etudiant> getListEtudiant() {
         List<Etudiant> etudiants = new ArrayList<>();
         try {
             Statement stmt = connection.createStatement();
@@ -102,4 +106,6 @@ public class EtudiantDAO {
         }
         return etudiants;
     }
+
+
 }

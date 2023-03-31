@@ -5,6 +5,7 @@ import com.GUI.StudentFrame.AcceuilEtudiant;
 import com.Style.MyButtons;
 import com.Style.MyFrame;
 import com.jdbc.DBConnection;
+import com.jdbc.EtudiantDAO;
 import com.mysql.cj.jdbc.PreparedStatementWrapper;
 
 
@@ -118,57 +119,24 @@ public class Login extends MyFrame {
         add(loginBtn);
         //Next frame if button is pressed and id + password correct
         loginBtn.addActionListener(e -> {
-
-            //Akram's authentification
-            if (identifiantField.getText().equals("3")) {
-                AcceuilEtudiant acceuilEtudiant = new AcceuilEtudiant(identifiantField.getText());
-                dispose();
-                System.out.println("C est un eleve");
-                return;
-            }
-            //Akram's authentification
-            if (identifiantField.getText().equals("4")) {
-                AcceuilAdmin acceuilEtudiant = new AcceuilAdmin();
-                dispose();
-                System.out.println("C est un eleve");
-                return;
-            }
-
-
-            PreparedStatementWrapper preparedStatement;
-            try {
-                String query = "SELECT * FROM etudiant WHERE prenom = ? AND mot_de_passe = ?";
-                DBConnection.preparedStatement = DBConnection.getConnection().prepareStatement(query);
-                DBConnection.preparedStatement.setString(1, identifiantField.getText());
-                DBConnection.preparedStatement.setString(2, passwordField.getText());
-                ResultSet resultSet = DBConnection.preparedStatement.executeQuery();
-                if (resultSet.next()) {
-                    AcceuilEtudiant acceuilEtudiant = new AcceuilEtudiant(identifiantField.getText());
-                    dispose();
-                    System.out.println("Authentification etudiant reussie");
-                    return;
-                } else {
-                    query = "SELECT * FROM admin WHERE prenom = ? AND mot_de_passe = ?";
-                    DBConnection.preparedStatement = DBConnection.getConnection().prepareStatement(query);
-                    DBConnection.preparedStatement.setString(1, identifiantField.getText());
-                    DBConnection.preparedStatement.setString(2, passwordField.getText());
-                    resultSet = DBConnection.preparedStatement.executeQuery();
-                    if (resultSet.next()) {
-                        AcceuilAdmin acceuilAdmin = new AcceuilAdmin();
-                        dispose();
-                        System.out.println("Authentification admin reussie");
-
-                    } else {
-                        JOptionPane.showMessageDialog(this, "Id ou mdp non valide.", "Erreur de connection", JOptionPane.WARNING_MESSAGE);
+                    switch (DBConnection.authentificate(identifiantField.getText(), passwordField.getText())) {
+                        case 0: {
+                            JOptionPane.showMessageDialog(this, "Id ou mdp non valide.", "Erreur de connection", JOptionPane.WARNING_MESSAGE);
+                            break;
+                        }
+                        case 1: {
+                            dispose();
+                            AcceuilEtudiant acceuilEtudiant = new AcceuilEtudiant(identifiantText.getText());
+                            break;
+                        }
+                        case 2: {
+                            dispose();
+                            AcceuilAdmin acceuilAdmin = new AcceuilAdmin();
+                            break;
+                        }
                     }
-
                 }
-            } catch (Exception ex) {
-                ex.printStackTrace();
-            };
-
-
-        });
+        );
         setVisible(true);
 
         ;
