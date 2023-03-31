@@ -11,6 +11,7 @@ package com.GUI.StudentFrame;
 import com.GUI.AdminFrames.Avis;
 import com.GUI.AdminFrames.GestionNotes;
 import com.GUI.AdminFrames.FicheEtudiant;
+import com.GUI.Login;
 import com.Style.MyButtons;
 import com.Style.MyFrame;
 
@@ -24,6 +25,15 @@ public class AcceuilEtudiant extends MyFrame {
         JLabel salutation = new JLabel("Bonjour "+ matricule);
         salutation.setBounds(220, 200, 400, 100);
         add(salutation);
+
+
+        //Deconnection
+        MyButtons deconnection = new MyButtons("Se Deconnecter", Color.blue , Color.white, 100 , 550 , 170 , 40);
+        deconnection.addActionListener(e-> {
+            dispose();
+            Login login = new Login();
+        });
+        add(deconnection);
 
         //Logo
         JPanel logoContainer = new JPanel();
@@ -85,11 +95,6 @@ public class AcceuilEtudiant extends MyFrame {
         sideImage.setIcon(new ImageIcon("images/02.jpeg"));
         imageContainer.add(sideImage);
         add(imageContainer);
-
-
-
-
-
 
         setVisible(true);
     }

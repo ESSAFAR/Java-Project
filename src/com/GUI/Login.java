@@ -145,7 +145,7 @@ public class Login extends MyFrame {
                 if (resultSet.next()) {
                     AcceuilEtudiant acceuilEtudiant = new AcceuilEtudiant(identifiantField.getText());
                     dispose();
-                    System.out.println("C est un eleve");
+                    System.out.println("Authentification etudiant reussie");
                     return;
                 } else {
                     query = "SELECT * FROM admin WHERE prenom = ? AND mot_de_passe = ?";
@@ -156,21 +156,16 @@ public class Login extends MyFrame {
                     if (resultSet.next()) {
                         AcceuilAdmin acceuilAdmin = new AcceuilAdmin();
                         dispose();
-                        System.out.println("mdp correct");
+                        System.out.println("Authentification admin reussie");
 
                     } else {
                         JOptionPane.showMessageDialog(this, "Id ou mdp non valide.", "Erreur de connection", JOptionPane.WARNING_MESSAGE);
                     }
 
                 }
-
-
-                // AcceuilEtudiant frame2 =new AcceuilEtudiant("100") ;
-
-            } catch (SQLException ex) {
-                throw new RuntimeException(ex);
-            }
-            ;
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            };
 
 
         });
