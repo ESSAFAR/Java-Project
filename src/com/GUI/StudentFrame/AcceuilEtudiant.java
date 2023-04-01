@@ -11,6 +11,7 @@ package com.GUI.StudentFrame;
 import com.GUI.AdminFrames.Avis;
 import com.GUI.AdminFrames.GestionNotes;
 import com.GUI.AdminFrames.FicheEtudiant;
+import com.GUI.Login;
 import com.Style.MyButtons;
 import com.Style.MyFrame;
 
@@ -22,21 +23,30 @@ public class AcceuilEtudiant extends MyFrame {
     public AcceuilEtudiant(String matricule){
         //
         JLabel salutation = new JLabel("Bonjour "+ matricule);
-        salutation.setBounds(100, 100, 400, 100);
+        salutation.setBounds(220, 200, 400, 100);
         add(salutation);
+
+
+        //Deconnection
+        MyButtons deconnection = new MyButtons("Se Deconnecter", Color.blue , Color.white, 100 , 550 , 170 , 40);
+        deconnection.addActionListener(e-> {
+            dispose();
+            Login login = new Login();
+        });
+        add(deconnection);
 
         //Logo
         JPanel logoContainer = new JPanel();
-        logoContainer.setBounds(500 , 50 , 400 , 158);
+        logoContainer.setBounds(330 , 20 , 400 , 158);
         JLabel logo = new JLabel();
-        logo.setIcon(new ImageIcon("images/SchoolEase4resized.png"));
+        logo.setIcon(new ImageIcon("images/skol.png"));
         logoContainer.setBackground(new Color(0,0,0,0));
         logoContainer.add(logo);
         add(logoContainer);
 
 
         //Voir les notes
-        MyButtons btn_eleves = new MyButtons("Mes notes" , Color.blue , Color.white , 50 , 380 , 250 , 50);
+        MyButtons btn_eleves = new MyButtons("Mes notes" , Color.blue , Color.white , 250 , 300 , 250 , 50);
         add(btn_eleves);
         btn_eleves.addActionListener(e -> {
             dispose();
@@ -49,7 +59,7 @@ public class AcceuilEtudiant extends MyFrame {
 
 
         //Avis
-        MyButtons btn_professeurs = new MyButtons("Avis" , Color.blue , Color.white ,570 , 380 , 250 , 50);
+        MyButtons btn_professeurs = new MyButtons("Avis" , Color.blue , Color.white ,550 , 300 , 250 , 50);
         add(btn_professeurs);
         btn_professeurs .addActionListener(e -> {
             dispose();
@@ -60,7 +70,7 @@ public class AcceuilEtudiant extends MyFrame {
 
 
         //Emploi
-        MyButtons btn_emploi = new MyButtons("Voir Emploi" , Color.blue , Color.white , 700 , 530 , 250 , 50);
+        MyButtons btn_emploi = new MyButtons("Voir Emploi" , Color.blue , Color.white ,250 , 430 , 250 , 50);
         add(btn_emploi);
         btn_emploi.addActionListener(e -> {
             dispose();
@@ -70,7 +80,7 @@ public class AcceuilEtudiant extends MyFrame {
 
 
         //Profil eleve
-        MyButtons btn_avis = new MyButtons("Ma fiche" , Color.blue , Color.white , 700 , 530 , 250 , 50);
+        MyButtons btn_avis = new MyButtons("Ma fiche" , Color.blue , Color.white , 550 , 430 , 250 , 50);
         add(btn_avis);
         btn_avis.addActionListener(e -> {
             dispose();
@@ -78,17 +88,13 @@ public class AcceuilEtudiant extends MyFrame {
         });
 
 
-
-        //centre image
+        //background
         JPanel imageContainer = new JPanel();
-        imageContainer.setBounds(getWidth()-400 , 0 , 400 , getHeight());
-        imageContainer.setBackground(Color.pink);
+        imageContainer.setBounds(0 , 0 , 1050 , 650);
+        JLabel sideImage = new JLabel();
+        sideImage.setIcon(new ImageIcon("images/02.jpeg"));
+        imageContainer.add(sideImage);
         add(imageContainer);
-
-
-
-
-
 
         setVisible(true);
     }

@@ -8,6 +8,7 @@ Communiquer les avis
 
 package com.GUI.AdminFrames;
 
+import com.GUI.Login;
 import com.Style.MyButtons;
 import com.Style.MyFrame;
 
@@ -66,6 +67,15 @@ public class AcceuilAdmin extends MyFrame {
             dispose();
             Avis Avis = new Avis();
         });
+
+
+        //Deconnection
+        MyButtons deconnection = new MyButtons("Se Deconnecter", Color.blue , Color.white, 100 , 550 , 170 , 40);
+        deconnection.addActionListener(e-> {
+            dispose();
+            Login login = new Login();
+        });
+        add(deconnection);
 
 
 

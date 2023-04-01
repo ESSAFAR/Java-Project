@@ -3,18 +3,18 @@ package com.Model;
 import java.util.Date;
 
 public class Personne {
-    private String nom;
-    private String motDePasse;
-    private String prenom;
-    private String cin;
-    private int matricule;
-    private String genre;
-    private Date dateNaissance;
-    private String lieuNaissance;
-    private String nationalite = "marocaine";
-    private String emailInstitutionnel = "nom.prenom@student.emi.ac.ma";
-    private int telephone;
-    private String adresse;
+    protected String nom;
+    protected String motDePasse;
+    protected String prenom;
+    protected String cin;
+    protected int matricule;
+    protected String genre;
+    protected Date dateNaissance;
+    protected String lieuNaissance;
+    protected String nationalite = "marocaine";
+    protected String emailInstitutionnel = "nom.prenom@student.emi.ac.ma";
+    protected int telephone;
+    protected String adresse;
 
     public String getNom() {
         return nom;

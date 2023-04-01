@@ -12,8 +12,6 @@ public class GestionEtudiants extends MyFrame {
 
     public GestionEtudiants(){
 
-
-
         //Table of students
         String[][] data = {
                 {"101" ,"Anwar","Es-Safar" , "anwar.essafar@gmail.com"},

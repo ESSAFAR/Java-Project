@@ -16,6 +16,12 @@ public class FicheEtudiant extends MyFrame {
     public FicheEtudiant(String matricule) {
         // Retrieve student information using matricule parameter
 
+        // Load and display student image
+        JLabel imageLabel = new JLabel();
+       // imageLabel.setIcon(new ImageIcon((Image de etudiant));
+        imageLabel.setBounds(500, 50, 200, 200);
+        add(imageLabel);
+
         // Create text fields to edit student information
         JTextField nomField = new JTextField("Essafar");
         JTextField prenomField = new JTextField("Anwar");
@@ -48,12 +54,7 @@ public class FicheEtudiant extends MyFrame {
         add(gmailField);
         add(phoneField);
 
-        // Load and display student image
-        ImageIcon icon = new ImageIcon();
-        JLabel imageLabel = new JLabel(icon);
-        imageLabel.setBackground(Color.cyan);
-        imageLabel.setBounds(500, 50, 200, 200);
-        add(imageLabel);
+
 
         // Create "Enregistrer" button
         MyButtons enregistrerBtn = new MyButtons("Enregistrer", Color.blue, Color.white, 100, 400, 150, 50);
