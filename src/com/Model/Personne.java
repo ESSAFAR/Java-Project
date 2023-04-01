@@ -13,8 +13,23 @@ public class Personne {
     protected String lieuNaissance;
     protected String nationalite = "marocaine";
     protected String emailInstitutionnel = "nom.prenom@student.emi.ac.ma";
-    protected int telephone;
+    protected String telephone;
     protected String adresse;
+
+    public Personne(String nom, String motDePasse, String prenom, String cin, int matricule, String genre, Date dateNaissance, String lieuNaissance, String nationalite, String emailInstitutionnel, String telephone, String adresse) {
+        this.nom = nom;
+        this.motDePasse = motDePasse;
+        this.prenom = prenom;
+        this.cin = cin;
+        this.matricule = matricule;
+        this.genre = genre;
+        this.dateNaissance = dateNaissance;
+        this.lieuNaissance = lieuNaissance;
+        this.nationalite = nationalite;
+        this.emailInstitutionnel = emailInstitutionnel;
+        this.telephone = telephone;
+        this.adresse = adresse;
+    }
 
     public String getNom() {
         return nom;
@@ -96,11 +111,11 @@ public class Personne {
         this.emailInstitutionnel = emailInstitutionnel;
     }
 
-    public int getTelephone() {
+    public String getTelephone() {
         return telephone;
     }
 
-    public void setTelephone(int telephone) {
+    public void setTelephone(String telephone) {
         this.telephone = telephone;
     }
 

@@ -59,7 +59,7 @@ public class Login extends MyFrame {
         //user identifiant
         JPanel identifiant = new JPanel();
         JLabel identifiantText = new JLabel();
-        identifiantText.setText("Entrer votre ID");
+        identifiantText.setText("Entrer votre matricule");
         identifiantText.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 17));
         identifiant.setBounds(58, frameHeight / 2, 250, 30);
         identifiant.setBackground(new Color(0, 0, 0, 0));
@@ -119,14 +119,14 @@ public class Login extends MyFrame {
         add(loginBtn);
         //Next frame if button is pressed and id + password correct
         loginBtn.addActionListener(e -> {
-                    switch (DBConnection.authentificate(identifiantField.getText(), passwordField.getText())) {
+                    switch (DBConnection.authentificate(Integer.parseInt(identifiantField.getText()), passwordField.getText())) {
                         case 0: {
-                            JOptionPane.showMessageDialog(this, "Id ou mdp non valide.", "Erreur de connection", JOptionPane.WARNING_MESSAGE);
+                            JOptionPane.showMessageDialog(this, "Marticule ou mdp non valide.", "Erreur de connection", JOptionPane.WARNING_MESSAGE);
                             break;
                         }
                         case 1: {
                             dispose();
-                            AcceuilEtudiant acceuilEtudiant = new AcceuilEtudiant(identifiantText.getText());
+                            AcceuilEtudiant acceuilEtudiant = new AcceuilEtudiant(Integer.parseInt(identifiantField.getText()));
                             break;
                         }
                         case 2: {
