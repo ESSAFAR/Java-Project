@@ -4,8 +4,10 @@ A personnal page for the student(matricule)
 
 package com.GUI.AdminFrames;
 
+import com.Model.Etudiant;
 import com.Style.MyButtons;
 import com.Style.MyFrame;
+import com.jdbc.EtudiantDAO;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,8 +15,9 @@ import java.awt.*;
 public class FicheEtudiant extends MyFrame {
 
 
-    public FicheEtudiant(String matricule) {
+    public FicheEtudiant(int matricule) {
         // Retrieve student information using matricule parameter
+        Etudiant etudiant = EtudiantDAO.getEtudiant(matricule);
 
         // Load and display student image
         JLabel imageLabel = new JLabel();
@@ -23,10 +26,10 @@ public class FicheEtudiant extends MyFrame {
         add(imageLabel);
 
         // Create text fields to edit student information
-        JTextField nomField = new JTextField("Essafar");
-        JTextField prenomField = new JTextField("Anwar");
-        JTextField gmailField = new JTextField("anwar.essafar@gmail.com");
-        JTextField phoneField = new JTextField("0632085180");
+        JTextField nomField = new JTextField(etudiant.getNom());
+        JTextField prenomField = new JTextField(etudiant.getPrenom());
+        JTextField gmailField = new JTextField(etudiant.getEmailInstitutionnel());
+        JTextField phoneField = new JTextField(etudiant.getTelephone());
 
         // Create labels for text fields
         JLabel nomLabel = new JLabel("Nom:");

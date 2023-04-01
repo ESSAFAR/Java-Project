@@ -23,26 +23,27 @@ public class DBConnection {
     }
 
 
-    public static int authentificate(String prenom, String motDePasse) {
-        if (prenom.equals("3")) {
+    public static int authentificate(int matricule, String motDePasse) {
+        //Authentification pour tester
+        if (Integer.toString(matricule).equals("3")) {
             return 1;  //1 -> Acceuil Etudiant
         }
-        if (prenom.equals("4")) {
+        if (Integer.toString(matricule).equals("4")) {
             return 2; //2 -> Acceuil admin
         }
         PreparedStatementWrapper preparedStatement;
         try {
-            String query = "SELECT * FROM etudiant WHERE prenom = ? AND mot_de_passe = ?";
+            String query = "SELECT * FROM etudiant WHERE matricule = ? AND mot_de_passe = ?";
             DBConnection.preparedStatement = DBConnection.getConnection().prepareStatement(query);
-            DBConnection.preparedStatement.setString(1, prenom);
+            DBConnection.preparedStatement.setInt(1, matricule);
             DBConnection.preparedStatement.setString(2, motDePasse);
             ResultSet resultSet = DBConnection.preparedStatement.executeQuery();
             if (resultSet.next()) {
                 return 1;
             } else {
-                query = "SELECT * FROM admin WHERE prenom = ? AND mot_de_passe = ?";
+                query = "SELECT * FROM admin WHERE matricule = ? AND mot_de_passe = ?";
                 DBConnection.preparedStatement = DBConnection.getConnection().prepareStatement(query);
-                DBConnection.preparedStatement.setString(1, prenom);
+                DBConnection.preparedStatement.setInt(1, matricule);
                 DBConnection.preparedStatement.setString(2, motDePasse);
                 resultSet = DBConnection.preparedStatement.executeQuery();
                 if (resultSet.next()) {

@@ -14,15 +14,16 @@ import com.GUI.AdminFrames.FicheEtudiant;
 import com.GUI.Login;
 import com.Style.MyButtons;
 import com.Style.MyFrame;
+import com.jdbc.EtudiantDAO;
 
 import javax.swing.*;
 import java.awt.*;
 
 public class AcceuilEtudiant extends MyFrame {
     String matricule;
-    public AcceuilEtudiant(String matricule){
+    public AcceuilEtudiant(int matricule){
         //
-        JLabel salutation = new JLabel("Bonjour "+ matricule);
+        JLabel salutation = new JLabel("Bonjour "+ EtudiantDAO.getEtudiant(matricule));
         salutation.setBounds(220, 200, 400, 100);
         add(salutation);
 

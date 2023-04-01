@@ -42,7 +42,7 @@ public class GestionProfesseursJFrame extends MyFrame {
                 if (!event.getValueIsAdjusting()) {
                     int row = table.getSelectedRow();
                     int column = table.getSelectedColumn();
-                    String matricule = (String) table.getValueAt(row , 0 );
+                    int matricule = (int) table.getValueAt(row , 0 );
                     dispose();
                     FicheEtudiant frame = new FicheEtudiant(matricule);
                 }

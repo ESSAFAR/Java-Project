@@ -8,13 +8,13 @@ DROP TABLE IF EXISTS `admin`;
 CREATE TABLE IF NOT EXISTS `admin` (
   `nom` varchar(20) NOT NULL,
   `prenom` varchar(20) NOT NULL,
-  `Id_scola` int(11) NOT NULL,
+  `matricule` int NOT NULL,
   `mot_de_passe` varchar(20) NOT NULL,
   `email` varchar(20) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
-INSERT INTO admin (nom, prenom, Id_scola, mot_de_passe, email) VALUES
-('2', '2', 100, '2', 'john.smith@school.edu'),
+INSERT INTO admin (nom, prenom, matricule, mot_de_passe, email) VALUES
+('2', '2', 2, '2', 'john.smith@school.edu'),
 ('Doe', 'Jane', 101, 'password2', 'jane.doe@school.edu'),
 ('Johnson', 'Mark', 102, 'password3', 'mark.johnson@school.edu'),
 ('Williams', 'Mary', 103, 'password4', 'mary.williams@school.edu'),
@@ -83,18 +83,25 @@ CREATE TABLE IF NOT EXISTS `etudiant` (
   `prenom` varchar(20) NOT NULL,
   `cin` varchar(10) NOT NULL,
   `mot_de_passe` varchar(20) NOT NULL,
-  `matricule` int(11) NOT NULL,
+  `matricule` int NOT NULL,
   `cne` varchar(20) NOT NULL,
   `genre` varchar(15) NOT NULL,
   `date_naissance` date NOT NULL,
   `lieu_naissance` varchar(10) NOT NULL,
   `nationalite` varchar(15) NOT NULL DEFAULT 'marocaine',
   `promotion` varchar(2) NOT NULL DEFAULT '1A',
-  `email institutionnel` varchar(30) NOT NULL DEFAULT 'nom.prenom@student.emi.ac.ma',
-  `telephone` int(14) NOT NULL,
+  `email_institutionnel` varchar(30) NOT NULL DEFAULT 'nom.prenom@student.emi.ac.ma',
+  `telephone` varchar(15) NOT NULL,
   `adresse` varchar(120) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-INSERT INTO etudiant (nom, prenom, cin, mot_de_passe, matricule, cne, genre, date_naissance, lieu_naissance, nationalite, promotion, `email institutionnel`, telephone, adresse) VALUES ('1', '1', '1', '1', 10001, 'CNE123456', 'M', '2000-01-01', 'Rabat', 'marocaine', '1A', 'john.smith@student.emi.ac.ma', 0612345678, '1 Avenue Hassan II, Rabat');
+INSERT INTO etudiant (nom, prenom, cin, mot_de_passe, matricule, cne, genre, date_naissance, lieu_naissance, nationalite, promotion, `email_institutionnel`, telephone, adresse)VALUES
+ ('1', '1', '1', '1', 1, 'CNE123456', 'M', '2000-01-01', 'Rabat', 'marocaine', '1A', 'john.smith@student.emi.ac.ma', '0612345678', '1 Avenue Hassan II, Rabat'),
+ ('Ahmed', 'Ali', 'AB123456', 'mdp1', 123456, 'G123456789', 'Masculin', '2000-01-01', 'Casablanca', 'Marocaine', '1A', 'ahmed.ali@student.emi.ac.ma', '212612345678', 'Rue X, Ville Y'),
+ ('Fatima', 'Zahra', 'CD123456', 'mdp2', 123457, 'G234567891', 'Féminin', '2001-02-03', 'Rabat', 'Marocaine', '1A', 'fatima.zahra@student.emi.ac.ma', '212612345679', 'Avenue Z, Ville W'),
+ ('Mohammed', 'Omar', 'EF123456', 'mdp3', 123458, 'G345678912', 'Masculin', '2002-03-04', 'Fès', 'Marocaine', '1A', 'mohammed.omar@student.emi.ac.ma', '212612345670', 'Boulevard M, Ville N'),
+ ('Aicha', 'Salma', 'GH123456', 'mdp4', 123459, 'G456789123', 'Féminin', '2003-04-05', 'Tanger', 'Marocaine', '1A', 'aicha.salma@student.emi.ac.ma', '212612345671', 'Place P, Ville Q'),
+ ('Hassan', 'Abdou', 'IJ123456', 'mdp5', 123460, 'G567891234', 'Masculin', '2004-05-06', 'Marrakech', 'Marocaine', '1A', 'hassan.abdou@student.emi.ac.ma', '212612345672', 'Rue S, Ville T'),
+ ('Ibtissam', 'Nadia', 'KL123456', 'mdp6', 123461, 'G678912345', 'Féminin', '2005-06-07', 'Agadir', 'Marocaine', '1A', 'ibtissam.nadia@student.emi.ac.ma', '212612345673', 'Avenue U, Ville V');
 
 
 

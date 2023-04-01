@@ -8,16 +8,17 @@ import com.mysql.cj.jdbc.PreparedStatementWrapper;
 import javax.swing.*;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class EtudiantDAO {
     private Connection connection = DBConnection.getConnection();
 
     //Teste si un eleve existe dans la BD
-    public boolean existe(Etudiant etudiant) {
+    public static boolean MatriculeExiste(int matricule) {
         try {
-            PreparedStatement ps = connection.prepareStatement("SELECT COUNT(*) FROM etudiants WHERE matricule = ?");
-            ps.setString(1, "" + etudiant.getMatricule());
+            PreparedStatement ps = DBConnection.getConnection().prepareStatement("SELECT COUNT(*) FROM etudiant WHERE matricule = ?");
+            ps.setString(1, "" + matricule);
             ResultSet rs = ps.executeQuery();
             rs.next();
             int count = rs.getInt(1);
@@ -31,16 +32,31 @@ public class EtudiantDAO {
     }
 
     //Si l'etudiant existe, il est modifie, sinon, il sera ajoute a la BD
-    public void modifierEtudiant(Etudiant etudiant) {
+    public  static void modifierEtudiant(int matricule) {
         try {
             PreparedStatement ps;
-            if (etudiant.getMatricule() == 0) {
-                ps = connection.prepareStatement("INSERT INTO etudiants (nom, prenom) VALUES (?, ?)");
+            if (!MatriculeExiste(matricule)) {
+                //Default values when adding :
+                Etudiant etudiant = new Etudiant("-", "1", "-", "-", matricule, "-", new Date(), "-", "-", "-", "-", "-.-@student.emi.ac.ma", "-", "-");
+                ps = DBConnection.getConnection().prepareStatement("INSERT INTO etudiant (nom, prenom, cin, mot_de_passe, matricule, cne, genre, date_naissance, lieu_naissance, nationalite, promotion, `email institutionnel`, telephone, adresse) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
                 ps.setString(1, etudiant.getNom());
                 ps.setString(2, etudiant.getPrenom());
+                ps.setString(3, etudiant.getCin());
+                ps.setString(4, etudiant.getMotDePasse());
+                ps.setInt(5, etudiant.getMatricule());
+                ps.setString(6, etudiant.getCne());
+                ps.setString(7, etudiant.getGenre());
+                ps.setDate(8, new java.sql.Date(etudiant.getDateNaissance().getTime()));
+                ps.setString(9, etudiant.getLieuNaissance());
+                ps.setString(10, etudiant.getNationalite());
+                ps.setString(11, etudiant.getPromotion());
+                ps.setString(12, etudiant.getEmailInstitutionnel());
+                ps.setString(13, etudiant.getTelephone());
+                ps.setString(14, etudiant.getAdresse());
+                ps.executeUpdate();
             } else {
-                // Update an existing record in the database.
-                ps = connection.prepareStatement("UPDATE etudiants SET nom=?, prenom=? WHERE matricule=?");
+                ps = DBConnection.getConnection().prepareStatement("UPDATE etudiant SET nom=?, prenom=? WHERE matricule=?");
+                Etudiant etudiant = new Etudiant("-", "1", "-", "-", matricule, "-", new Date(), "-", "-", "-", "-", "-.-@student.emi.ac.ma", "-", "-");
                 ps.setString(1, etudiant.getNom());
                 ps.setString(2, etudiant.getPrenom());
                 ps.setInt(3, etudiant.getMatricule());
@@ -52,13 +68,13 @@ public class EtudiantDAO {
         }
     }
 
-    public void ajouterEtudiant(Etudiant etudiant) {
-        modifierEtudiant(etudiant);
+    public static void ajouterEtudiant(int matricule) {
+        modifierEtudiant(matricule);
     }
 
     public void delete(int matricule) {
         try {
-            PreparedStatement ps = connection.prepareStatement("DELETE FROM etudiants WHERE matricule=?");
+            PreparedStatement ps = connection.prepareStatement("DELETE FROM etudiant WHERE matricule=?");
             ps.setInt(1, matricule);
             ps.executeUpdate();
             ps.close();
@@ -67,14 +83,14 @@ public class EtudiantDAO {
         }
     }
 
-    public Etudiant getEtudiant(int matricule) {
+    public static Etudiant getEtudiant(int matricule) {
         Etudiant etudiant = null;
         try {
-            PreparedStatement ps = connection.prepareStatement("SELECT * FROM etudiants WHERE matricule=?");
+            PreparedStatement ps = DBConnection.getConnection().prepareStatement("SELECT * FROM etudiant WHERE matricule=?");
             ps.setInt(1, matricule);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-                etudiant = new Etudiant();
+                etudiant = new Etudiant("-", "1", "-", "-", 0, "-", new Date(), "-", "-", "-", "-", "-.-@student.emi.ac.ma", "-", "-");
                 etudiant.setMatricule(rs.getInt("matricule"));
                 etudiant.setNom(rs.getString("nom"));
                 etudiant.setPrenom(rs.getString("prenom"));
@@ -87,13 +103,13 @@ public class EtudiantDAO {
         return etudiant;
     }
 
-    public List<Etudiant> getListEtudiant() {
+    public static List<Etudiant> getListEtudiant() {
         List<Etudiant> etudiants = new ArrayList<>();
         try {
-            Statement stmt = connection.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM etudiants");
+            Statement stmt = DBConnection.getConnection().createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT * FROM etudiant");
             while (rs.next()) {
-                Etudiant etudiant = new Etudiant();
+                Etudiant etudiant = new Etudiant("-", "1", "-", "-", 0, "-", new Date(), "-", "-", "-", "-", "-.-@student.emi.ac.ma", "-", "-");
                 etudiant.setMatricule(rs.getInt("matricule"));
                 etudiant.setNom(rs.getString("nom"));
                 etudiant.setPrenom(rs.getString("prenom"));
