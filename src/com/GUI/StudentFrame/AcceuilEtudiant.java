@@ -22,8 +22,8 @@ import java.awt.*;
 public class AcceuilEtudiant extends MyFrame {
     String matricule;
     public AcceuilEtudiant(int matricule){
-        //
-        JLabel salutation = new JLabel("Bonjour "+ EtudiantDAO.getEtudiant(matricule));
+        //text : Bonjour + Prenom de l'Etudiant
+        JLabel salutation = new JLabel("Bonjour "+ EtudiantDAO.getEtudiant(matricule).getPrenom());
         salutation.setBounds(220, 200, 400, 100);
         add(salutation);
 

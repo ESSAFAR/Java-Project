@@ -62,11 +62,11 @@ public class GestionEtudiants extends MyFrame {
 
         //Add a student
         MyButtons Ajouter = new MyButtons("Ajouter" , Color.blue , Color.white , 90 , 170 , 150 , 50);
-        Ajouter.addActionListener(e->{
-            EtudiantDAO.modifierEtudiant(690);
-            dispose();
-            GestionEtudiants gestionEtudiants = new GestionEtudiants();
-        });
+//        Ajouter.addActionListener(e->{
+//            EtudiantDAO.modifierEtudiant(690);
+//            dispose();
+//            GestionEtudiants gestionEtudiants = new GestionEtudiants();
+//        });
         add(Ajouter);
 
         //Search a student

@@ -11,6 +11,7 @@ import com.jdbc.EtudiantDAO;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Date;
 
 public class FicheEtudiant extends MyFrame {
 
@@ -28,33 +29,33 @@ public class FicheEtudiant extends MyFrame {
         // Create text fields to edit student information
         JTextField nomField = new JTextField(etudiant.getNom());
         JTextField prenomField = new JTextField(etudiant.getPrenom());
-        JTextField gmailField = new JTextField(etudiant.getEmailInstitutionnel());
+        JTextField emailField = new JTextField(etudiant.getEmailInstitutionnel());
         JTextField phoneField = new JTextField(etudiant.getTelephone());
 
         // Create labels for text fields
         JLabel nomLabel = new JLabel("Nom:");
         JLabel prenomLabel = new JLabel("Prenom:");
-        JLabel gmailLabel = new JLabel("Gmail:");
+        JLabel emailLabel = new JLabel("Gmail:");
         JLabel phoneLabel = new JLabel("Numero de telephone:");
 
         // Set bounds for labels and text fields
         nomLabel.setBounds(50, 50, 100, 25);
         prenomLabel.setBounds(50, 100, 100, 25);
-        gmailLabel.setBounds(50, 150, 100, 25);
+        emailLabel.setBounds(50, 150, 100, 25);
         phoneLabel.setBounds(50, 200, 150, 25);
         nomField.setBounds(200, 50, 200, 25);
         prenomField.setBounds(200, 100, 200, 25);
-        gmailField.setBounds(200, 150, 200, 25);
+        emailField.setBounds(200, 150, 200, 25);
         phoneField.setBounds(200, 200, 200, 25);
 
         // Add labels and text fields to frame
         add(nomLabel);
         add(prenomLabel);
-        add(gmailLabel);
+        add(emailLabel);
         add(phoneLabel);
         add(nomField);
         add(prenomField);
-        add(gmailField);
+        add(emailField);
         add(phoneField);
 
 
@@ -63,26 +64,29 @@ public class FicheEtudiant extends MyFrame {
         MyButtons enregistrerBtn = new MyButtons("Enregistrer", Color.blue, Color.white, 100, 400, 150, 50);
         add(enregistrerBtn);
 
-        //  enregistrerBtn.addActionListener(e -> {
-            // Update student information with values from text fields
-          /*  student.setNom(nomField.getText());
-            student.setPrenom(prenomField.getText());
-            student.setGmail(gmailField.getText());
-            student.setPhone(phoneField.getText()); */
+        enregistrerBtn.addActionListener(e -> {
+            EtudiantDAO.modifierEtudiant(matricule , nomField.getText(), etudiant.getMotDePasse(), prenomField.getText(), etudiant.getCin() , etudiant.getGenre(), etudiant.getDateNaissance(), etudiant.getLieuNaissance(), etudiant.getNationalite(), emailField.getText(), etudiant.getTelephone(), etudiant.getAdresse(), etudiant.getCne(), etudiant.getPromotion()) ;
+        });
 
-            // Save changes to database or file
-            // ...
 
 
 
         // Create "Retour" button
-        MyButtons retourBtn = new MyButtons("Retour", Color.blue, Color.white, 300, 400, 150, 50);
        /* retourBtn.addActionListener(e -> {
             // Close current frame and open previous frame
             dispose();
             AdminFrame2 frame = new AdminFrame2();
         });
         add(retourBtn);*/
+
+
+        MyButtons Retour = new MyButtons("Retour" , Color.blue , Color.white , 90 , 470 , 150 , 50);
+        Retour.addActionListener(e -> {
+            dispose();
+            GestionEtudiants frame = new GestionEtudiants();
+        });
+        add(Retour);
+
         setVisible(true);
 
 
