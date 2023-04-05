@@ -11,14 +11,22 @@ import com.jdbc.EtudiantDAO;
 
 import javax.swing.*;
 import java.awt.*;
+import java.sql.SQLException;
 import java.util.Date;
 
 public class FicheEtudiant extends MyFrame {
 
 
     public FicheEtudiant(int matricule) {
-        // Retrieve student information using matricule parameter
-        Etudiant etudiant = EtudiantDAO.getEtudiant(matricule);
+        Etudiant etudiant;
+
+        if(EtudiantDAO.MatriculeExiste(matricule)){
+             etudiant = EtudiantDAO.getEtudiant(matricule);
+        }
+        else {
+            etudiant = new Etudiant("","","","",matricule,"","","","","","","");
+        }
+
 
         // Load and display student image
         JLabel imageLabel = new JLabel();
@@ -35,7 +43,7 @@ public class FicheEtudiant extends MyFrame {
         // Create labels for text fields
         JLabel nomLabel = new JLabel("Nom:");
         JLabel prenomLabel = new JLabel("Prenom:");
-        JLabel emailLabel = new JLabel("Gmail:");
+        JLabel emailLabel = new JLabel("mail:");
         JLabel phoneLabel = new JLabel("Numero de telephone:");
 
         // Set bounds for labels and text fields
@@ -45,7 +53,7 @@ public class FicheEtudiant extends MyFrame {
         phoneLabel.setBounds(50, 200, 150, 25);
         nomField.setBounds(200, 50, 200, 25);
         prenomField.setBounds(200, 100, 200, 25);
-        emailField.setBounds(200, 150, 200, 25);
+        emailField.setBounds(200, 150, 290, 25);
         phoneField.setBounds(200, 200, 200, 25);
 
         // Add labels and text fields to frame
@@ -65,7 +73,14 @@ public class FicheEtudiant extends MyFrame {
         add(enregistrerBtn);
 
         enregistrerBtn.addActionListener(e -> {
-            EtudiantDAO.modifierEtudiant(matricule , nomField.getText(), etudiant.getMotDePasse(), prenomField.getText(), etudiant.getCin() , etudiant.getGenre(), etudiant.getDateNaissance(), etudiant.getLieuNaissance(), etudiant.getNationalite(), emailField.getText(), etudiant.getTelephone(), etudiant.getAdresse(), etudiant.getCne(), etudiant.getPromotion()) ;
+            etudiant.setNom(nomField.getText());
+            etudiant.setPrenom(prenomField.getText());
+            etudiant.setTelephone(phoneField.getText());
+
+            System.out.println("Etudiant : " + matricule + " est Modifie");
+            EtudiantDAO.modifierEtudiant(etudiant.getMatricule() , nomField.getText(), prenomField.getText(), etudiant.getMotDePasse() , etudiant.getCin() , etudiant.getGenre(), etudiant.getDateNaissance(), etudiant.getLieuNaissance(), etudiant.getNationalite(), etudiant.getTelephone(), etudiant.getAdresse(), etudiant.getCne()) ;
+            dispose();
+            GestionEtudiants frame = new GestionEtudiants();
         });
 
 

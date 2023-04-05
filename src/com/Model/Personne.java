@@ -9,14 +9,14 @@ public class Personne {
     protected String cin;
     protected int matricule;
     protected String genre;
-    protected Date dateNaissance;
+    protected String dateNaissance;
     protected String lieuNaissance;
     protected String nationalite = "marocaine";
     protected String emailInstitutionnel = "nom.prenom@student.emi.ac.ma";
     protected String telephone;
     protected String adresse;
 
-    public Personne(String nom, String motDePasse, String prenom, String cin, int matricule, String genre, Date dateNaissance, String lieuNaissance, String nationalite, String emailInstitutionnel, String telephone, String adresse) {
+    public Personne(String nom, String motDePasse, String prenom, String cin, int matricule, String genre, String dateNaissance, String lieuNaissance, String nationalite, String telephone, String adresse) {
         this.nom = nom;
         this.motDePasse = motDePasse;
         this.prenom = prenom;
@@ -26,7 +26,7 @@ public class Personne {
         this.dateNaissance = dateNaissance;
         this.lieuNaissance = lieuNaissance;
         this.nationalite = nationalite;
-        this.emailInstitutionnel = emailInstitutionnel;
+        this.emailInstitutionnel = nom+ "." +prenom+matricule+"@student.emi.ac.ma" ;
         this.telephone = telephone;
         this.adresse = adresse;
     }
@@ -79,11 +79,11 @@ public class Personne {
         this.genre = genre;
     }
 
-    public Date getDateNaissance() {
+    public String getDateNaissance() {
         return dateNaissance;
     }
 
-    public void setDateNaissance(Date dateNaissance) {
+    public void setDateNaissance(String dateNaissance) {
         this.dateNaissance = dateNaissance;
     }
 
