@@ -3,7 +3,7 @@ package com.Model2;
 import java.util.ArrayList;
 
 public class Professeur extends Personne{
-    private EmploiProfesseur emploiProfesseur;
+    private EmploiProfesseur emploiProfesseur; //va se charger de la BD
     private ArrayList<Avis> listAvis; // va se charger de la BD
     private ArrayList<ElementModule> listElementModule;
 
