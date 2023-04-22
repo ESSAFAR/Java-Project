@@ -59,8 +59,14 @@ public class Personne {
         return cin;
     }
 
+
+    //Cin doit etre sous format (LLXXXX) 2 lettres suivi de 4 chiffres
     public void setCin(String cin) {
-        this.cin = cin;
+        if (cin.matches("^[a-zA-Z]{2}\\d{4}")) {
+            this.cin = cin;
+        } else {
+            System.out.println("Invalid Cin format. Cin doit etre sous format (LLXXXX) 2 lettres suivi de 4 chiffres");
+        }
     }
 
     public int getMatricule() {
@@ -75,8 +81,13 @@ public class Personne {
         return genre;
     }
 
+   //Genre doit être 'male' ou 'female'
     public void setGenre(String genre) {
-        this.genre = genre;
+        if(genre.equalsIgnoreCase("male") || genre.equalsIgnoreCase("female")) {
+            this.genre = genre;
+        } else {
+            throw new IllegalArgumentException("Genre doit être 'male' ou 'female'.");
+        }
     }
 
     public String getDateNaissance() {
@@ -115,8 +126,14 @@ public class Personne {
         return telephone;
     }
 
+
+    //Numéro de téléphone doit contenir 10 chiffres
     public void setTelephone(String telephone) {
-        this.telephone = telephone;
+        if(telephone.matches("^\\d{10}$")) {
+            this.telephone = telephone;
+        } else {
+            throw new IllegalArgumentException("Numéro de téléphone doit contenir 10 chiffres.");
+        }
     }
 
     public String getAdresse() {

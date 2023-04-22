@@ -11,9 +11,18 @@ public class Etudiant extends Personne{
         return cne;
     }
 
+    // Cne doit être une lettre suivie de 9 chiffres
     public void setCne(String cne) {
-        this.cne = cne;
+        if(cne.matches("^[A-Za-z]\\d{9}$")) {
+            this.cne = cne;
+        } else {
+            throw new IllegalArgumentException("Cne doit être une lettre suivie de 9 chiffres.");
+        }
     }
+
+
+
+
 
 
 
