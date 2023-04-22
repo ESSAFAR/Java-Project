@@ -63,7 +63,7 @@ public class GestionEtudiants extends MyFrame {
         MyButtons Ajouter = new MyButtons("Ajouter" , Color.blue , Color.white , 90 , 170 , 150 , 50);
         Ajouter.addActionListener(e->{
             dispose();
-            FicheEtudiant ficheEtudiant = new FicheEtudiant(EtudiantDAO.getCount()+ 1);
+            FicheEtudiant ficheEtudiant = new FicheEtudiant(EtudiantDAO.generateMatricule());
         });
         add(Ajouter);
 

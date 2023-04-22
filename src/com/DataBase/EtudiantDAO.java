@@ -10,7 +10,7 @@ public class EtudiantDAO {
     private Connection connection = DBConnection.getConnection();
 
     //Teste si un eleve existe dans la BD
-    public static boolean MatriculeExiste(int matricule) {
+    public static boolean matriculeExiste(int matricule) {
         try {
             PreparedStatement ps = DBConnection.getConnection().prepareStatement("SELECT COUNT(*) FROM etudiant WHERE matricule = ?");
             ps.setString(1, "" + matricule);
@@ -31,7 +31,7 @@ public class EtudiantDAO {
         {
             try {
                 PreparedStatement ps;
-                if (!MatriculeExiste(matricule)) {
+                if (!matriculeExiste(matricule)) {
                     ps = DBConnection.getConnection().prepareStatement("INSERT INTO etudiant (nom, prenom, cin, mot_de_passe, matricule, cne, genre, date_naissance, lieu_naissance, nationalite, `email`, telephone, adresse) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
                     ps.setString(1, nom);
                     ps.setString(2, prenom);
@@ -85,7 +85,7 @@ public class EtudiantDAO {
                 }
             }
 
-            public static Etudiant getEtudiant ( int matricule){
+            public static Etudiant getEtudiant (int matricule){
                 Etudiant etudiant = null;
                 try {
                     PreparedStatement ps = DBConnection.getConnection().prepareStatement("SELECT * FROM etudiant WHERE matricule=?");
@@ -151,6 +151,15 @@ public class EtudiantDAO {
             e.printStackTrace();
         }
         return count;
+    }
+
+    //generate a non existing matricule
+    public static int generateMatricule(){
+        int matricule=0;
+        while (matriculeExiste(matricule)){
+            matricule++;
+        }
+        return matricule;
     }
 
 
