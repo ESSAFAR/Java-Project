@@ -17,11 +17,13 @@ public class FicheEtudiant extends MyFrame {
 
     public FicheEtudiant(int matricule) {
         Etudiant etudiant;
+        boolean adding = false;  //true if user is adding a student, false if modyfing a student
 
         if(EtudiantDAO.matriculeExiste(matricule)){
              etudiant = EtudiantDAO.getEtudiant(matricule);
         }
         else {
+            adding = true;
             etudiant = new Etudiant("new","","","",matricule,"","","","","","","");
         }
 
@@ -66,6 +68,7 @@ public class FicheEtudiant extends MyFrame {
         nomField.setBounds(200, 50, 200, 25);
         prenomField.setBounds(200, 100, 200, 25);
         emailField.setBounds(200, 150, 290, 25);
+        emailField.setEditable(false);
         phoneField.setBounds(200, 200, 200, 25);
         cinLabel.setBounds(50, 250, 100, 25);
         genreLabel.setBounds(50, 300, 100, 25);
@@ -85,11 +88,15 @@ public class FicheEtudiant extends MyFrame {
         // Add labels and text fields to frame
         add(nomLabel);
         add(prenomLabel);
-        add(emailLabel);
+        if(!adding){
+            add(emailLabel);
+        }
         add(phoneLabel);
         add(nomField);
         add(prenomField);
-        add(emailField);
+        if(!adding){
+            add(emailField);
+        }
         add(phoneField);
         add(cinLabel);
         add(genreLabel);
