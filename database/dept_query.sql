@@ -96,8 +96,7 @@ CREATE TABLE IF NOT EXISTS `etudiant` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 INSERT INTO etudiant
  (nom, prenom, cin, mot_de_passe, matricule, cne, genre, date_naissance, lieu_naissance, nationalite, promotion, email, telephone, adresse)VALUES
- ('1', '1', '1', '1', 1, 'CNE1', '1', '2000-01-01', 'Rabat', 'marocaine', '2A', 'john.smith@student.emi.ac.ma', '0612345678', '1 Avenue Hassan II, Rabat'),
- ('Ahmed', 'Ali', 'AB123456', 'mdp1', 123456, 'G123456789', 'Masculin', '2000-01-01', 'Casablanca', 'Marocaine', '2A', 'ahmed.ali@student.emi.ac.ma', '212612345678', 'Rue X, Ville Y');
+ ('1', '1', '1', '1', 1, 'CNE1', '1', '2000-01-01', 'Rabat', 'marocaine', '2A', 'john.smith@student.emi.ac.ma', '0612345678', '1 Avenue Hassan II, Rabat');
 
 
 

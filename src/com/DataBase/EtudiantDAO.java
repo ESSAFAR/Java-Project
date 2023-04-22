@@ -1,15 +1,9 @@
-package com.jdbc;
+package com.DataBase;
 
-import com.GUI.AdminFrames.AcceuilAdmin;
-import com.GUI.StudentFrame.AcceuilEtudiant;
 import com.Model.Etudiant;
-import com.mysql.cj.jdbc.PreparedStatementWrapper;
 
-import javax.swing.*;
 import java.sql.*;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class EtudiantDAO {
@@ -80,9 +74,9 @@ public class EtudiantDAO {
 
 
 
-    public void delete ( int matricule){
+    public static void delete ( int matricule){
                 try {
-                    PreparedStatement ps = connection.prepareStatement("DELETE FROM etudiant WHERE matricule=?");
+                    PreparedStatement ps = DBConnection.getConnection().prepareStatement("DELETE FROM etudiant WHERE matricule=?");
                     ps.setInt(1, matricule);
                     ps.executeUpdate();
                     ps.close();

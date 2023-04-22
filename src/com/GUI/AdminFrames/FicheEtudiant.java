@@ -7,12 +7,10 @@ package com.GUI.AdminFrames;
 import com.Model.Etudiant;
 import com.Style.MyButtons;
 import com.Style.MyFrame;
-import com.jdbc.EtudiantDAO;
+import com.DataBase.EtudiantDAO;
 
 import javax.swing.*;
 import java.awt.*;
-import java.sql.SQLException;
-import java.util.Date;
 
 public class FicheEtudiant extends MyFrame {
 
@@ -86,23 +84,35 @@ public class FicheEtudiant extends MyFrame {
 
 
 
-        // Create "Retour" button
-       /* retourBtn.addActionListener(e -> {
-            // Close current frame and open previous frame
+        //  "Retour" button
+        MyButtons retourBtn = new MyButtons("Retour",Color.blue , Color.WHITE);
+        retourBtn.addActionListener(e -> {
             dispose();
-            AdminFrame2 frame = new AdminFrame2();
+            GestionEtudiants gestionEtudiants = new GestionEtudiants();
         });
-        add(retourBtn);*/
+        add(retourBtn);
 
 
-        MyButtons Retour = new MyButtons("Retour" , Color.blue , Color.white , 90 , 470 , 150 , 50);
-        Retour.addActionListener(e -> {
-            dispose();
-            GestionEtudiants frame = new GestionEtudiants();
+        // Create "supprimer" button
+        MyButtons supprimer = new MyButtons("supprimer", Color.blue, Color.white, 500, 400, 150, 50);
+        add(supprimer);
+
+        supprimer.addActionListener(e -> {
+            etudiant.setNom(nomField.getText());
+            etudiant.setPrenom(prenomField.getText());
+            etudiant.setTelephone(phoneField.getText());
+
+            System.out.println("Etudiant : " + matricule + " est supprime");
+            EtudiantDAO.delete(etudiant.getMatricule());
+            GestionEtudiants gestionEtudiants = new GestionEtudiants();
+            JOptionPane.showMessageDialog(null, "L'étudiant " + etudiant.getPrenom() + " a été supprimé avec succès", "Suppression réussie", JOptionPane.INFORMATION_MESSAGE);
+
         });
-        add(Retour);
 
         setVisible(true);
+
+
+
 
 
     }

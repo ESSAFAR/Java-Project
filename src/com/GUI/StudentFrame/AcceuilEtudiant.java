@@ -14,7 +14,7 @@ import com.GUI.AdminFrames.FicheEtudiant;
 import com.GUI.Login;
 import com.Style.MyButtons;
 import com.Style.MyFrame;
-import com.jdbc.EtudiantDAO;
+import com.DataBase.EtudiantDAO;
 
 import javax.swing.*;
 import java.awt.*;

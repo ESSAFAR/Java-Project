@@ -3,14 +3,13 @@ package com.GUI.AdminFrames;
 import com.Model.Etudiant;
 import com.Style.MyButtons;
 import com.Style.MyFrame;
-import com.jdbc.EtudiantDAO;
+import com.DataBase.EtudiantDAO;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
-import java.util.Date;
 
 public class GestionEtudiants extends MyFrame {
 
@@ -68,14 +67,15 @@ public class GestionEtudiants extends MyFrame {
         });
         add(Ajouter);
 
-        //Search a student
-        MyButtons Rechercher = new MyButtons("Rechercher" , Color.blue , Color.white , 90 , 270 , 150 , 50);
-        add(Rechercher);
 
-
-        //delete a student
-        MyButtons supprimer = new MyButtons("supprimer" , Color.blue , Color.white , 90 , 370 , 150 , 50);
-        add(supprimer);
+        //delete all data
+        MyButtons clear = new MyButtons("Clear" , Color.blue , Color.white , 90 , 270 , 150 , 50);
+//        clear.addActionListener(e -> {
+//
+//                }
+//
+//        );
+//        add(clear);
 
 
         //Retour

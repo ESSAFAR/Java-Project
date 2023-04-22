@@ -1,5 +1,5 @@
 import com.GUI.Login;
-import com.jdbc.DBConnection;
+import com.DataBase.DBConnection;
 
 import java.sql.Connection;
 

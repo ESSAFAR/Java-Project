@@ -1,18 +1,15 @@
 package com.GUI;
 
+import com.DataBase.Authentificate;
 import com.GUI.AdminFrames.AcceuilAdmin;
 import com.GUI.StudentFrame.AcceuilEtudiant;
 import com.Style.MyButtons;
 import com.Style.MyFrame;
-import com.jdbc.DBConnection;
-import com.jdbc.EtudiantDAO;
-import com.mysql.cj.jdbc.PreparedStatementWrapper;
+import com.DataBase.DBConnection;
 
 
 import javax.swing.*;
 import java.awt.*;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -119,7 +116,7 @@ public class Login extends MyFrame {
         add(loginBtn);
         //Next frame if button is pressed and id + password correct
         loginBtn.addActionListener(e -> {
-                    switch (DBConnection.authentificate(Integer.parseInt(identifiantField.getText()), passwordField.getText())) {
+                    switch (Authentificate.authentificate(Integer.parseInt(identifiantField.getText()), passwordField.getText())) {
                         case 0: {
                             JOptionPane.showMessageDialog(this, "Marticule ou mdp non valide.", "Erreur de connection", JOptionPane.WARNING_MESSAGE);
                             break;
@@ -138,6 +135,7 @@ public class Login extends MyFrame {
                 }
         );
         setVisible(true);
+
 
         ;
     }

@@ -1,28 +1,10 @@
-package com.jdbc;
+package com.DataBase;
 
 import com.mysql.cj.jdbc.PreparedStatementWrapper;
 
-import java.sql.*;
-public class DBConnection {
+import java.sql.ResultSet;
 
-
-    private static final String USERNAME = "root";
-    private static final String PASSWORD = "";
-    private static Connection connection;
-    public static PreparedStatement preparedStatement ; //Transformer cela to public, utiliser un getter
-    ResultSet resultSet ;
-
-    public static Connection getConnection() {
-        try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/departement", USERNAME, PASSWORD);
-
-        } catch (SQLException se) {
-            se.printStackTrace();
-        }
-        return connection;
-    }
-
-
+public class Authentificate {
     public static int authentificate(int matricule, String motDePasse) {
         //Authentification pour tester
         if (Integer.toString(matricule).equals("3")) {
@@ -60,8 +42,4 @@ public class DBConnection {
         return 0;
 
     }
-
-
 }
-
-
