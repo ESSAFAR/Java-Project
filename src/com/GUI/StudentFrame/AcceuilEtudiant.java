@@ -51,7 +51,7 @@ public class AcceuilEtudiant extends MyFrame {
         add(btn_eleves);
         btn_eleves.addActionListener(e -> {
             dispose();
-            GestionNotes notes = new GestionNotes();
+            NotesFrame notes = new NotesFrame();
         });
 
 
