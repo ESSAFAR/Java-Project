@@ -38,5 +38,21 @@ public class ElementModule {
     public void setModule(String module) {
         this.module = module;
     }
+
+
+
+    //getters
+    public ArrayList<Professeur> getListProfesseurs() {
+        return listProfesseurs;
+    }
+    public ArrayList<Etudiant> getListEtudiants() {
+        return listEtudiants;
+    }
+    public String getNom() {
+        return nom;
+    }
+    public String getModule() {
+        return module;
+    }
 }
 

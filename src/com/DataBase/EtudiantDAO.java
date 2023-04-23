@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EtudiantDAO {
-    private Connection connection = DBConnection.getConnection();
+    private static Connection connection = DBConnection.getConnection();
 
     //Teste si un eleve existe dans la BD
     public static boolean matriculeExiste(int matricule) {
@@ -165,7 +165,7 @@ public class EtudiantDAO {
         return matricule;
     }
     //retrieve list des Notes
-    public ArrayList<Note> getNotes(int matricule){
+    public static ArrayList<Note> getNotes(int matricule){
         ArrayList<Note> listNotes = new ArrayList<>();
         try {
             String sqlQuery = "SELECT m.nom AS nom_module, em.nom AS nom_element_module, p.nom AS nom_professeur, n.note\n" +
