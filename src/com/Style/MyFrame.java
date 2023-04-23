@@ -14,6 +14,7 @@ public class MyFrame extends JFrame {
     */
 
     public MyFrame(){
+        super("SchoolEase");
         getContentPane().setBackground(new Color(255, 255, 255));
 
         setResizable(false);

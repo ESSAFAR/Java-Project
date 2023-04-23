@@ -1,6 +1,9 @@
 package com.DataBase;
 
 import com.Model.Etudiant;
+import com.Model2.ElementModule;
+import com.Model2.Note;
+import com.Model2.Professeur;
 
 import java.sql.*;
 import java.util.ArrayList;
