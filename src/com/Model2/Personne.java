@@ -27,6 +27,9 @@ public class Personne {
         setAdresse(adresse);
     }
 
+    public Personne() {
+
+    }
 
 
     public void setCin(String cin) {
