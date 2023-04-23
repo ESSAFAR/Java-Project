@@ -23,13 +23,23 @@ public class NotesFrame extends MyFrame {
             tableModel.addRow(new Object[]{note.getElementModule().getModule(),note.getElementModule().getNom(),note.getProfesseur().getNom(),note.getNote()});
         }
 
+        //table des notes
         table = new JTable(tableModel);
+        JPanel panelTable = new JPanel();
+        panelTable.add(table);
 
-
+        //title
         JLabel labelTitre = new JLabel("Mes Notes");
+        JPanel panelTitre = new JPanel();
+        panelTitre.add(labelTitre);
 
-        this.add(labelTitre);
-        this.add(table);
+        //boutton retour
+        //boutton enregistrer
+
+
+
+        this.add(panelTitre,BorderLayout.NORTH);
+        this.add(panelTable,BorderLayout.CENTER);
 
     }
 }
