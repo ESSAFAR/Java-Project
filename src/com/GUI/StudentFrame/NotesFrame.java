@@ -41,5 +41,7 @@ public class NotesFrame extends MyFrame {
         this.add(panelTitre,BorderLayout.NORTH);
         this.add(panelTable,BorderLayout.CENTER);
 
+        this.setVisible(true);
+
     }
 }
