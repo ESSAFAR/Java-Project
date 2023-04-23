@@ -168,14 +168,12 @@ public class EtudiantDAO {
     public static ArrayList<Note> getNotes(int matricule){
         ArrayList<Note> listNotes = new ArrayList<>();
         try {
-            String sqlQuery = "SELECT m.nom AS nom_module, em.nom AS nom_element_module, p.nom AS nom_professeur, rs.note\n" +
-                    "FROM resultat_element rs\n" +
-                    "JOIN etudiant e ON rs.id_etudiant = e.matricule \n" +
-                    "JOIN elements_modules em ON rs.id_element_module = em.id\n" +
-                    "JOIN modules m ON em.id_module = m.id\n" +
-                    "JOIN enseignants_modules emod ON m.id = emod.id_module\n" +
-                    "JOIN enseignants p ON emod.id_enseignant = p.id\n" +
-                    "WHERE e.matricule = matricule \n" +
+            String sqlQuery = "SELECT ms.nom AS nom_module, em.nom AS nom_element_module, p.nom AS nom_professeur, re.note\n" +
+                    "FROM resultat_element re\n" +
+                    "JOIN element_module em ON re.id_element = em.id_element\n" +
+                    "JOIN module_semestre ms ON em.id_module = ms.id_module\n" +
+                    "JOIN professeur p ON em.id_prof = p.id_prof\n" +
+                    "WHERE rs.id_etudiant = matricule \n" +
                     "ORDER BY m.nom ASC;\n";
             PreparedStatement statement = connection.prepareStatement(sqlQuery);
             ResultSet resultSet = statement.executeQuery();
