@@ -1,13 +1,16 @@
 package com.Model2;
 
-import java.security.PrivateKey;
-
 public class Note {
     private Etudiant etudiant;
     private ElementModule elementModule;
     private Professeur professeur ;
     private double note;
     private TypeNote typeNote;
+
+    public Note() {
+
+    }
+
     public enum TypeNote{ NORMALE,RATRAPPAGE }
 
 
