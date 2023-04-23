@@ -161,6 +161,42 @@ public class EtudiantDAO {
         }
         return matricule;
     }
+    //retrieve list des Notes
+    public ArrayList<Note> getNotes(int matricule){
+        ArrayList<Note> listNotes = new ArrayList<>();
+        try {
+            String sqlQuery = "SELECT m.nom AS nom_module, em.nom AS nom_element_module, p.nom AS nom_professeur, n.note\n" +
+                    "FROM notes n\n" +
+                    "JOIN etudiants e ON n.matricule_etudiant = e.matricule \n" +
+                    "JOIN elements_modules em ON n.id_element_module = em.id\n" +
+                    "JOIN modules m ON em.id_module = m.id\n" +
+                    "JOIN enseignants_modules emod ON m.id = emod.id_module\n" +
+                    "JOIN enseignants p ON emod.id_enseignant = p.id\n" +
+                    "WHERE e.matricule = matricule \n" +
+                    "ORDER BY m.nom ASC;\n";
+            PreparedStatement statement = connection.prepareStatement(sqlQuery);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()){
+                Note note = new Note();
+                ElementModule elementModule = new ElementModule();
+                Professeur professeur = new Professeur();
+
+                elementModule.setModule((String) resultSet.getObject(1));
+                elementModule.setNom((String) resultSet.getObject(2));
+                professeur.setNom((String) resultSet.getObject(3));
+
+                note.setElementModule(elementModule);
+                note.setProfesseur(professeur);
+                note.setNote((Double) resultSet.getObject(4));
+
+                listNotes.add(note);
+            }
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return listNotes;
+    }
 
 
 }
