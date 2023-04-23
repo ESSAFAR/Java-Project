@@ -173,9 +173,10 @@ public class EtudiantDAO {
                     "JOIN element_module em ON re.id_element = em.id_element\n" +
                     "JOIN module_semestre ms ON em.id_module = ms.id_module\n" +
                     "JOIN professeur p ON em.id_prof = p.id_prof\n" +
-                    "WHERE rs.id_etudiant = matricule \n" +
-                    "ORDER BY m.nom ASC;\n";
+                    "WHERE re.id_etudiant = ? \n" +
+                    "ORDER BY ms.nom ASC;\n";
             PreparedStatement statement = connection.prepareStatement(sqlQuery);
+            statement.setInt(1,matricule);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()){
                 Note note = new Note();
