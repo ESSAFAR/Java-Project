@@ -48,7 +48,7 @@ CREATE TABLE IF NOT EXISTS `avis` (
 
 DROP TABLE IF EXISTS `demandedocument`;
 CREATE TABLE IF NOT EXISTS `demandedocument` (
-  `id_demande` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `objet` int(11) NOT NULL,
   `id_etudiant` int(11) NOT NULL,
   `etat` varchar(15) NOT NULL DEFAULT 'incomplet',

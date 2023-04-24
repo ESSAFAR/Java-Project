@@ -1,6 +1,6 @@
 package com.DataBase;
 
-import com.Model.Etudiant;
+import com.Model2.Etudiant;
 import com.Model2.ElementModule;
 import com.Model2.Note;
 import com.Model2.Professeur;
@@ -181,7 +181,7 @@ public class EtudiantDAO {
             while (resultSet.next()){
                 Note note = new Note();
                 ElementModule elementModule = new ElementModule();
-                Professeur professeur = new Professeur();
+                Professeur professeur = new Professeur("John Doe", "password", "John", "1234567890", 1234, "M", "01/01/1970", "New York", "US", "john.doe@university.edu", "555-555-5555", "123 Main St");
 
                 elementModule.setModule((String) resultSet.getObject(1));
                 elementModule.setNom((String) resultSet.getObject(2));

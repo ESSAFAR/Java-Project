@@ -9,6 +9,7 @@ Communiquer les avis
 package com.GUI.AdminFrames;
 
 import com.GUI.Login;
+import com.GUI.StudentFrame.FicheDemande;
 import com.Style.MyButtons;
 import com.Style.MyFrame;
 
@@ -42,11 +43,11 @@ public class AcceuilAdmin extends MyFrame {
 
 
         //Gestion prof
-        MyButtons btn_professeurs = new MyButtons("Gestion professeurs" , Color.blue , Color.white ,550 , 300 , 250 , 50);
+        MyButtons btn_professeurs = new MyButtons("Gestion demandes" , Color.blue , Color.white ,550 , 300 , 250 , 50);
         add(btn_professeurs);
         btn_professeurs .addActionListener(e -> {
             dispose();
-            GestionProfesseursJFrame adminFrame4 = new GestionProfesseursJFrame();
+            GestionDocument frame = new GestionDocument();
         });
 
 
