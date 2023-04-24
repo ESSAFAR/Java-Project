@@ -8,19 +8,20 @@ public class Document {
     private Etudiant etudiant;
     private Admin admin;
     private String objet;
-    private boolean estUrgent;
+    private String estUrgent;
     private boolean estTraite;
     private java.util.Date dateDemande;
 
 
 
-    public Document( int id, Etudiant etudiant, String objet, boolean urgent){
+    public Document( int id, Etudiant etudiant, String objet, String urgent, boolean etat, Date dateDemande){
         setId(id);
         setObjet(objet);
         setEtudiant(etudiant);
         setAdmin(admin);
         setEstUrgent(urgent);
         estTraite = false;
+        setDateDemande(dateDemande);
     }
 
 
@@ -67,16 +68,16 @@ public class Document {
         this.objet = objet;
     }
 
-    public boolean isEstUrgent() {
+    public String getEstUrgent() {
         return estUrgent;
     }
 
 
-    public boolean estUrgent() {
+    public String estUrgent() {
         return estUrgent;
     }
 
-    public void setEstUrgent(boolean estUrgent) {
+    public void setEstUrgent(String estUrgent) {
         this.estUrgent = estUrgent;
     }
 

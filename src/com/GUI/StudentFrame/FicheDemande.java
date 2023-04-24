@@ -1,9 +1,12 @@
 package com.GUI.StudentFrame;
 
 import com.DataBase.RequestDAO;
+import com.GUI.AdminFrames.GestionDocument;
+import com.Style.MyButtons;
 import com.Style.MyFrame;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Date;
@@ -13,7 +16,7 @@ public class FicheDemande extends MyFrame implements ActionListener {
     private JLabel objectLabel, textLabel;
     private JTextField objectField, textField;
     private JCheckBox urgentCheckBox;
-    private JButton submitButton;
+    MyButtons submitButton;
     private int idEtudiant;
 
     public FicheDemande(int idEtudiant){
@@ -28,10 +31,15 @@ public class FicheDemande extends MyFrame implements ActionListener {
         urgentCheckBox = new JCheckBox("Urgent");
         urgentCheckBox.setBounds(50, 550, 100, 30);
         add(urgentCheckBox);
-        submitButton = new JButton("Submit");
-        submitButton.setBounds(450, 550, 100, 30);
+        submitButton = new MyButtons("Submit", Color.blue, Color.white,450, 550, 100, 30 );
         submitButton.addActionListener(this);
         add(submitButton);
+        MyButtons retourButton = new MyButtons("Retour", Color.blue, Color.white, 450, 250, 100, 30);
+        retourButton.addActionListener(e -> {
+            dispose();
+            AcceuilEtudiant frame = new AcceuilEtudiant(idEtudiant);
+        });
+        add(retourButton);
 
         // Show the frame
         setVisible(true);
@@ -42,9 +50,11 @@ public class FicheDemande extends MyFrame implements ActionListener {
             String text = textField.getText();
             boolean urgent = urgentCheckBox.isSelected();
             Date date = new Date();
-            RequestDAO.addDemande(RequestDAO.generateId(), text, idEtudiant, false, date);
+            RequestDAO.addDemande(RequestDAO.generateId(), text, idEtudiant, false, urgent?"urgent":"non urgent", date);
             textField.setText("");
             urgentCheckBox.setSelected(false);
+            dispose();
+            AcceuilEtudiant frame = new AcceuilEtudiant(idEtudiant);
         }
     }
 

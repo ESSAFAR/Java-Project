@@ -53,6 +53,7 @@ CREATE TABLE IF NOT EXISTS `demandedocument` (
   `id_etudiant` int(11) NOT NULL,
   `etat` varchar(15) NOT NULL DEFAULT 'incomplet',
   `date_demande` date NOT NULL,
+   `urgent` varchar(40) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 

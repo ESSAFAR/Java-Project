@@ -20,10 +20,12 @@ public class GestionDocument extends MyFrame {
         tableModel.addColumn("ID");
         tableModel.addColumn("Object");
         tableModel.addColumn("Urgent");
+        tableModel.addColumn("Date de demande");
+
 
         for (Document document : RequestDAO.getListRequest()) {
             tableModel.addRow(new Object[]{
-                    document.getId(), document.getObjet(), document.estUrgent()});
+                    document.getId(), document.getObjet(), document.estUrgent(), document.getDateDemande()});
         }
 
         JTable table = new JTable();

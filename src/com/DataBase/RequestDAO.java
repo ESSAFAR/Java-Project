@@ -9,14 +9,15 @@ import java.util.List;
 public class RequestDAO {
     private static Connection connection = DBConnection.getConnection();
 
-    public static void addDemande(int id_demande, String objet, int id_etudiant, boolean etat, java.util.Date date_demande) {
+    public static void addDemande(int id_demande, String objet, int id_etudiant, boolean etat, String urgent, java.util.Date date_demande) {
         try {
-            PreparedStatement ps = DBConnection.getConnection().prepareStatement("INSERT INTO demandedocument(id, objet, id_etudiant, etat, date_demande) VALUES (?, ?, ?, ?, ?)");
+            PreparedStatement ps = DBConnection.getConnection().prepareStatement("INSERT INTO demandedocument(id, objet, id_etudiant, etat, date_demande, urgent) VALUES (?, ?, ?, ?, ?, ?)");
             ps.setInt(1, id_demande);
             ps.setString(2, objet);
             ps.setInt(3, id_etudiant);
             ps.setString(4, etat?"traite":"nonTraite");
             ps.setDate(5, new Date(date_demande.getTime()));
+            ps.setString(6, urgent);
             ps.executeUpdate();
             ps.close();
         } catch (SQLException e) {
@@ -24,7 +25,7 @@ public class RequestDAO {
         }
     }
 
-    public static void updateDemande(int id_demande, String objet, int id_etudiant, boolean etat, java.util.Date date_demande) {
+    public static void updateDemande(int id_demande, String objet, int id_etudiant, boolean etat, boolean estUrgent, java.util.Date date_demande) {
         try {
             PreparedStatement ps = DBConnection.getConnection().prepareStatement("UPDATE demandedocument SET objet = ?, id_etudiant = ?, etat = ?, date_demande = ? WHERE id = ?");
             ps.setString(1, objet);
@@ -59,9 +60,12 @@ public class RequestDAO {
             if (rs.next())
                 demande = new Document(
                         id,
-                        EtudiantDAO.getEtudiant(Integer.parseInt(rs.getString("id_etudiant"))),
-                        rs.getString("objet"),
-                        Boolean.parseBoolean(rs.getString("etat")));
+                        EtudiantDAO.getEtudiant(Integer.parseInt(rs.getString("id_etudiant")))
+                        , rs.getString("objet"),
+                        rs.getString("urgent"),
+                        false,
+                        new java.util.Date(rs.getDate("date_demande").getTime())
+                        );
             rs.close();
             ps.close();
         } catch (SQLException e) {
