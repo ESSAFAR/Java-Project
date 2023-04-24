@@ -2,11 +2,13 @@ package com.GUI.StudentFrame;
 
 import com.DataBase.EtudiantDAO;
 import com.Model2.Note;
+import com.Style.MyButtons;
 import com.Style.MyFrame;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class NotesFrame extends MyFrame {
@@ -23,23 +25,44 @@ public class NotesFrame extends MyFrame {
             tableModel.addRow(new Object[]{note.getElementModule().getModule(),note.getElementModule().getNom(),note.getProfesseur().getNom(),note.getNote()});
         }
 
-        //table des notes
-        table = new JTable(tableModel);
-        JPanel panelTable = new JPanel();
-        panelTable.add(table);
+        // add some rows for testing
+        //tableModel.addRow(new Object[]{"Maths", "Algebra", "John Smith", 85});
+        //tableModel.addRow(new Object[]{"Conception", "POO", "Bouzoubaa karim", 92});
+
+
 
         //title
         JLabel labelTitre = new JLabel("Mes Notes");
         JPanel panelTitre = new JPanel();
         panelTitre.add(labelTitre);
 
+
+        //table des notes
+        JTable table = new JTable();
+        table.setModel(tableModel);
+        table.setBounds(360, 120, 600, 900);
+
+        JScrollPane scrollPane = new JScrollPane(table);
+        scrollPane.setBounds(360, 120, 600, 600);
+
+
+
+
         //boutton retour
-        //boutton enregistrer
+        MyButtons BouttonRetour = new MyButtons("Retour" , Color.blue , Color.white , 830 , 50 , 130 , 32);
+        this.add(BouttonRetour);
+        BouttonRetour.addActionListener(e -> {
+            dispose();
+            AcceuilEtudiant acceuilEtudiant = new AcceuilEtudiant(matricule);
+        });
+        JPanel panelBouttons = new JPanel();
+        panelBouttons.add(BouttonRetour);
 
 
 
         this.add(panelTitre,BorderLayout.NORTH);
-        this.add(panelTable,BorderLayout.CENTER);
+        this.add(scrollPane,BorderLayout.CENTER);
+        this.add(panelBouttons,BorderLayout.SOUTH);
 
         this.setVisible(true);
 

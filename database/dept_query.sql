@@ -70,6 +70,8 @@ CREATE TABLE IF NOT EXISTS `element_module` (
   `id_prof` varchar(20) NOT NULL,
   PRIMARY KEY (`id_element`,`nom`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+INSERT INTO element_module (id_element,nom,id_module,id_prof) VALUES
+(11,"POO",1,123);
 
 -- --------------------------------------------------------
 
@@ -123,6 +125,8 @@ CREATE TABLE IF NOT EXISTS `module_semestre` (
   `nom` varchar(30) NOT NULL,
   PRIMARY KEY (`id_module`,`nom`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+INSERT INTO module_semestre (id_module) VALUES
+(1,"Coneption Objet");
 
 -- --------------------------------------------------------
 
@@ -144,6 +148,8 @@ CREATE TABLE IF NOT EXISTS `professeur` (
   `telephone` int(14) NOT NULL,
   `bureau` varchar(30) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+INSERT INTO professeur (nom,id_prof) VALUES
+("Bouzoubaa Karim", 123);
 
 -- --------------------------------------------------------
 
@@ -158,6 +164,8 @@ CREATE TABLE IF NOT EXISTS `resultat_element` (
   `note` float NOT NULL,
   PRIMARY KEY (`id_element`,`id_etudiant`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+INSERT INTO resultat_element (id_element,id_etudiant,note) VALUES
+(11,1,15);
 
 -- --------------------------------------------------------
 
