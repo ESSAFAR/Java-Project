@@ -9,14 +9,14 @@ import java.util.List;
 public class RequestDAO {
     private static Connection connection = DBConnection.getConnection();
 
-    public static void addDemande(int id_demande, int objet, int id_etudiant, String etat, Date date_demande) {
+    public static void addDemande(int id_demande, String objet, int id_etudiant, boolean etat, java.util.Date date_demande) {
         try {
             PreparedStatement ps = DBConnection.getConnection().prepareStatement("INSERT INTO demandedocument(id, objet, id_etudiant, etat, date_demande) VALUES (?, ?, ?, ?, ?)");
             ps.setInt(1, id_demande);
-            ps.setInt(2, objet);
+            ps.setString(2, objet);
             ps.setInt(3, id_etudiant);
-            ps.setString(4, etat);
-            ps.setDate(5, date_demande);
+            ps.setString(4, etat?"traite":"nonTraite");
+            ps.setDate(5, new Date(date_demande.getTime()));
             ps.executeUpdate();
             ps.close();
         } catch (SQLException e) {
@@ -24,13 +24,13 @@ public class RequestDAO {
         }
     }
 
-    public static void updateDemande(int id_demande, String objet, int id_etudiant, boolean etat, Date date_demande) {
+    public static void updateDemande(int id_demande, String objet, int id_etudiant, boolean etat, java.util.Date date_demande) {
         try {
             PreparedStatement ps = DBConnection.getConnection().prepareStatement("UPDATE demandedocument SET objet = ?, id_etudiant = ?, etat = ?, date_demande = ? WHERE id = ?");
             ps.setString(1, objet);
             ps.setInt(2, id_etudiant);
             ps.setString(3, etat?"traite":"nonTraite");
-            ps.setDate(4, date_demande);
+            ps.setDate(4, new Date(date_demande.getTime()));
             ps.setInt(5, id_demande);
             ps.executeUpdate();
             ps.close();
@@ -86,11 +86,6 @@ public class RequestDAO {
         return requests;
     }
 
-
-    public static void traiterDemande(int id) {
-        Document document = getRequest(id);
-        updateDemande(document.getId(),document.getObjet(),document.getEtudiant().getMatricule(),document.isEstTraite(),document.getDateDemande());
-    }
     public static int generateId(){
         int id=0;
         while (idExiste(id)){

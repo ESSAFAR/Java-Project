@@ -1,6 +1,7 @@
 package com.Model2;
 
-import java.sql.Date;
+
+import java.util.Date;
 
 public class Document {
     private int id;
@@ -9,7 +10,7 @@ public class Document {
     private String objet;
     private boolean estUrgent;
     private boolean estTraite;
-    private Date dateDemande;
+    private java.util.Date dateDemande;
 
 
 

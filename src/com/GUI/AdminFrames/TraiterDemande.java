@@ -16,6 +16,7 @@ public class TraiterDemande extends MyFrame {
     private JButton traiteButton;
 
     public TraiterDemande(int id) {
+        System.out.println("id est : " + id);
         Document document = null;
         document = RequestDAO.getRequest(id);
 
@@ -32,37 +33,24 @@ public class TraiterDemande extends MyFrame {
         urgentLabel.setBounds(200, 520, 150, 30);
         add(urgentLabel);
 
-        // Retour button
-        retourButton = new JButton("Retour");
-        retourButton.setBounds(50, 570, 150, 30);
-        add(retourButton);
-
         // Traite button
-        traiteButton = new JButton("Docuement traite");
-        traiteButton.setBounds(850, 520, 150, 30);
-        traiteButton.addActionListener(e->{
-            RequestDAO.deleteDemande(id);
-        });
-        RequestDAO.traiterDemande(id);
-        add(traiteButton);
+
 
         // supprimer button
-        MyButtons supprimer = new MyButtons("Docuement traite", Color.blue , Color.white , 90 , 470 , 150 , 50);
+        MyButtons supprimer = new MyButtons("Docuement est desormais traite", Color.blue , Color.white , 90 , 470 , 150 , 50);
         supprimer.addActionListener(e->{
             RequestDAO.deleteDemande(id);
         });
-        RequestDAO.deleteDemande(id);
-        supprimer.addActionListener(e -> {
 
-        });
 
         add(supprimer);
 
-        MyButtons retour = new MyButtons("Retour" , Color.blue , Color.white , 90 , 470 , 150 , 50);
+        MyButtons retour = new MyButtons("Retour" , Color.blue , Color.white , 90 , 270 , 150 , 50);
         retour.addActionListener(e->{
                 dispose();
                 GestionDocument frame = new GestionDocument();
         });
+        add(retour);
 
 
 

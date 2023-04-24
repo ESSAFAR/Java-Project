@@ -1,10 +1,12 @@
 package com.GUI.StudentFrame;
 
+import com.DataBase.RequestDAO;
 import com.Style.MyFrame;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Date;
 
 
 public class FicheDemande extends MyFrame implements ActionListener {
@@ -12,8 +14,10 @@ public class FicheDemande extends MyFrame implements ActionListener {
     private JTextField objectField, textField;
     private JCheckBox urgentCheckBox;
     private JButton submitButton;
+    private int idEtudiant;
 
-    public FicheDemande(){
+    public FicheDemande(int idEtudiant){
+        this.idEtudiant = idEtudiant;
         setTitle("Demander document");
         textLabel = new JLabel("Objet:");
         textLabel.setBounds(50, 100, 100, 30);
@@ -37,12 +41,8 @@ public class FicheDemande extends MyFrame implements ActionListener {
         if (e.getSource() == submitButton) {
             String text = textField.getText();
             boolean urgent = urgentCheckBox.isSelected();
-
-            // Process the request (replace with actual code to handle the request)
-            System.out.println("Text: " + text);
-            System.out.println("Urgent: " + urgent);
-
-            // Clear the input fields
+            Date date = new Date();
+            RequestDAO.addDemande(RequestDAO.generateId(), text, idEtudiant, false, date);
             textField.setText("");
             urgentCheckBox.setSelected(false);
         }
