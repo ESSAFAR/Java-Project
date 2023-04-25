@@ -15,6 +15,8 @@ public class Avis {
     private String contenu;
     private Date date_avis;
 
+
+
     public int getId_avis() {
         return id_avis;
     }

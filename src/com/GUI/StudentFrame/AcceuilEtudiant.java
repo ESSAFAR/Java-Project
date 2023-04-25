@@ -8,8 +8,7 @@ Communiquer les avis
 
 package com.GUI.StudentFrame;
 
-import com.GUI.AdminFrames.Avis;
-import com.GUI.AdminFrames.GestionNotes;
+import com.GUI.AdminFrames.GestionAvis;
 import com.GUI.AdminFrames.FicheEtudiant;
 import com.GUI.Login;
 import com.Style.MyButtons;
@@ -64,7 +63,7 @@ public class AcceuilEtudiant extends MyFrame {
         add(btn_professeurs);
         btn_professeurs .addActionListener(e -> {
             dispose();
-            Avis adminFrame4 = new Avis();
+            GestionAvis adminFrame4 = new GestionAvis();
         });
 
 
@@ -75,7 +74,7 @@ public class AcceuilEtudiant extends MyFrame {
         add(btn_emploi);
         btn_emploi.addActionListener(e -> {
             dispose();
-            Avis Avis = new Avis();
+            GestionAvis Avis = new GestionAvis();
         });
 
 
