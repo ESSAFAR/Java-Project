@@ -10,6 +10,8 @@ import com.Style.MyButtons;
 import com.Style.MyFrame;
 
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 
@@ -56,8 +58,6 @@ public class GestionNotes extends MyFrame {
         panelRetour.add(Retour);
 
 
-
-
         //icone Image
         /*JPanel imageContainer = new JPanel();
         imageContainer.setBounds(0 , 0 , 20 , 20);
@@ -70,6 +70,21 @@ public class GestionNotes extends MyFrame {
         JPanel panelImageAndCombox = new JPanel();
         panelImageAndCombox.add(yearComboBox);
         //panelImageAndCombox.add(imageContainer);
+
+
+
+        // //When a student is clicked upon, this opens his list of grades
+        ListSelectionModel selectionModel = tableListEtudiant.getSelectionModel();
+        selectionModel.addListSelectionListener(new ListSelectionListener() {
+            public void valueChanged(ListSelectionEvent event) {
+                if (!event.getValueIsAdjusting()) {
+                    int row = tableListEtudiant.getSelectedRow();
+                    int matricule = (int) tableListEtudiant.getValueAt(row , 2 );
+                    dispose();
+                    FicheNotes ficheNotes = new FicheNotes(matricule);
+                }
+            }
+        });
 
 
         this.add(labelTitre);
