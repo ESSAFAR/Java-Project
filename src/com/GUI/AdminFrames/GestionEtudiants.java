@@ -38,9 +38,12 @@ public class GestionEtudiants extends MyFrame {
         tableModel.addColumn("Matricule");
         tableModel.addColumn("Nom");
         tableModel.addColumn("Prenom");
-        table = new JTable(tableModel);
+        JTable table = new JTable();
+        table.setModel(tableModel);
+        table.setBounds(360, 120, 600, 900);
         JScrollPane scrollPane = new JScrollPane(table);
-        scrollPane.setBounds(50, 170, 900, 400);
+
+        scrollPane.setBounds(360, 120, 600, 600);
         add(scrollPane);
 
         // When a student is clicked upon, this opens his personal page
@@ -55,7 +58,7 @@ public class GestionEtudiants extends MyFrame {
         });
 
         // Add a student
-        MyButtons Ajouter = new MyButtons("Ajouter", Color.blue, Color.white, 50, 600, 150, 50);
+        MyButtons Ajouter = new MyButtons("Ajouter" , Color.blue , Color.white , 90 , 170 , 150 , 50);
         Ajouter.addActionListener(e -> {
             dispose();
             FicheEtudiant ficheEtudiant = new FicheEtudiant(EtudiantDAO.generateMatricule());
@@ -63,15 +66,26 @@ public class GestionEtudiants extends MyFrame {
         add(Ajouter);
 
         // Delete all data
-        MyButtons clear = new MyButtons("Clear", Color.blue, Color.white, 250, 600, 150, 50);
+        MyButtons clear = new MyButtons("Clear" , Color.blue , Color.white , 90 , 270 , 150 , 50);
         clear.addActionListener(e -> {
-            // TODO: Implement clearing of data
+            int confirmation = JOptionPane.showConfirmDialog(null, "Attention! tous les etudiants de cette promotion vont etre supprimes", "Attention!", JOptionPane.YES_NO_OPTION);
+            if (confirmation == JOptionPane.YES_OPTION) {
+                String year = yearOptions[yearComboBox.getSelectedIndex()];
+                List<Etudiant> etudiants = EtudiantDAO.getListEtudiant().stream()
+                        .filter(e1 -> e1.getPromotion().equals(year))
+                        .collect(Collectors.toList());
+                for (Etudiant etudiant : etudiants) {
+                    EtudiantDAO.delete(etudiant.getMatricule());
+                }
+                updateTable();
+            }
         });
+
         add(clear);
 
         // Retour
-        MyButtons Retour = new MyButtons("Retour", Color.blue, Color.white, 450, 600, 150, 50);
-        Retour.addActionListener(e -> {
+        MyButtons Retour = new MyButtons("Retour" , Color.blue , Color.white , 90 , 470 , 150 , 50);
+        Retour.addActionListener(e1 -> {
             dispose();
             AcceuilAdmin frame = new AcceuilAdmin();
         });
