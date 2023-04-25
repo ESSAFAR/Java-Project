@@ -1,9 +1,9 @@
 package com.GUI.AdminFrames;
 
-import com.Model2.Etudiant;
+import com.DataBase.RequestDAO;
+import com.Model2.Document;
 import com.Style.MyButtons;
 import com.Style.MyFrame;
-import com.DataBase.EtudiantDAO;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
@@ -11,22 +11,22 @@ import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 
-public class GestionEtudiants extends MyFrame {
+public class GestionDocument extends MyFrame {
 
-    public GestionEtudiants(){
-
-        //Table of students
+    public GestionDocument() {
+        // Table of requests
         DefaultTableModel tableModel = new DefaultTableModel();
 
-        tableModel.addColumn("Matricule");
-        tableModel.addColumn("Nom");
-        tableModel.addColumn("Prenom");
+        tableModel.addColumn("ID");
+        tableModel.addColumn("Object");
+        tableModel.addColumn("Urgent");
+        tableModel.addColumn("Date de demande");
 
-        for (Etudiant etudiant : EtudiantDAO.getListEtudiant()) {
+
+        for (Document document : RequestDAO.getListRequest()) {
             tableModel.addRow(new Object[]{
-                    etudiant.getMatricule(), etudiant.getNom(), etudiant.getPrenom()});
+                    document.getId(), document.getObjet(), document.estUrgent(), document.getDateDemande()});
         }
-
 
         JTable table = new JTable();
         table.setModel(tableModel);
@@ -36,49 +36,32 @@ public class GestionEtudiants extends MyFrame {
         scrollPane.setBounds(360, 120, 600, 600);
         add(scrollPane);
 
-
-
-
-        //When a student is clicked upon, this opens his personnal page
+        // When a request is clicked upon, this opens its details page
         ListSelectionModel selectionModel = table.getSelectionModel();
         selectionModel.addListSelectionListener(new ListSelectionListener() {
             public void valueChanged(ListSelectionEvent event) {
                 if (!event.getValueIsAdjusting()) {
                     int row = table.getSelectedRow();
                     int column = table.getSelectedColumn();
-                    int matricule = (int) table.getValueAt(row , 0 );
+                    int id = (int) table.getValueAt(row, 0);
                     dispose();
-                    FicheEtudiant frame = new FicheEtudiant(matricule);
+                    TraiterDemande frame = new TraiterDemande(id);
                 }
             }
         });
 
-
-
-
-
-
-
-        //Add a student
-        MyButtons Ajouter = new MyButtons("Ajouter" , Color.blue , Color.white , 90 , 170 , 150 , 50);
-        Ajouter.addActionListener(e->{
-            dispose();
-            FicheEtudiant ficheEtudiant = new FicheEtudiant(EtudiantDAO.generateMatricule());
-        });
-        add(Ajouter);
-
-
-        //delete all data
+        // Clear all requests
         MyButtons clear = new MyButtons("Clear" , Color.blue , Color.white , 90 , 270 , 150 , 50);
 //        clear.addActionListener(e -> {
-//
-//                }
-//
-//        );
-//        add(clear);
+//            int confirm = JOptionPane.showConfirmDialog(this, "Êtes-vous sûr de vouloir supprimer toutes les demandes ?");
+//            if (confirm == JOptionPane.YES_OPTION) {
+//                RequestDAO.clearListRequest();
+//                tableModel.setRowCount(0);
+//            }
+//        });
+        add(clear);
 
-
-        //Retour
+        // Return to main admin page
         MyButtons Retour = new MyButtons("Retour" , Color.blue , Color.white , 90 , 470 , 150 , 50);
         Retour.addActionListener(e -> {
             dispose();
@@ -86,23 +69,13 @@ public class GestionEtudiants extends MyFrame {
         });
         add(Retour);
 
-
-
         JPanel imageContainer = new JPanel();
-        imageContainer.setBounds(0 , 0 , 1050 , 650);
+        imageContainer.setBounds(0, 0, 1050, 650);
         JLabel sideImage = new JLabel();
         sideImage.setIcon(new ImageIcon("images/04.jpeg"));
         imageContainer.add(sideImage);
         add(imageContainer);
 
-
-
-
         setVisible(true);
     }
-
-
-
-
-
 }

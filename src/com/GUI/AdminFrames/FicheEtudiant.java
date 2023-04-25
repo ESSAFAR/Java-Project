@@ -4,7 +4,7 @@ A personnal page for the student(matricule)
 
 package com.GUI.AdminFrames;
 
-import com.Model.Etudiant;
+import com.Model2.Etudiant;
 import com.Style.MyButtons;
 import com.Style.MyFrame;
 import com.DataBase.EtudiantDAO;
