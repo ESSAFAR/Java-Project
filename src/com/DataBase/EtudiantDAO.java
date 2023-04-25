@@ -107,8 +107,8 @@ public class EtudiantDAO {
                             rs.getString("nationalite"),
                             rs.getString("telephone"),
                             rs.getString("adresse"),
-                                rs.getString("cne")
-
+                                rs.getString("cne"),
+                                rs.getString("promotion")
                                 );
                     rs.close();
                     ps.close();

@@ -2,11 +2,25 @@ package com.Model;
 
 public class Etudiant extends Personne{
     private String cne;
+    private String promotion;
 
-    public Etudiant(String nom, String motDePasse, String prenom, String cin, int matricule, String genre, String dateNaissance, String lieuNaissance, String nationalite, String telephone, String adresse, String cne) {
+    public Etudiant(String nom, String motDePasse, String prenom, String cin, int matricule, String genre, String dateNaissance, String lieuNaissance, String nationalite, String telephone, String adresse, String cne, String promotion) {
           super( nom,  motDePasse,  prenom,  cin,  matricule,  genre,  dateNaissance,  lieuNaissance,  nationalite,  telephone,  adresse);
-          this.cne = cne;
+          setCne(cne);
+          setPromotion(promotion);
     }
+
+    private void setPromotion(String promotion) {
+        promotion = promotion.toUpperCase();
+        if (promotion.equals("1A") || promotion.equals("2A") || promotion.equals("3A")) {
+            this.promotion = promotion;
+        }
+    }
+
+    public String getPromotion() {
+        return promotion;
+    }
+
     public String getCne() {
         return cne;
     }

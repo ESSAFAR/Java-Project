@@ -4,6 +4,7 @@ A personnal page for the student(matricule)
 
 package com.GUI.AdminFrames;
 
+import com.GUI.StudentFrame.AcceuilEtudiant;
 import com.Model2.Etudiant;
 import com.Style.MyButtons;
 import com.Style.MyFrame;
@@ -13,9 +14,10 @@ import javax.swing.*;
 import java.awt.*;
 
 public class FicheEtudiant extends MyFrame {
+    boolean auteurEstAdmin; //vrai si le frame ouvert par admin, faux si consulte par etudiant
 
 
-    public FicheEtudiant(int matricule) {
+    public FicheEtudiant(int matricule, boolean auteurEstAdmin) {
         Etudiant etudiant;
         boolean adding = false;  //true if user is adding a student, false if modyfing a student
 
@@ -24,7 +26,7 @@ public class FicheEtudiant extends MyFrame {
         }
         else {
             adding = true;
-            etudiant = new Etudiant("new","","","",matricule,"","","","","","","");
+            etudiant = new Etudiant("new","","","",matricule,"","","","","","","","");
         }
 
 
@@ -45,7 +47,7 @@ public class FicheEtudiant extends MyFrame {
         JTextField lieuNaissanceField = new JTextField(etudiant.getLieuNaissance());
         JTextField nationaliteField = new JTextField(etudiant.getNationalite());
         JTextField adresseField = new JTextField(etudiant.getAdresse());
-        JTextField promotionField = new JTextField();
+        JTextField promotionField = new JTextField(etudiant.getPromotion());
 
         // Create labels for text fields
         JLabel nomLabel = new JLabel("Nom:");
@@ -117,7 +119,6 @@ public class FicheEtudiant extends MyFrame {
 
         // Create "Enregistrer" button
         MyButtons enregistrerBtn = new MyButtons("Enregistrer", Color.blue, Color.white, 600, 100, 150, 50);
-        add(enregistrerBtn);
 
         enregistrerBtn.addActionListener(e -> {
             etudiant.setNom(nomField.getText());
@@ -137,18 +138,24 @@ public class FicheEtudiant extends MyFrame {
 
 
 
+
+
         //  "Retour" button
         MyButtons retourBtn = new MyButtons("Retour",Color.blue , Color.WHITE, 600, 300, 150, 50);
         retourBtn.addActionListener(e -> {
             dispose();
-            GestionEtudiants gestionEtudiants = new GestionEtudiants();
+            if(auteurEstAdmin){
+                GestionEtudiants gestionEtudiants = new GestionEtudiants();
+            }
+            else{
+                AcceuilEtudiant acceuilEtudiant = new AcceuilEtudiant(matricule);
+            }
         });
         add(retourBtn);
 
 
         // Create "supprimer" button
         MyButtons supprimer = new MyButtons("supprimer", Color.blue, Color.white, 600, 400, 150, 50);
-        add(supprimer);
         supprimer.addActionListener(e -> {
             etudiant.setNom(nomField.getText());
             etudiant.setPrenom(prenomField.getText());
@@ -158,6 +165,24 @@ public class FicheEtudiant extends MyFrame {
             JOptionPane.showMessageDialog(null, "L'étudiant " + etudiant.getPrenom() + " a été supprimé avec succès", "Suppression réussie", JOptionPane.INFORMATION_MESSAGE);
 
         });
+        //Student can't modify fields
+        if(!auteurEstAdmin){
+            nomField.setEditable(false);
+            prenomField.setEditable(false);
+            emailField.setEditable(false);
+            phoneField.setEditable(false);
+            cinField.setEditable(false);
+            genreField.setEditable(false);
+            dateNaissanceField.setEditable(false);
+            lieuNaissanceField.setEditable(false);
+            nationaliteField.setEditable(false);
+            adresseField.setEditable(false);
+            promotionField.setEditable(false);
+        }
+        else{
+            add(enregistrerBtn);
+            add(supprimer);
+        }
 
         setVisible(true);
 

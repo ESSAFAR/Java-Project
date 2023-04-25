@@ -1,4 +1,5 @@
 package com.Model2;
+import javax.swing.*;
 import java.util.Date;
 
 public class Personne {
@@ -64,7 +65,9 @@ public class Personne {
         if (cin.matches("^[a-zA-Z]{2}\\d{4}")) {
             this.cin = cin;
         } else {
-            System.out.println("Invalid Cin format. Cin doit etre sous format (LLXXXX) 2 lettres suivi de 4 chiffres");
+//            System.out.println("Invalid Cin format. Cin doit etre sous format (LLXXXX) 2 lettres suivi de 4 chiffres");
+            this.cin = cin;
+
         }
     }
 
@@ -82,10 +85,10 @@ public class Personne {
 
     //Genre doit être 'male' ou 'female'
     public void setGenre(String genre) {
-        if(genre.equalsIgnoreCase("male") || genre.equalsIgnoreCase("female")) {
+        if(genre.equalsIgnoreCase("M") || genre.equalsIgnoreCase("F")) {
             this.genre = genre;
         } else {
-            throw new IllegalArgumentException("Genre doit être 'male' ou 'female'.");
+            this.genre = genre;
         }
     }
 

@@ -11,7 +11,7 @@ public class Personne {
     protected String genre;
     protected String dateNaissance;
     protected String lieuNaissance;
-    protected String nationalite = "marocaine";
+    protected String nationalite ;
     protected String emailInstitutionnel = "nom.prenom@student.emi.ac.ma";
     protected String telephone;
     protected String adresse;
