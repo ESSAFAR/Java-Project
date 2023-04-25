@@ -47,7 +47,7 @@ public class FicheEtudiant extends MyFrame {
         JTextField lieuNaissanceField = new JTextField(etudiant.getLieuNaissance());
         JTextField nationaliteField = new JTextField(etudiant.getNationalite());
         JTextField adresseField = new JTextField(etudiant.getAdresse());
-        JTextField promotionField = new JTextField();
+        JTextField promotionField = new JTextField(etudiant.getPromotion());
 
         // Create labels for text fields
         JLabel nomLabel = new JLabel("Nom:");
