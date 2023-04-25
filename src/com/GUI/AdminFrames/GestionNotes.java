@@ -4,28 +4,46 @@ package com.GUI.AdminFrames;
 Gestion des notes
  */
 
+import com.DataBase.EtudiantDAO;
+import com.Model2.Etudiant;
 import com.Style.MyButtons;
 import com.Style.MyFrame;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 
 public class GestionNotes extends MyFrame {
 
+    private DefaultTableModel tableModelListEtudiant;
+    private JTable tableListEtudiant;
 
     public GestionNotes() {
+
+        this.setLayout(new BorderLayout());
+
+        JLabel labelTitre = new JLabel("Liste des etudiants ");
+
         //Combobox to choose 1ere annee, 2eme annee or 3eme annee
          String[] classes = {"1ere annee", "2eme annee", "3eme annee"};
          JComboBox<String> yearComboBox = new JComboBox<>(classes);
-        yearComboBox.setBounds(300 , 50 , 130 ,32);
-        add(yearComboBox);
+         yearComboBox.setBounds(300 , 50 , 130 ,32);
 
 
-        //Combobox to choose semester
-        String[] semester = {"1 ere semestre", "2eme semestre"};
-        JComboBox<String> semesterComboBox = new JComboBox<>(semester);
-        semesterComboBox.setBounds(450 , 50 , 130 ,32);
-        add(semesterComboBox);
+
+         //table de la liste des etudiants
+
+        tableModelListEtudiant = new DefaultTableModel(new Object[]{"Nom","Prenom","Matricule"},0);
+
+        for (Etudiant etudiant : EtudiantDAO.getListEtudiant()) {
+            tableModelListEtudiant.addRow(new Object[]{etudiant.getNom(),etudiant.getPrenom(),etudiant.getMatricule()});
+        }
+
+        tableListEtudiant = new JTable(tableModelListEtudiant);
+        tableListEtudiant.setBounds(360, 120, 600, 900);
+        JScrollPane scrollPaneListEtudiant = new JScrollPane(tableListEtudiant);
+        scrollPaneListEtudiant.setBounds(360, 120, 600, 600);
+
 
 
         //Retour
@@ -34,88 +52,30 @@ public class GestionNotes extends MyFrame {
             dispose();
             AcceuilAdmin frame = new AcceuilAdmin();
         });
-        add(Retour);
+        JPanel panelRetour = new JPanel();
+        panelRetour.add(Retour);
 
 
-        //Table of marks
-        String[][] data = {
-                {"101" ,"Anwar","Es-Safar" , "4" , "4" , "4", "4" , "4" , "4" ,"4" , "4" ,"4"},
-                {"102","Akram","Talibi" , "4" , "4" , "4", "4" , "4" , "4" ,"4" , "4" ,"4"},
-                {"103","Salah","Jouhaini" , "4" , "4" , "4", "4" , "4" , "4" ,"4" , "4" ,"4"},
-                {"104","Soufian","Erraoudi" , "4" , "4" , "4", "4" , "4" , "4" ,"4" , "4" ,"4"},
-                {"101" ,"Anwar","Es-Safar" , "4" , "4" , "4", "4" , "4" , "4" ,"4" , "4" ,"4"},
-                {"102","Akram","Talibi" , "4" , "4" , "4", "4" , "4" , "4" ,"4" , "4" ,"4"},
-                {"103","Salah","Jouhaini" , "4" , "4" , "4", "4" , "4" , "4" ,"4" , "4" ,"4"},
-                {"104","Soufian","Erraoudi" , "4" , "4" , "4", "4" , "4" , "4" ,"4" , "4" ,"4"},
-                {"101" ,"Anwar","Es-Safar" , "4" , "4" , "4", "4" , "4" , "4" ,"4" , "4" ,"4"},
-                {"102","Akram","Talibi" , "4" , "4" , "4", "4" , "4" , "4" ,"4" , "4" ,"4"},
-                {"103","Salah","Jouhaini" , "4" , "4" , "4", "4" , "4" , "4" ,"4" , "4" ,"4"},
-                {"104","Soufian","Erraoudi" , "4" , "4" , "4", "4" , "4" , "4" ,"4" , "4" ,"4"},
-                {"101" ,"Anwar","Es-Safar" , "4" , "4" , "4", "4" , "4" , "4" ,"4" , "4" ,"4"},
-                {"102","Akram","Talibi" , "4" , "4" , "4", "4" , "4" , "4" ,"4" , "4" ,"4"},
-                {"103","Salah","Jouhaini" , "4" , "4" , "4", "4" , "4" , "4" ,"4" , "4" ,"4"},
-                {"104","Soufian","Erraoudi" , "4" , "4" , "4", "4" , "4" , "4" ,"4" , "4" ,"4"},
-                {"101" ,"Anwar","Es-Safar" , "4" , "4" , "4", "4" , "4" , "4" ,"4" , "4" ,"4"},
-                {"102","Akram","Talibi" , "4" , "4" , "4", "4" , "4" , "4" ,"4" , "4" ,"4"},
-                {"103","Salah","Jouhaini" , "4" , "4" , "4", "4" , "4" , "4" ,"4" , "4" ,"4"},
-                {"104","Soufian","Erraoudi" , "4" , "4" , "4", "4" , "4" , "4" ,"4" , "4" ,"4"},
-                {"101" ,"Anwar","Es-Safar" , "4" , "4" , "4", "4" , "4" , "4" ,"4" , "4" ,"4"},
-                {"102","Akram","Talibi" , "4" , "4" , "4", "4" , "4" , "4" ,"4" , "4" ,"4"},
-                {"103","Salah","Jouhaini" , "4" , "4" , "4", "4" , "4" , "4" ,"4" , "4" ,"4"},
-                {"104","Soufian","Erraoudi" , "4" , "4" , "4", "4" , "4" , "4" ,"4" , "4" ,"4"},
-                {"101" ,"Anwar","Es-Safar" , "4" , "4" , "4", "4" , "4" , "4" ,"4" , "4" ,"4"},
-                {"102","Akram","Talibi" , "4" , "4" , "4", "4" , "4" , "4" ,"4" , "4" ,"4"},
-                {"103","Salah","Jouhaini" , "4" , "4" , "4", "4" , "4" , "4" ,"4" , "4" ,"4"},
-                {"104","Soufian","Erraoudi" , "4" , "4" , "4", "4" , "4" , "4" ,"4" , "4" ,"4"},
-                {"101" ,"Anwar","Es-Safar" , "4" , "4" , "4", "4" , "4" , "4" ,"4" , "4" ,"4"},
-                {"102","Akram","Talibi" , "4" , "4" , "4", "4" , "4" , "4" ,"4" , "4" ,"4"},
-                {"103","Salah","Jouhaini" , "4" , "4" , "4", "4" , "4" , "4" ,"4" , "4" ,"4"},
-                {"104","Soufian","Erraoudi" , "4" , "4" , "4", "4" , "4" , "4" ,"4" , "4" ,"4"},
-                {"104","Soufian","Erraoudi" , "2" , "4" , "4", "4" , "4" , "4" ,"4" , "4" ,"4"},
-                {"104","Soufian","Erraoudi" , "2" , "4" , "4", "4" , "4" , "4" ,"4" , "4" ,"4"},
-                {"104","Soufian","Erraoudi" , "2" , "4" , "4", "4" , "4" , "4" ,"4" , "4" ,"4"},
-                {"104","Soufian","Erraoudi" , "2" , "4" , "4", "4" , "4" , "4" ,"4" , "4" ,"4"},
-                {"104","Soufian","Erraoudi" , "2" , "4" , "4", "4" , "4" , "4" ,"4" , "4" ,"4"},
-                {"104","Soufian","Erraoudi" , "2" , "4" , "4", "4" , "4" , "4" ,"4" , "4" ,"4"},
-                {"104","Soufian","Erraoudi" , "2" , "4" , "4", "4" , "4" , "4" ,"4" , "4" ,"4"},
-                {"104","Soufian","Erraoudi" , "2" , "4" , "4", "4" , "4" , "4" ,"4" , "4" ,"4"},
-                {"104","Soufian","Erraoudi" , "2" , "4" , "4", "4" , "4" , "4" ,"4" , "4" ,"4"},
-                {"104","Soufian","Erraoudi" , "2" , "4" , "4", "4" , "4" , "4" ,"4" , "4" ,"4"},
-                {"104","Soufian","Erraoudi" , "2" , "4" , "4", "4" , "4" , "4" ,"4" , "4" ,"4"},
-                {"104","Soufian","Erraoudi" , "2" , "4" , "4", "4" , "4" , "4" ,"4" , "4" ,"4"},
-                {"104","Soufian","Erraoudi" , "2" , "4" , "4", "4" , "4" , "4" ,"4" , "4" ,"4"},
-                {"104","Soufian","Erraoudi" , "2" , "4" , "4", "4" , "4" , "4" ,"4" , "4" ,"4"},
-                {"104","Soufian","Erraoudi" , "2" , "4" , "4", "4" , "4" , "4" ,"4" , "4" ,"4"},
-                {"104","Soufian","Erraoudi" , "2" , "4" , "4", "4" , "4" , "4" ,"4" , "4" ,"4"},
-                {"104","Soufian","Erraoudi" , "2" , "4" , "4", "4" , "4" , "4" ,"4" , "4" ,"4"},
-                {"104","Soufian","Erraoudi" , "2" , "4" , "4", "4" , "4" , "4" ,"4" , "4" ,"4"},
-                {"104","Soufian","Erraoudi" , "2" , "4" , "4", "4" , "4" , "4" ,"4" , "4" ,"4"},
-                {"104","Soufian","Erraoudi" , "2" , "4" , "4", "4" , "4" , "4" ,"4" , "4" ,"4"},
-                {"104","Soufian","Erraoudi" , "2" , "4" , "4", "4" , "4" , "4" ,"4" , "4" ,"4"},
-                {"104","Soufian","Erraoudi" , "2" , "4" , "4", "4" , "4" , "4" ,"4" , "4" ,"4"},
-                {"104","Soufian","Erraoudi" , "2" , "4" , "4", "4" , "4" , "4" ,"4" , "4" ,"4"},
-                {"104","Soufian","Erraoudi" , "2" , "4" , "4", "4" , "4" , "4" ,"4" , "4" ,"4"},
-                {"104","Soufian","Erraoudi" , "2" , "4" , "4", "4" , "4" , "4" ,"4" , "4" ,"4"},
-                {"104","Soufian","Erraoudi" , "2" , "4" , "4", "4" , "4" , "4" ,"4" , "4" ,"4"},
-                {"000","EOF","EOF" , "1" , "4" , "4", "4" , "4" , "4" ,"4" , "4" ,"4"},
 
 
-        };
-
-        String[] columnNames = {"Matricule", "Prenom","Nom" , "Base de donnees" , "Base de donnees" , "Base de donnees" , "Base de donnees" , "Base de donnees" , "OS" , "Base de donnees" , "Base de donnees" , "Base de donnees"};
-        JTable tableNotes = new JTable(data, columnNames);
-        tableNotes.setBounds(20, 130, 1000, 400);
-        JScrollPane scrollPane = new JScrollPane(tableNotes);
-        scrollPane.setBounds(20, 130,  1000, 550);
-        add(scrollPane);
-
-        JPanel imageContainer = new JPanel();
-        imageContainer.setBounds(0 , 0 , 1050 , 650);
+        //icone Image
+        /*JPanel imageContainer = new JPanel();
+        imageContainer.setBounds(0 , 0 , 20 , 20);
         JLabel sideImage = new JLabel();
         sideImage.setIcon(new ImageIcon("images/05.jpg"));
-        imageContainer.add(sideImage);
-        add(imageContainer);
+        imageContainer.add(sideImage);*/
 
+
+        //panel Image And Combox
+        JPanel panelImageAndCombox = new JPanel();
+        panelImageAndCombox.add(yearComboBox);
+        //panelImageAndCombox.add(imageContainer);
+
+
+        this.add(labelTitre);
+        this.add(panelImageAndCombox,BorderLayout.NORTH);
+        this.add(scrollPaneListEtudiant,BorderLayout.CENTER);
+        this.add(panelRetour,BorderLayout.WEST);
 
         setVisible(true);
 
