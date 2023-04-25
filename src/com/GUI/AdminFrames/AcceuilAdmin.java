@@ -66,7 +66,7 @@ public class AcceuilAdmin extends MyFrame {
         add(btn_avis);
         btn_avis.addActionListener(e -> {
             dispose();
-            Avis Avis = new Avis();
+            GestionAvis Avis = new GestionAvis();
         });
 
 
