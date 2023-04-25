@@ -1,7 +1,9 @@
 package com.GUI.AdminFrames;
 
+import com.DataBase.NoteDAO;
 import com.DataBase.EtudiantDAO;
 import com.Model2.Note;
+import com.Style.MyButtons;
 import com.Style.MyFrame;
 
 import javax.swing.*;
@@ -36,9 +38,35 @@ public class FicheNotes extends MyFrame {
         scrollPaneListNotes.setBounds(360, 120, 600, 600);
 
 
+        //Boutton Retour
+        MyButtons Retour = new MyButtons("Retour" , Color.blue , Color.white , 90 , 470 , 150 , 50);
+        Retour.addActionListener(e -> {
+            dispose();
+            GestionNotes gestionNotes = new GestionNotes();
+        });
+
+
+        //boutton Enregistrer
+        MyButtons Enregistrer = new MyButtons("Enregistrer" , Color.blue , Color.white , 90 , 470 , 150 , 50);
+        Enregistrer.addActionListener(e -> {
+            // parcourir toutes les notes dans le modèle de la table
+            for (int i = 0; i < tableModelListNotes.getRowCount(); i++) {
+                // récupérer les valeurs des champs de la ligne i
+                String module = (String) tableModelListNotes.getValueAt(i, 0);
+                String element = (String) tableModelListNotes.getValueAt(i, 1);
+                String professeur = (String) tableModelListNotes.getValueAt(i, 2);
+                double note = (double) tableModelListNotes.getValueAt(i, 3);
+                // mettre à jour la note dans la base de données
+                NoteDAO.updateNote(module, element, professeur, note);
+            }
+        });
+
+
+
 
         this.add(labelTitre,BorderLayout.NORTH);
         this.add(scrollPaneListNotes,BorderLayout.CENTER);
+        this.add(Retour);
         setVisible(true);
     }
 }
