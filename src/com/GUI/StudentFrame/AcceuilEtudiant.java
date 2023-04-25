@@ -63,7 +63,7 @@ public class AcceuilEtudiant extends MyFrame {
         add(btn_professeurs);
         btn_professeurs .addActionListener(e -> {
             dispose();
-            GestionAvis adminFrame4 = new GestionAvis();
+            AvisEtudiant adminFrame4 = new AvisEtudiant();
         });
 
 
@@ -100,5 +100,9 @@ public class AcceuilEtudiant extends MyFrame {
         add(imageContainer);
 
         setVisible(true);
+    }
+
+    public AcceuilEtudiant() {
+
     }
 }
