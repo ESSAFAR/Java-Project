@@ -24,7 +24,7 @@ public class FicheEtudiant extends MyFrame {
         }
         else {
             adding = true;
-            etudiant = new Etudiant("new","","","",matricule,"","","","","","","");
+            etudiant = new Etudiant("new","","","",matricule,"","","","","","","","");
         }
 
 
