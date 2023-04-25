@@ -53,7 +53,7 @@ public class GestionEtudiants extends MyFrame {
                 int row = table.getSelectedRow();
                 int matricule = (int) table.getValueAt(row, 0);
                 dispose();
-                FicheEtudiant frame = new FicheEtudiant(matricule);
+                FicheEtudiant frame = new FicheEtudiant(matricule, true);
             }
         });
 
@@ -61,7 +61,7 @@ public class GestionEtudiants extends MyFrame {
         MyButtons Ajouter = new MyButtons("Ajouter" , Color.blue , Color.white , 90 , 170 , 150 , 50);
         Ajouter.addActionListener(e -> {
             dispose();
-            FicheEtudiant ficheEtudiant = new FicheEtudiant(EtudiantDAO.generateMatricule());
+            FicheEtudiant ficheEtudiant = new FicheEtudiant(EtudiantDAO.generateMatricule(), true);
         });
         add(Ajouter);
 

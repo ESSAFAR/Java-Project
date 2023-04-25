@@ -87,7 +87,7 @@ public class AcceuilEtudiant extends MyFrame {
         add(btn_avis);
         btn_avis.addActionListener(e -> {
             dispose();
-            FicheEtudiant AvisJFrame = new FicheEtudiant(matricule);
+            FicheEtudiant AvisJFrame = new FicheEtudiant(matricule, false);
         });
 
 
