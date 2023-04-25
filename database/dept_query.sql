@@ -48,13 +48,12 @@ CREATE TABLE IF NOT EXISTS `avis` (
 
 DROP TABLE IF EXISTS `demandedocument`;
 CREATE TABLE IF NOT EXISTS `demandedocument` (
-  `id` int(11) NOT NULL,
-  `objet` varchar(150) NOT NULL,
+  `id_demande` int(11) NOT NULL,
+  `objet` int(11) NOT NULL,
   `id_etudiant` int(11) NOT NULL,
   `etat` varchar(15) NOT NULL DEFAULT 'incomplet',
   `date_demande` date NOT NULL,
-   `urgent` varchar(40) NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id_demande`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -126,7 +125,7 @@ CREATE TABLE IF NOT EXISTS `module_semestre` (
   `nom` varchar(30) NOT NULL,
   PRIMARY KEY (`id_module`,`nom`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-INSERT INTO module_semestre (id_module, nom) VALUES
+INSERT INTO module_semestre (id_module) VALUES
 (1,"Coneption Objet");
 
 -- --------------------------------------------------------
