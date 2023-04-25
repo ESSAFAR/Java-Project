@@ -71,11 +71,11 @@ public class AcceuilEtudiant extends MyFrame {
 
 
         //Emploi
-        MyButtons btn_emploi = new MyButtons("Voir Emploi" , Color.blue , Color.white ,250 , 430 , 250 , 50);
-        add(btn_emploi);
-        btn_emploi.addActionListener(e -> {
+        MyButtons btn_demande = new MyButtons("Demander un document" , Color.blue , Color.white ,250 , 430 , 250 , 50);
+        add(btn_demande);
+        btn_demande.addActionListener(e -> {
             dispose();
-            Avis Avis = new Avis();
+            FicheDemande frame = new FicheDemande(matricule);
         });
 
 

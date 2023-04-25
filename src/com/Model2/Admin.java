@@ -11,7 +11,7 @@ public class Admin extends Personne{
 
 
     public Admin(String nom, String motDePasse, String prenom, String cin, int matricule, String genre, String dateNaissance, String lieuNaissance, String nationalite, String emailInstitutionnel, String telephone, String adresse) {
-        super(nom, motDePasse, prenom, cin, matricule, genre, dateNaissance, lieuNaissance, nationalite, emailInstitutionnel, telephone, adresse);
+        super( nom,  motDePasse,  prenom,  cin,  matricule,  genre,  dateNaissance,  lieuNaissance,  nationalite,  telephone,  adresse);
     }
 
 

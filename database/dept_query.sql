@@ -70,8 +70,8 @@ CREATE TABLE IF NOT EXISTS `element_module` (
   `id_prof` varchar(20) NOT NULL,
   PRIMARY KEY (`id_element`,`nom`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
-INSERT INTO element_module (id_element,nom,id_module,id_prof) VALUES (11,"POO",1,123);
+INSERT INTO element_module (id_element,nom,id_module,id_prof) VALUES
+(11,"POO",1,123);
 
 -- --------------------------------------------------------
 
@@ -96,7 +96,6 @@ CREATE TABLE IF NOT EXISTS `etudiant` (
   `telephone` varchar(15) NOT NULL,
   `adresse` varchar(120) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
 INSERT INTO etudiant
  (nom, prenom, cin, mot_de_passe, matricule, cne, genre, date_naissance, lieu_naissance, nationalite, promotion, email, telephone, adresse)VALUES
  ('1', '1', '1', '1', 1, 'CNE1', '1', '2000-01-01', 'Rabat', 'marocaine', '2A', 'john.smith@student.emi.ac.ma', '0612345678', '1 Avenue Hassan II, Rabat'),
@@ -126,8 +125,7 @@ CREATE TABLE IF NOT EXISTS `module_semestre` (
   `nom` varchar(30) NOT NULL,
   PRIMARY KEY (`id_module`,`nom`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
-INSERT INTO module_semestre (id_module,nom) VALUES
+INSERT INTO module_semestre (id_module) VALUES
 (1,"Coneption Objet");
 
 -- --------------------------------------------------------
@@ -150,7 +148,6 @@ CREATE TABLE IF NOT EXISTS `professeur` (
   `telephone` int(14) NOT NULL,
   `bureau` varchar(30) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
 INSERT INTO professeur (nom,id_prof) VALUES
 ("Bouzoubaa Karim", 123);
 
@@ -164,11 +161,11 @@ DROP TABLE IF EXISTS `resultat_element`;
 CREATE TABLE IF NOT EXISTS `resultat_element` (
   `id_element` varchar(20) NOT NULL,
   `id_etudiant` varchar(20) NOT NULL,
-  `note` double NOT NULL,
+  `note` float NOT NULL,
   PRIMARY KEY (`id_element`,`id_etudiant`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
-INSERT INTO resultat_element (id_element,id_etudiant,note) VALUES (11,1,15);
+INSERT INTO resultat_element (id_element,id_etudiant,note) VALUES
+(11,1,15);
 
 -- --------------------------------------------------------
 
