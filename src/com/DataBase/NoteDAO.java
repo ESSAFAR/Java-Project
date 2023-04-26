@@ -15,6 +15,7 @@ public class NoteDAO {
 
             // execute the update statement
             int rowsUpdated = ps.executeUpdate();
+            ps.close();
             if (rowsUpdated == 0) {
                 System.out.println("No rows updated");
             } else {
