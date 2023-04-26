@@ -29,7 +29,7 @@ public class FicheNotes extends MyFrame {
         labelTitre.setHorizontalAlignment(JLabel.CENTER);
 
         //table Modele
-        ArrayList<Note> listNotes = EtudiantDAO.getNotes(matricule);
+        ArrayList<Note> listNotes = NoteDAO.getNotes(matricule);
 
         tableModelListNotes = new DefaultTableModel(new Object[]{"Module","Element","Professeur","Note"},0);
         for(Note note : listNotes){

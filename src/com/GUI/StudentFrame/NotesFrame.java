@@ -1,6 +1,7 @@
 package com.GUI.StudentFrame;
 
 import com.DataBase.EtudiantDAO;
+import com.DataBase.NoteDAO;
 import com.Model2.Note;
 import com.Style.MyButtons;
 import com.Style.MyFrame;
@@ -18,7 +19,7 @@ public class NotesFrame extends MyFrame {
 
     public NotesFrame(int matricule){
         this.setLayout(new BorderLayout());
-        ArrayList<Note> listNotes = EtudiantDAO.getNotes(matricule);
+        ArrayList<Note> listNotes = NoteDAO.getNotes(matricule);
 
         tableModel = new DefaultTableModel(new Object[]{"Module","Element","Professeur","Note"},0);
         for(Note note : listNotes){
