@@ -29,7 +29,7 @@ public class GestionEtudiants extends MyFrame {
 
         // JComboBox for selecting year
         yearComboBox = new JComboBox<>(yearOptions);
-        yearComboBox.setBounds(50, 120, 150, 30);
+        yearComboBox.setBounds(90, 170, 150, 30);
         yearComboBox.addActionListener(e -> updateTable());
         add(yearComboBox);
 
@@ -40,7 +40,7 @@ public class GestionEtudiants extends MyFrame {
         tableModel.addColumn("Prenom");
         JTable table = new JTable();
         table.setModel(tableModel);
-        table.setBounds(360, 120, 600, 900);
+        table.setBounds(360, 90, 600, 900);
         JScrollPane scrollPane = new JScrollPane(table);
 
         scrollPane.setBounds(360, 120, 600, 600);
@@ -58,7 +58,7 @@ public class GestionEtudiants extends MyFrame {
         });
 
         // Add a student
-        MyButtons Ajouter = new MyButtons("Ajouter" , Color.blue , Color.white , 90 , 170 , 150 , 50);
+        MyButtons Ajouter = new MyButtons("Ajouter" , Color.blue , Color.white , 90 , 270 , 150 , 50);
         Ajouter.addActionListener(e -> {
             dispose();
             FicheEtudiant ficheEtudiant = new FicheEtudiant(EtudiantDAO.generateMatricule(), true);
@@ -66,7 +66,7 @@ public class GestionEtudiants extends MyFrame {
         add(Ajouter);
 
         // Delete all data
-        MyButtons clear = new MyButtons("Suprimer tous les étudiant " , Color.blue , Color.white , 90 , 270 , 150 , 50);
+        MyButtons clear = new MyButtons("Suprimer tous les étudiant " , Color.blue , Color.white , 90 , 370 , 150 , 50);
         clear.addActionListener(e -> {
             int confirmation = JOptionPane.showConfirmDialog(null, "Attention! tous les étudiants de cette promotion vont etre supprimes", "Attention!", JOptionPane.YES_NO_OPTION);
             if (confirmation == JOptionPane.YES_OPTION) {
@@ -94,7 +94,7 @@ public class GestionEtudiants extends MyFrame {
         JPanel imageContainer = new JPanel();
         imageContainer.setBounds(0, 0, 1050, 650);
         JLabel sideImage = new JLabel();
-        sideImage.setIcon(new ImageIcon("images/04.jpeg"));
+        sideImage.setIcon(new ImageIcon("images/06.jpg"));
         imageContainer.add(sideImage);
         add(imageContainer);
 

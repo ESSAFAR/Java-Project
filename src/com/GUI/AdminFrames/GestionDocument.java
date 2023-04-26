@@ -62,7 +62,7 @@ public class GestionDocument extends MyFrame {
         add(clear);
 
         // Return to main admin page
-        MyButtons Retour = new MyButtons("Retour" , Color.blue , Color.white , 90 , 470 , 150 , 50);
+        MyButtons Retour = new MyButtons("Retour" , Color.blue , Color.white , 90 , 370 , 150 , 50);
         Retour.addActionListener(e -> {
             dispose();
             AcceuilAdmin frame = new AcceuilAdmin();
@@ -72,7 +72,7 @@ public class GestionDocument extends MyFrame {
         JPanel imageContainer = new JPanel();
         imageContainer.setBounds(0, 0, 1050, 650);
         JLabel sideImage = new JLabel();
-        sideImage.setIcon(new ImageIcon("images/04.jpeg"));
+        sideImage.setIcon(new ImageIcon("images/03.jpg"));
         imageContainer.add(sideImage);
         add(imageContainer);
 

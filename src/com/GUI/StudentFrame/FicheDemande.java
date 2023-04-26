@@ -23,10 +23,14 @@ public class FicheDemande extends MyFrame implements ActionListener {
         this.idEtudiant = idEtudiant;
         setTitle("Demander document");
         textLabel = new JLabel("Objet:");
-        textLabel.setBounds(50, 100, 100, 30);
+        textLabel.setBounds(50, 120, 100, 30);
         add(textLabel);
         textField = new JTextField();
+<<<<<<< HEAD
+        textField.setBounds(150, 130, 800, 400);
+=======
         textField.setBounds(150, 100, 400, 30);
+>>>>>>> c2f7a67c6858955b99256638366eb8404c871049
         add(textField);
         urgentCheckBox = new JCheckBox("Urgent");
         urgentCheckBox.setBounds(50, 150, 100, 30);
@@ -40,6 +44,13 @@ public class FicheDemande extends MyFrame implements ActionListener {
             AcceuilEtudiant frame = new AcceuilEtudiant(idEtudiant);
         });
         add(retourButton);
+
+        JPanel imageContainer = new JPanel();
+        imageContainer.setBounds(0 , 0 , 1050 , 650);
+        JLabel sideImage = new JLabel();
+        sideImage.setIcon(new ImageIcon("images/09.jpg"));
+        imageContainer.add(sideImage);
+        add(imageContainer);
 
         // Show the frame
         setVisible(true);
