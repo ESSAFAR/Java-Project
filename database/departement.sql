@@ -99,13 +99,13 @@ CREATE TABLE IF NOT EXISTS `etudiant` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 INSERT INTO etudiant
  (nom, prenom, cin, mot_de_passe, matricule, cne, genre, date_naissance, lieu_naissance, nationalite, promotion, email, telephone, adresse)VALUES
- ('1', '1', '1', '1', 1, 'CNE1', '1', '2000-01-01', 'Rabat', 'marocaine', '2A', 'john.smith@student.emi.ac.ma', '0612345678', '1 Avenue Hassan II, Rabat'),
- ('Bouhaddou', 'Amine', 'J930932', '123456', 100001, 'CNE100001', 'M', '1993-09-15', 'Rabat', 'Marocaine', '3A', 'amine.bouhaddou@student.emi.ac.ma', '0612345678', '1 Rue Hassan II, Rabat'),
- ('El Fakiri', 'Amina', 'J943022', '123456', 100002, 'CNE100002', 'F', '1994-03-22', 'Casablanca', 'Marocaine', '3A', 'amina.el.fakiri@student.emi.ac.ma', '0623456789', '2 Rue Mohammed V, Casablanca'),
- ('Haddioui', 'Yassine', 'J938143', '123456', 100003, 'CNE100003', 'M', '1993-08-20', 'Tangier', 'Marocaine', '3A', 'yassine.haddioui@student.emi.ac.ma', '0634567890', '3 Rue Ibn Batouta, Tangier'),
- ('Lamrani', 'Fatima', 'J951256', '123456', 100004, 'CNE100004', 'F', '1995-12-30', 'Fez', 'Marocaine', '3A', 'fatima.lamrani@student.emi.ac.ma', '0645678901', '4 Rue Ahmed Al Mansour, Fez'),
+ ('1', '1', '1', '1', 1, 'CNE1', '1', '2000-01-01', 'Rabat', 'marocaine', '1A', 'john.smith@student.emi.ac.ma', '0612345678', '1 Avenue Hassan II, Rabat'),
+ ('Bouhaddou', 'Amine', 'J930932', '123456', 100001, 'CNE100001', 'M', '1993-09-15', 'Rabat', 'Marocaine', '1A', 'amine.bouhaddou@student.emi.ac.ma', '0612345678', '1 Rue Hassan II, Rabat'),
+ ('El Fakiri', 'Amina', 'J943022', '123456', 100002, 'CNE100002', 'F', '1994-03-22', 'Casablanca', 'Marocaine', '1A', 'amina.el.fakiri@student.emi.ac.ma', '0623456789', '2 Rue Mohammed V, Casablanca'),
+ ('Haddioui', 'Yassine', 'J938143', '123456', 100003, 'CNE100003', 'M', '1993-08-20', 'Tangier', 'Marocaine', '2A', 'yassine.haddioui@student.emi.ac.ma', '0634567890', '3 Rue Ibn Batouta, Tangier'),
+ ('Lamrani', 'Fatima', 'J951256', '123456', 100004, 'CNE100004', 'F', '1995-12-30', 'Fez', 'Marocaine', '2A', 'fatima.lamrani@student.emi.ac.ma', '0645678901', '4 Rue Ahmed Al Mansour, Fez'),
  ('Moussaoui', 'Omar', 'J970334', '123456', 100005, 'CNE100005', 'M', '1997-03-20', 'Rabat', 'Marocaine', '2A', 'omar.moussaoui@student.emi.ac.ma', '0656789012', '5 Rue Moulay Ismail, Rabat'),
- ('Najmi', 'Sara', 'J990443', '123456', 100006, 'CNE100006', 'F', '1999-04-10', 'Marrakech', 'Marocaine', '2A', 'sara.najmi@student.emi.ac.ma', '0667890123', '6 Rue Hassan I, Marrakech'),
+ ('Najmi', 'Sara', 'J990443', '123456', 100006, 'CNE100006', 'F', '1999-04-10', 'Marrakech', 'Marocaine', '3A', 'sara.najmi@student.emi.ac.ma', '0667890123', '6 Rue Hassan I, Marrakech'),
  ('Ouahbi', 'Abdelali', 'J928766', '123456', 100007, 'CNE100007', 'M', '1992-07-05', 'Rabat', 'Marocaine', '3A', 'abdelali.ouahbi@student.emi.ac.ma', '0678901234', '7 Rue Allal Ben Abdellah, Rabat'),
  ('Rahmouni', 'Meryem', 'J959891', '123456', 100008, 'CNE100008', 'F', '1995-08-01', 'Agadir', 'Marocaine', '3A', 'meryem.rahmouni@student.emi.ac.ma', '0689012345', '8 Rue Hassan II, Agadir');
 
