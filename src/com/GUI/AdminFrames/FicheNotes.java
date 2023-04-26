@@ -62,11 +62,28 @@ public class FicheNotes extends MyFrame {
         });
 
 
+        //Boutton Ajouter une note
+        MyButtons Ajouter = new MyButtons("Ajouter Note" , Color.blue , Color.white , 90 , 470 , 150 , 50);
+
+        //Boutton pour Supprimer Note
+        MyButtons Supprimer = new MyButtons("Supprimer" , Color.blue , Color.white , 90 , 470 , 150 , 50);
+
+
+
+        //Panel pour les bouttons
+        JPanel panelBouttons = new JPanel();
+        panelBouttons.setLayout(new GridLayout(4,1));
+        panelBouttons.add(Enregistrer);
+        panelBouttons.add(Ajouter);
+        panelBouttons.add(Supprimer);
+        panelBouttons.add(Retour);
+
+
 
 
         this.add(labelTitre,BorderLayout.NORTH);
         this.add(scrollPaneListNotes,BorderLayout.CENTER);
-        this.add(Retour);
+        this.add(panelBouttons,BorderLayout.WEST);
         setVisible(true);
     }
 }
