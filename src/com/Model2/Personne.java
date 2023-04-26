@@ -1,4 +1,6 @@
 package com.Model2;
+import com.RegularExpressions.RegEx;
+
 import javax.swing.*;
 import java.util.Date;
 
@@ -17,18 +19,18 @@ public class Personne {
     protected String adresse;
 
     public Personne(String nom, String motDePasse, String prenom, String cin, int matricule, String genre, String dateNaissance, String lieuNaissance, String nationalite, String telephone, String adresse) {
-        this.nom = nom;
-        this.motDePasse = motDePasse;
-        this.prenom = prenom;
-        this.cin = cin;
-        this.matricule = matricule;
-        this.genre = genre;
-        this.dateNaissance = dateNaissance;
-        this.lieuNaissance = lieuNaissance;
-        this.nationalite = nationalite;
-        this.emailInstitutionnel = nom+ "." +prenom+matricule+"@student.emi.ac.ma" ;
-        this.telephone = telephone;
-        this.adresse = adresse;
+        setNom(nom);
+        setMotDePasse(motDePasse);
+        setPrenom(prenom);
+        setCin(cin);
+        setMatricule(matricule);
+        setGenre(genre);
+        setDateNaissance(dateNaissance);
+        setLieuNaissance(lieuNaissance);
+        setNationalite(nationalite);
+        this.emailInstitutionnel= (nom+ "." +prenom+matricule+"@student.emi.ac.ma");
+        setTelephone(telephone);
+        setAdresse(adresse);
     }
 
     public String getNom() {
@@ -36,7 +38,9 @@ public class Personne {
     }
 
     public void setNom(String nom) {
-        this.nom = nom;
+        if(RegEx.matchesNameFormat(nom)){
+            this.nom = nom;
+        }
     }
 
     public String getMotDePasse() {
@@ -52,7 +56,9 @@ public class Personne {
     }
 
     public void setPrenom(String prenom) {
-        this.prenom = prenom;
+        if(RegEx.matchesNameFormat(prenom)){
+            this.prenom = prenom;
+        }
     }
 
     public String getCin() {
@@ -60,15 +66,8 @@ public class Personne {
     }
 
 
-    //Cin doit etre sous format (LLXXXX) 2 lettres suivi de 4 chiffres
     public void setCin(String cin) {
-        if (cin.matches("^[a-zA-Z]{2}\\d{4}")) {
             this.cin = cin;
-        } else {
-//            System.out.println("Invalid Cin format. Cin doit etre sous format (LLXXXX) 2 lettres suivi de 4 chiffres");
-            this.cin = cin;
-
-        }
     }
 
     public int getMatricule() {
@@ -85,9 +84,8 @@ public class Personne {
 
     //Genre doit être 'male' ou 'female'
     public void setGenre(String genre) {
-        if(genre.equalsIgnoreCase("M") || genre.equalsIgnoreCase("F")) {
-            this.genre = genre;
-        } else {
+        genre = genre.toUpperCase();
+        if(genre.equals("M") || genre.equals("F")) {
             this.genre = genre;
         }
     }
@@ -97,7 +95,9 @@ public class Personne {
     }
 
     public void setDateNaissance(String dateNaissance) {
-        this.dateNaissance = dateNaissance;
+        if (RegEx.matchesDateFormat(dateNaissance)){
+            this.dateNaissance = dateNaissance;
+        }
     }
 
     public String getLieuNaissance() {
@@ -120,10 +120,6 @@ public class Personne {
         return emailInstitutionnel;
     }
 
-    public void setEmailInstitutionnel(String emailInstitutionnel) {
-        this.emailInstitutionnel = emailInstitutionnel;
-    }
-
     public String getTelephone() {
         return telephone;
     }
@@ -131,10 +127,8 @@ public class Personne {
 
     //Numéro de téléphone doit contenir 10 chiffres
     public void setTelephone(String telephone) {
-        if(telephone.matches("^\\d{10}$")) {
-            this.telephone = telephone;
-        } else {
-            throw new IllegalArgumentException("Numéro de téléphone doit contenir 10 chiffres.");
+           if(RegEx.matchesTelephone(telephone)){
+               this.telephone = telephone;
         }
     }
 
