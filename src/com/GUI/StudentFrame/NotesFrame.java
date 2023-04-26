@@ -35,7 +35,7 @@ public class NotesFrame extends MyFrame {
         //title
         JLabel labelTitre = new JLabel("Mes Notes");
         JPanel panelTitre = new JPanel();
-        panelTitre.add(labelTitre);
+        //panelTitre.add(labelTitre);
 
 
         //table des notes
@@ -46,24 +46,34 @@ public class NotesFrame extends MyFrame {
         JScrollPane scrollPane = new JScrollPane(table);
         scrollPane.setBounds(360, 120, 600, 600);
 
+        add(scrollPane);
+
 
 
 
         //boutton retour
-        MyButtons BouttonRetour = new MyButtons("Retour" , Color.blue , Color.white , 830 , 50 , 130 , 32);
+
+        MyButtons BouttonRetour = new MyButtons("Retour" , Color.blue , Color.white , 90 , 270 , 150 , 50);
         this.add(BouttonRetour);
         BouttonRetour.addActionListener(e -> {
             dispose();
             AcceuilEtudiant acceuilEtudiant = new AcceuilEtudiant(matricule);
         });
-        JPanel panelBouttons = new JPanel();
-        panelBouttons.add(BouttonRetour);
+        add(BouttonRetour);
 
 
 
-        this.add(panelTitre,BorderLayout.NORTH);
+        //this.add(panelTitre,BorderLayout.NORTH);
         this.add(scrollPane,BorderLayout.CENTER);
-        this.add(panelBouttons,BorderLayout.SOUTH);
+        //this.add(panelBouttons,BorderLayout.SOUTH);
+
+        JPanel imageContainer = new JPanel();
+        imageContainer.setBounds(0 , 0 , 1050 , 650);
+        JLabel sideImage = new JLabel();
+        sideImage.setIcon(new ImageIcon("images/04.jpeg"));
+        imageContainer.add(sideImage);
+        add(imageContainer);
+
 
         this.setVisible(true);
 

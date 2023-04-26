@@ -72,7 +72,7 @@ public class AvisEtudiant extends MyFrame {
 
 
         //Retour
-        MyButtons BouttonRetour = new MyButtons("Retour" , Color.blue , Color.white , 90 , 470 , 150 , 50);
+        MyButtons BouttonRetour = new MyButtons("Retour" , Color.blue , Color.white , 90 , 270 , 150 , 50);
         this.add(BouttonRetour);
         BouttonRetour.addActionListener(e -> {
             dispose();

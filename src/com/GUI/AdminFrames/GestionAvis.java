@@ -136,7 +136,7 @@ public class GestionAvis extends MyFrame {
         JPanel imageContainer = new JPanel();
         imageContainer.setBounds(0 , 0 , 1050 , 650);
         JLabel sideImage = new JLabel();
-        sideImage.setIcon(new ImageIcon("images/04.jpeg"));
+        sideImage.setIcon(new ImageIcon("images/05.jpg"));
         imageContainer.add(sideImage);
         add(imageContainer);
 
