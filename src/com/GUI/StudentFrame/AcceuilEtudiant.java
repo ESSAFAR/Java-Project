@@ -63,7 +63,7 @@ public class AcceuilEtudiant extends MyFrame {
         add(btn_professeurs);
         btn_professeurs .addActionListener(e -> {
             dispose();
-            AvisEtudiant adminFrame4 = new AvisEtudiant();
+            AvisEtudiant adminFrame4 = new AvisEtudiant(matricule);
         });
 
 

@@ -14,7 +14,7 @@ import java.awt.*;
 
 public class AvisEtudiant extends MyFrame {
 
-    public AvisEtudiant(){
+    public AvisEtudiant(int matriculeEtudiant){
 
         //Table of students
         DefaultTableModel tableModel = new DefaultTableModel();
@@ -48,7 +48,7 @@ public class AvisEtudiant extends MyFrame {
                     int column = table.getSelectedColumn();
                     int id_avis = (int) table.getValueAt(row , 0 );
                     dispose();
-                    FicheAvis frame = new FicheAvis(id_avis);
+                    FicheAvis frame = new FicheAvis(id_avis, false, matriculeEtudiant);
                 }
             }
         });
@@ -72,12 +72,13 @@ public class AvisEtudiant extends MyFrame {
 
 
         //Retour
-        MyButtons Retour = new MyButtons("Retour" , Color.blue , Color.white , 90 , 470 , 150 , 50);
-        Retour.addActionListener(e -> {
+        MyButtons BouttonRetour = new MyButtons("Retour" , Color.blue , Color.white , 90 , 470 , 150 , 50);
+        this.add(BouttonRetour);
+        BouttonRetour.addActionListener(e -> {
             dispose();
-            AcceuilEtudiant frame = new AcceuilEtudiant();
+            AcceuilEtudiant acceuilEtudiant = new AcceuilEtudiant(matriculeEtudiant);
         });
-        add(Retour);
+        add(BouttonRetour);
 
 
 

@@ -12,6 +12,8 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 
 public class GestionAvis extends MyFrame {
+    boolean auteurEstAdmin; //vrai si le frame ouvert par admin, faux si consulte par etudiant
+
 
     public GestionAvis(){
 
@@ -47,7 +49,7 @@ public class GestionAvis extends MyFrame {
                     int column = table.getSelectedColumn();
                     int id_avis = (int) table.getValueAt(row , 0 );
                     dispose();
-                    FicheAvis frame = new FicheAvis(id_avis);
+                    FicheAvis frame = new FicheAvis(id_avis, false);
                 }
             }
         });
@@ -106,7 +108,7 @@ public class GestionAvis extends MyFrame {
         MyButtons Ajouter = new MyButtons("Ajouter avis " , Color.blue , Color.white , 90 , 170 , 150 , 50);
         Ajouter.addActionListener(e->{
             dispose();
-            FicheAvis ficheAvis = new FicheAvis(AvisDAO.generateidAvis());
+            FicheAvis ficheAvis = new FicheAvis(AvisDAO.generateidAvis(), false);
         });
         add(Ajouter);
 

@@ -5,10 +5,10 @@ A personnal page for the student(matricule)
 package com.GUI.AdminFrames;
 
 import com.DataBase.AvisDAO;
+import com.GUI.StudentFrame.AvisEtudiant;
 import com.Model.Avis;
 import com.Style.MyButtons;
 import com.Style.MyFrame;
-import com.DataBase.EtudiantDAO;
 
 import javax.swing.*;
 import java.awt.*;
@@ -17,9 +17,11 @@ import java.sql.SQLException;
 
 public class FicheAvis extends MyFrame {
     private JPanel panel1;
+    private boolean auteurEstAdmin; //vrai si le frame ouvert par admin, faux si consulte par etudiant
+    private int matricule; //Matricule de l'etudiant si auteurEstAdmin == false
 
 
-    public FicheAvis(int id_avis) {
+    public FicheAvis(int id_avis, boolean auteurEstAdmin, int matricule) {
         Avis avis;
         boolean adding = true;  //true if user is adding an avis, false if modyfing an avis
 
@@ -77,7 +79,6 @@ public class FicheAvis extends MyFrame {
 
         // Create "Enregistrer" button
         MyButtons enregistrerBtn = new MyButtons("Enregistrer", Color.blue, Color.white, 90 , 270 , 150 , 50);
-        add(enregistrerBtn);
 
         enregistrerBtn.addActionListener(e -> {
 
@@ -115,7 +116,12 @@ public class FicheAvis extends MyFrame {
         MyButtons retourBtn = new MyButtons("Retour",Color.blue , Color.WHITE, 90 , 370 , 150 , 50);
         retourBtn.addActionListener(e -> {
             dispose();
-            GestionAvis gestionavis = new GestionAvis();
+            if(auteurEstAdmin){
+                GestionAvis gestionavis = new GestionAvis();
+            }
+            else{
+                AvisEtudiant avisEtudiant = new AvisEtudiant(matricule);
+            }
         });
         add(retourBtn);
 
@@ -129,6 +135,16 @@ public class FicheAvis extends MyFrame {
         imageContainer.add(sideImage);
         add(imageContainer);
 
+        //Si l'auteur n'est pas admin, il ne peut pas modifier les champs
+        if(!auteurEstAdmin){
+            idField.setEditable(false);
+            objetField.setEditable(false);
+            contenuField.setEditable(false);
+        }
+        else{
+            add(enregistrerBtn);
+        }
+
 
         setVisible(true);
 
@@ -137,4 +153,9 @@ public class FicheAvis extends MyFrame {
 
 
     }
-}
+
+    public FicheAvis(int id_avis, boolean auteurEstAdmin) {
+        this(id_avis, auteurEstAdmin, 0);
+    }
+    }
+
