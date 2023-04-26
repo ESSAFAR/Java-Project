@@ -46,36 +46,32 @@ public class FicheNotes extends MyFrame {
         });
 
 
-        //boutton Enregistrer
-        MyButtons Enregistrer = new MyButtons("Enregistrer" , Color.blue , Color.white , 90 , 470 , 150 , 50);
-        Enregistrer.addActionListener(e -> {
-            // parcourir toutes les notes dans le modèle de la table
-            for (int i = 0; i < tableModelListNotes.getRowCount(); i++) {
-                // récupérer les valeurs des champs de la ligne i
-                String module = (String) tableModelListNotes.getValueAt(i, 0);
-                String element = (String) tableModelListNotes.getValueAt(i, 1);
-                String professeur = (String) tableModelListNotes.getValueAt(i, 2);
-                double note = (double) tableModelListNotes.getValueAt(i, 3);
-                // mettre à jour la note dans la base de données
-                NoteDAO.updateNote(module, element, professeur, note);
+        //Boutton Ajouter une note
+        MyButtons Ajouter = new MyButtons("Ajouter Note", Color.blue, Color.white, 90, 470, 150, 50);
+        Ajouter.addActionListener(e -> {
+            // Display a dialog box to prompt the user for the name of the element and the note
+            String elementModule = JOptionPane.showInputDialog(null, "Entrez le nom de l'élément module:", "Ajouter une note", JOptionPane.PLAIN_MESSAGE);
+            String note = String.valueOf(Double.parseDouble(JOptionPane.showInputDialog(null, "Entrez la note:", "Ajouter une note", JOptionPane.PLAIN_MESSAGE)));
+            double noteDouble = Double.parseDouble(note);
+            // If the user entered a name and a note, add them to the table
+            if (elementModule != null && !elementModule.isEmpty() && note != null && !note.isEmpty()) {
+                // Save the new note to the database
+                NoteDAO.saveNote(noteDouble,elementModule,matricule);
+
+                // Add the new note to the table
+                tableModelListNotes.addRow(new Object[]{"", elementModule, "", note});
             }
         });
 
-
-        //Boutton Ajouter une note
-        MyButtons Ajouter = new MyButtons("Ajouter Note" , Color.blue , Color.white , 90 , 470 , 150 , 50);
-
-        //Boutton pour Supprimer Note
-        MyButtons Supprimer = new MyButtons("Supprimer" , Color.blue , Color.white , 90 , 470 , 150 , 50);
 
 
 
         //Panel pour les bouttons
         JPanel panelBouttons = new JPanel();
-        panelBouttons.setLayout(new GridLayout(4,1));
-        panelBouttons.add(Enregistrer);
+        //panelBouttons.setLayout(new GridLayout(4,1));
+
         panelBouttons.add(Ajouter);
-        panelBouttons.add(Supprimer);
+
         panelBouttons.add(Retour);
 
 
