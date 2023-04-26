@@ -1,5 +1,6 @@
 package com.GUI.AdminFrames;
 
+
 import com.DataBase.ElementModuleDAO;
 import com.DataBase.NoteDAO;
 import com.DataBase.EtudiantDAO;
@@ -36,7 +37,6 @@ public class FicheNotes extends MyFrame {
         }
 
         tableListNotes = new JTable(tableModelListNotes);
-        tableListNotes.setBounds(360, 120, 600, 900);
         JScrollPane scrollPaneListNotes = new JScrollPane(tableListNotes);
         scrollPaneListNotes.setBounds(360, 120, 600, 600);
 
@@ -76,13 +76,15 @@ public class FicheNotes extends MyFrame {
             public void valueChanged(ListSelectionEvent event) {
                 if (!event.getValueIsAdjusting()) {
                     int row = tableListNotes.getSelectedRow();
-                    double note = (double) tableListNotes.getValueAt(row , 3 );
                     String elementModule = (String) tableListNotes.getValueAt(row , 1);
-                    String newNote = String.valueOf(Double.parseDouble(String.valueOf(Double.parseDouble(JOptionPane.showInputDialog(null, "Nouvelle note:", "Modifier Note", JOptionPane.PLAIN_MESSAGE)))));
-                    double doubleNewNote = Double.parseDouble(newNote);
-                    if (newNote != null && !newNote.isEmpty() ) {
-                        NoteDAO.updateNote(doubleNewNote, elementModule, matricule);
 
+                    String input = JOptionPane.showInputDialog(null, "Nouvelle note:", "Modifier Note", JOptionPane.PLAIN_MESSAGE);
+                    double doubleNewNote = Double.parseDouble(input);
+
+                    if (input != null && !input.isEmpty() ) {
+                        NoteDAO.updateNote(doubleNewNote, elementModule, matricule);
+                        tableModelListNotes.setValueAt(doubleNewNote, row, 3);
+                        tableModelListNotes.fireTableDataChanged();
                     }
                 }
             }});
