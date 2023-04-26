@@ -46,6 +46,8 @@ public class NoteDAO {
         return listNotes;
     }
 
+
+
     //save Note
     public static void saveNote(double note,String elementModule, int matricule) {
         try {
@@ -74,8 +76,9 @@ public class NoteDAO {
     }
 
 
-    //update Note
 
+
+    //update Note
     public static void updateNote(double newNote, String elementModule,int matricule){
         try {
             // Get the ID of the element module from the database using its name
@@ -99,7 +102,7 @@ public class NoteDAO {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-        }
-    }
+        }
+    }
 
 }
