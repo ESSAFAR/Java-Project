@@ -14,6 +14,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class FicheNotes extends MyFrame {
@@ -58,12 +59,21 @@ public class FicheNotes extends MyFrame {
             double noteDouble = Double.parseDouble(note);
             // If the user entered a name and a note, check if the element module exists in the element_module table
             if (elementModule != null && !elementModule.isEmpty() && note != null && !note.isEmpty()) {
-                if (ElementModuleDAO.elementModuleExiste(elementModule) != 0) {
+                int a = ElementModuleDAO.elementModuleExiste(elementModule);
+                if (a!= -1) {
                     // Save the new note to the database
                     NoteDAO.saveNote(noteDouble, elementModule, matricule);
 
                     // Add the new note to the table
-                    tableModelListNotes.addRow(new Object[]{"", elementModule, "", note});
+                    String[] result ;
+                    try {
+                        result = ElementModuleDAO.getModuleAndProfessor(a);
+                    } catch (SQLException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                    tableModelListNotes.addRow(new Object[]{result[0],elementModule, result[1], note});
+
+
                 } else {
                     JOptionPane.showMessageDialog(null, "L'élément module n'existe pas dans la base de données.", "Erreur", JOptionPane.ERROR_MESSAGE);
                 }
@@ -108,5 +118,5 @@ public class FicheNotes extends MyFrame {
         this.add(scrollPaneListNotes,BorderLayout.CENTER);
         this.add(panelBouttons,BorderLayout.WEST);
         setVisible(true);
-    }
+    }
 }
