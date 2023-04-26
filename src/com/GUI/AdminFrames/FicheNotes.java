@@ -60,6 +60,7 @@ public class FicheNotes extends MyFrame {
             // If the user entered a name and a note, check if the element module exists in the element_module table
             if (elementModule != null && !elementModule.isEmpty() && note != null && !note.isEmpty()) {
                 int a = ElementModuleDAO.elementModuleExiste(elementModule);
+                System.out.println(a);
                 if (a != -1) {
                     // Save the new note to the database
                     NoteDAO.saveNote(noteDouble, elementModule, matricule);
@@ -71,6 +72,7 @@ public class FicheNotes extends MyFrame {
                     } catch (SQLException ex) {
                         throw new RuntimeException(ex);
                     }
+                    System.out.println(result[1]);
                     tableModelListNotes.addRow(new Object[]{result[0], elementModule, result[1], note});
                     tableModelListNotes.fireTableDataChanged();
 
