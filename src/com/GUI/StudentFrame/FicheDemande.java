@@ -26,15 +26,19 @@ public class FicheDemande extends MyFrame implements ActionListener {
         textLabel.setBounds(50, 120, 100, 30);
         add(textLabel);
         textField = new JTextField();
+<<<<<<< HEAD
         textField.setBounds(150, 130, 800, 400);
+=======
+        textField.setBounds(150, 100, 400, 30);
+>>>>>>> c2f7a67c6858955b99256638366eb8404c871049
         add(textField);
         urgentCheckBox = new JCheckBox("Urgent");
-        urgentCheckBox.setBounds(50, 550, 100, 30);
+        urgentCheckBox.setBounds(50, 150, 100, 30);
         add(urgentCheckBox);
-        submitButton = new MyButtons("Submit", Color.blue, Color.white,450, 550, 100, 30 );
+        submitButton = new MyButtons("Submit", Color.blue, Color.white,150, 200, 100, 30 );
         submitButton.addActionListener(this);
         add(submitButton);
-        MyButtons retourButton = new MyButtons("Retour", Color.blue, Color.white, 450, 250, 100, 30);
+        MyButtons retourButton = new MyButtons("Retour", Color.blue, Color.white, 300, 200, 100, 30);
         retourButton.addActionListener(e -> {
             dispose();
             AcceuilEtudiant frame = new AcceuilEtudiant(idEtudiant);
@@ -51,6 +55,7 @@ public class FicheDemande extends MyFrame implements ActionListener {
         // Show the frame
         setVisible(true);
     }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == submitButton) {

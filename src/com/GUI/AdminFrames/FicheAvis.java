@@ -6,7 +6,7 @@ package com.GUI.AdminFrames;
 
 import com.DataBase.AvisDAO;
 import com.GUI.StudentFrame.AvisEtudiant;
-import com.Model.Avis;
+import com.Model2.Avis;
 import com.Style.MyButtons;
 import com.Style.MyFrame;
 

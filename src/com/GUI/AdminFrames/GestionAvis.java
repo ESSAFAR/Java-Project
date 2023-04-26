@@ -1,6 +1,6 @@
 package com.GUI.AdminFrames;
 
-import com.Model.Avis;
+import com.Model2.Avis;
 import com.Style.MyButtons;
 import com.Style.MyFrame;
 import com.DataBase.AvisDAO;
@@ -108,7 +108,7 @@ public class GestionAvis extends MyFrame {
         MyButtons Ajouter = new MyButtons("Ajouter avis " , Color.blue , Color.white , 90 , 170 , 150 , 50);
         Ajouter.addActionListener(e->{
             dispose();
-            FicheAvis ficheAvis = new FicheAvis(AvisDAO.generateidAvis(), false);
+            FicheAvis ficheAvis = new FicheAvis(AvisDAO.generateidAvis(), true);
         });
         add(Ajouter);
 

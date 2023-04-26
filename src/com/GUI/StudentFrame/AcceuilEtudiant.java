@@ -74,8 +74,6 @@ public class AcceuilEtudiant extends MyFrame {
         add(btn_demande);
         btn_demande.addActionListener(e -> {
             dispose();
-
-            GestionAvis Avis = new GestionAvis();
             FicheDemande frame = new FicheDemande(matricule);
 
         });
