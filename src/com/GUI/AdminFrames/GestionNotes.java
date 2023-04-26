@@ -14,11 +14,16 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class GestionNotes extends MyFrame {
 
     private DefaultTableModel tableModelListEtudiant;
     private JTable tableListEtudiant;
+    private String[] promotions = {"1A", "2A", "3A"};
+    private JComboBox<String> yearComboBox = new JComboBox<>(promotions);
+
 
     public GestionNotes() {
 
@@ -26,20 +31,21 @@ public class GestionNotes extends MyFrame {
 
         JLabel labelTitre = new JLabel("Liste des etudiants ");
 
-        //Combobox to choose 1ere annee, 2eme annee or 3eme annee
-         String[] classes = {"1ere annee", "2eme annee", "3eme annee"};
-         JComboBox<String> yearComboBox = new JComboBox<>(classes);
-         yearComboBox.setBounds(300 , 50 , 130 ,32);
 
-
-
-         //table de la liste des etudiants
-
+        //table de la liste des etudiants
         tableModelListEtudiant = new DefaultTableModel(new Object[]{"Nom","Prenom","Matricule"},0);
 
-        for (Etudiant etudiant : EtudiantDAO.getListEtudiant()) {
+        //Combobox to choose 1ere annee, 2eme annee or 3eme annee
+        yearComboBox.setBounds(300 , 50 , 130 ,32);
+        yearComboBox.addActionListener(e -> {
+            updateTable();
+        });
+
+
+
+        /* for (Etudiant etudiant : EtudiantDAO.getListEtudiant()) {
             tableModelListEtudiant.addRow(new Object[]{etudiant.getNom(),etudiant.getPrenom(),etudiant.getMatricule()});
-        }
+        } */
 
         tableListEtudiant = new JTable(tableModelListEtudiant);
         tableListEtudiant.setBounds(360, 120, 600, 900);
@@ -94,6 +100,22 @@ public class GestionNotes extends MyFrame {
 
         setVisible(true);
 
+    }
+
+
+    // updateTable
+    public void updateTable() {
+        String year = promotions[yearComboBox.getSelectedIndex()];
+        List<Etudiant> etudiants = EtudiantDAO.getListEtudiant().stream()
+                .filter(e -> e.getPromotion().equals(year))
+                .collect(Collectors.toList());
+        tableModelListEtudiant.setRowCount(0);
+        System.out.println(year);
+        tableModelListEtudiant.setRowCount(0);
+        for (Etudiant etudiant : etudiants) {
+            tableModelListEtudiant.addRow(new Object[]{etudiant.getNom(),etudiant.getPrenom(),etudiant.getMatricule()});
+            System.out.println(etudiant.getMatricule());
+        }
     }
 
 }

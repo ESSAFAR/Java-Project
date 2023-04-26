@@ -1,121 +1,118 @@
 package com.GUI.AdminFrames;
 
-/*
-Gestion des notes
- */
 
+import com.DataBase.ElementModuleDAO;
+import com.DataBase.NoteDAO;
 import com.DataBase.EtudiantDAO;
-import com.Model2.Etudiant;
+import com.Model2.Note;
 import com.Style.MyButtons;
 import com.Style.MyFrame;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
-import java.util.List;
-import java.util.stream.Collectors;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
-public class GestionNotes extends MyFrame {
+public class FicheNotes extends MyFrame {
 
-    private DefaultTableModel tableModelListEtudiant;
-    private JTable tableListEtudiant;
-    private String[] promotions = {"1A", "2A", "3A"};
-    private JComboBox<String> yearComboBox = new JComboBox<>(promotions);
-
-
-    public GestionNotes() {
-
-        this.setLayout(new BorderLayout());
-
-        JLabel labelTitre = new JLabel("Liste des etudiants ");
+    private DefaultTableModel tableModelListNotes ;
+    private JTable tableListNotes ;
+    public FicheNotes(int matricule) {
+        this.setLayout(new BorderLayout(5, 5));
 
 
-        //table de la liste des etudiants
-        tableModelListEtudiant = new DefaultTableModel(new Object[]{"Nom","Prenom","Matricule"},0);
+        //Titre
+        JLabel labelTitre = new JLabel("Liste des notes de " + EtudiantDAO.getEtudiant(matricule).getNom() + " " + EtudiantDAO.getEtudiant(matricule).getPrenom());
+        labelTitre.setHorizontalAlignment(JLabel.CENTER);
 
-        //Combobox to choose 1ere annee, 2eme annee or 3eme annee
-         yearComboBox.setBounds(300 , 50 , 130 ,32);
-         yearComboBox.addActionListener(e -> {
-             updateTable();
-         });
+        //table Modele
+        ArrayList<Note> listNotes = NoteDAO.getNotes(matricule);
 
+        tableModelListNotes = new DefaultTableModel(new Object[]{"Module", "Element", "Professeur", "Note"}, 0);
+        for (Note note : listNotes) {
+            tableModelListNotes.addRow(new Object[]{note.getElementModule().getModule(), note.getElementModule().getNom(), note.getProfesseur().getNom(), note.getNote()});
+        }
 
-
-        /* for (Etudiant etudiant : EtudiantDAO.getListEtudiant()) {
-            tableModelListEtudiant.addRow(new Object[]{etudiant.getNom(),etudiant.getPrenom(),etudiant.getMatricule()});
-        } */
-
-        tableListEtudiant = new JTable(tableModelListEtudiant);
-        tableListEtudiant.setBounds(360, 120, 600, 900);
-        JScrollPane scrollPaneListEtudiant = new JScrollPane(tableListEtudiant);
-        scrollPaneListEtudiant.setBounds(360, 120, 600, 600);
+        tableListNotes = new JTable(tableModelListNotes);
+        JScrollPane scrollPaneListNotes = new JScrollPane(tableListNotes);
+        scrollPaneListNotes.setBounds(360, 120, 600, 600);
 
 
-
-        //Retour
-        MyButtons Retour = new MyButtons("Retour" , Color.blue , Color.white , 830 , 50 , 130 , 32);
+        //Boutton Retour
+        MyButtons Retour = new MyButtons("Retour", Color.blue, Color.white, 90, 470, 150, 50);
         Retour.addActionListener(e -> {
             dispose();
-            AcceuilAdmin frame = new AcceuilAdmin();
+            GestionNotes gestionNotes = new GestionNotes();
         });
-        JPanel panelRetour = new JPanel();
-        panelRetour.add(Retour);
 
 
-        //icone Image
-        /*JPanel imageContainer = new JPanel();
-        imageContainer.setBounds(0 , 0 , 20 , 20);
-        JLabel sideImage = new JLabel();
-        sideImage.setIcon(new ImageIcon("images/05.jpg"));
-        imageContainer.add(sideImage);*/
+        //Boutton Ajouter une note
+        MyButtons Ajouter = new MyButtons("Ajouter Note", Color.blue, Color.white, 90, 470, 150, 50);
+        Ajouter.addActionListener(e -> {
+            // Display a dialog box to prompt the user for the name of the element and the note
+            String elementModule = JOptionPane.showInputDialog(null, "Entrez le nom de l'élément module:", "Ajouter une note", JOptionPane.PLAIN_MESSAGE);
+            String note = String.valueOf(Double.parseDouble(JOptionPane.showInputDialog(null, "Entrez la note:", "Ajouter une note", JOptionPane.PLAIN_MESSAGE)));
+            double noteDouble = Double.parseDouble(note);
+            // If the user entered a name and a note, check if the element module exists in the element_module table
+            if (elementModule != null && !elementModule.isEmpty() && note != null && !note.isEmpty()) {
+                int a = ElementModuleDAO.elementModuleExiste(elementModule);
+                if (a != -1) {
+                    // Save the new note to the database
+                    NoteDAO.saveNote(noteDouble, elementModule, matricule);
+
+                    // Add the new note to the table
+                    String[] result;
+                    try {
+                        result = ElementModuleDAO.getModuleAndProfessor(a);
+                    } catch (SQLException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                    tableModelListNotes.addRow(new Object[]{result[0], elementModule, result[1], note});
 
 
-        //panel Image And Combox
-        JPanel panelImageAndCombox = new JPanel();
-        panelImageAndCombox.add(yearComboBox);
-        //panelImageAndCombox.add(imageContainer);
-
-
+                } else {
+                    JOptionPane.showMessageDialog(null, "L'élément module n'existe pas dans la base de données.", "Erreur", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
 
         // //When a student is clicked upon, this opens his list of grades
-        ListSelectionModel selectionModel = tableListEtudiant.getSelectionModel();
+        ListSelectionModel selectionModel = tableListNotes.getSelectionModel();
         selectionModel.addListSelectionListener(new ListSelectionListener() {
             public void valueChanged(ListSelectionEvent event) {
                 if (!event.getValueIsAdjusting()) {
-                    int row = tableListEtudiant.getSelectedRow();
-                    int matricule = (int) tableListEtudiant.getValueAt(row , 2 );
-                    dispose();
-                    FicheNotes ficheNotes = new FicheNotes(matricule);
+                    int row = tableListNotes.getSelectedRow();
+                    String elementModule = (String) tableListNotes.getValueAt(row, 1);
+
+                    String input = JOptionPane.showInputDialog(null, "Nouvelle note:", "Modifier Note", JOptionPane.PLAIN_MESSAGE);
+                    double doubleNewNote = Double.parseDouble(input);
+
+                    if (input != null && !input.isEmpty()) {
+                        NoteDAO.updateNote(doubleNewNote, elementModule, matricule);
+                        tableModelListNotes.setValueAt(doubleNewNote, row, 3);
+                        tableModelListNotes.fireTableDataChanged();
+                    }
                 }
             }
         });
 
 
-        this.add(labelTitre);
-        this.add(panelImageAndCombox,BorderLayout.NORTH);
-        this.add(scrollPaneListEtudiant,BorderLayout.CENTER);
-        this.add(panelRetour,BorderLayout.WEST);
+        //Panel pour les bouttons
+        JPanel panelBouttons = new JPanel();
+        //panelBouttons.setLayout(new GridLayout(4,1));
 
+        panelBouttons.add(Ajouter);
+
+        panelBouttons.add(Retour);
+
+
+        this.add(labelTitre, BorderLayout.NORTH);
+        this.add(scrollPaneListNotes, BorderLayout.CENTER);
+        this.add(panelBouttons, BorderLayout.WEST);
         setVisible(true);
-
     }
-
-
-    // updateTable
-    public void updateTable() {
-        String year = promotions[yearComboBox.getSelectedIndex()];
-        List<Etudiant> etudiants = EtudiantDAO.getListEtudiant().stream()
-                .filter(e -> e.getPromotion().equals(year))
-                .collect(Collectors.toList());
-        tableModelListEtudiant.setRowCount(0);
-        System.out.println(year);
-        tableModelListEtudiant.setRowCount(0);
-        for (Etudiant etudiant : etudiants) {
-            tableModelListEtudiant.addRow(new Object[]{etudiant.getNom(),etudiant.getPrenom(),etudiant.getMatricule()});
-            System.out.println(etudiant.getMatricule());
-        }
-    }
-
 }
