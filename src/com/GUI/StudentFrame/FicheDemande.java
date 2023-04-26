@@ -26,11 +26,8 @@ public class FicheDemande extends MyFrame implements ActionListener {
         textLabel.setBounds(50, 120, 100, 30);
         add(textLabel);
         textField = new JTextField();
-<<<<<<< HEAD
         textField.setBounds(150, 130, 800, 400);
-=======
         textField.setBounds(150, 100, 400, 30);
->>>>>>> c2f7a67c6858955b99256638366eb8404c871049
         add(textField);
         urgentCheckBox = new JCheckBox("Urgent");
         urgentCheckBox.setBounds(50, 150, 100, 30);
