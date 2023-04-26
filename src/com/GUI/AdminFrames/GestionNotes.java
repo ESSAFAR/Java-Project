@@ -55,13 +55,13 @@ public class GestionNotes extends MyFrame {
 
 
         //Retour
-        MyButtons Retour = new MyButtons("Retour" , Color.blue , Color.white , 830 , 50 , 130 , 32);
+        MyButtons Retour = new MyButtons("Retour" , Color.blue , Color.white , 90 , 170 , 150 , 50);
         Retour.addActionListener(e -> {
             dispose();
             AcceuilAdmin frame = new AcceuilAdmin();
         });
-        JPanel panelRetour = new JPanel();
-        panelRetour.add(Retour);
+        //JPanel panelRetour = new JPanel();
+        add(Retour);
 
 
         //icone Image
@@ -74,7 +74,7 @@ public class GestionNotes extends MyFrame {
 
         //panel Image And Combox
         JPanel panelImageAndCombox = new JPanel();
-        panelImageAndCombox.add(yearComboBox);
+        add(yearComboBox);
         //panelImageAndCombox.add(imageContainer);
 
 
@@ -94,9 +94,9 @@ public class GestionNotes extends MyFrame {
 
 
         this.add(labelTitre);
-        this.add(panelImageAndCombox,BorderLayout.NORTH);
+        //this.add(panelImageAndCombox,BorderLayout.NORTH);
         this.add(scrollPaneListEtudiant,BorderLayout.CENTER);
-        this.add(panelRetour,BorderLayout.WEST);
+        //this.add(panelRetour,BorderLayout.WEST);
 
         JPanel imageContainer = new JPanel();
         imageContainer.setBounds(0 , 0 , 1050 , 650);
