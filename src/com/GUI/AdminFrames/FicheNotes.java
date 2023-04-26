@@ -9,6 +9,8 @@ import com.Style.MyFrame;
 
 import javax.swing.*;
 import javax.swing.border.Border;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.util.ArrayList;
@@ -67,6 +69,22 @@ public class FicheNotes extends MyFrame {
                 }
             }
         });
+
+        // //When a student is clicked upon, this opens his list of grades
+        ListSelectionModel selectionModel = tableListNotes.getSelectionModel();
+        selectionModel.addListSelectionListener(new ListSelectionListener() {
+            public void valueChanged(ListSelectionEvent event) {
+                if (!event.getValueIsAdjusting()) {
+                    int row = tableListNotes.getSelectedRow();
+                    double note = (double) tableListNotes.getValueAt(row , 3 );
+                    String elementModule = (String) tableListNotes.getValueAt(row , 1);
+                    String newNote = String.valueOf(Double.parseDouble(String.valueOf(Double.parseDouble(JOptionPane.showInputDialog(null, "Nouvelle note:", "Modifier Note", JOptionPane.PLAIN_MESSAGE)))));
+                    double doubleNewNote = Double.parseDouble(newNote);
+                    if (newNote != null && !newNote.isEmpty() ) {
+                        NoteDAO.updateNote(doubleNewNote, elementModule, matricule);
+                    }
+                }
+            }});
 
 
 
