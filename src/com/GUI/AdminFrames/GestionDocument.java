@@ -51,7 +51,7 @@ public class GestionDocument extends MyFrame {
         });
 
         // Clear all requests
-        MyButtons clear = new MyButtons("Clear" , Color.blue , Color.white , 90 , 270 , 150 , 50);
+        MyButtons clear = new MyButtons("Suprimmer tout" , Color.blue , Color.white , 90 , 270 , 150 , 50);
 //        clear.addActionListener(e -> {
 //            int confirm = JOptionPane.showConfirmDialog(this, "Êtes-vous sûr de vouloir supprimer toutes les demandes ?");
 //            if (confirm == JOptionPane.YES_OPTION) {

@@ -1,7 +1,7 @@
+
 /*
 A personnal page for the student(matricule)
 */
-
 package com.GUI.AdminFrames;
 
 import com.DataBase.AvisDAO;
@@ -33,15 +33,19 @@ public class FicheAvis extends MyFrame {
 
 
 
+        //Titre
+        JLabel titre = new JLabel("AJOUTER AVIS : ");
+        titre.setBounds(550, 20, 400, 100);
+        add(titre);
 
         // Create text fields to edit student information
         JTextField idField = new JTextField(avis.getId_avis());
         JTextField objetField = new JTextField(avis.getObjet());
 
         JTextField contenuField = new JTextField(avis.getContenu());
-        idField.setBounds(200, 50, 200, 25);
-        objetField.setBounds(200, 100, 200, 25);
-        contenuField.setBounds(200, 150, 200, 25);
+        idField.setBounds(550 , 240 , 210 , 30);
+        objetField.setBounds(550, 310, 210, 30);
+        contenuField.setBounds(550, 400, 210, 70);
 
 
 
@@ -52,9 +56,9 @@ public class FicheAvis extends MyFrame {
 
 
         // Set bounds for labels and text fields
-        idLabel.setBounds(50, 50, 100, 25);
-        objetLabel.setBounds(50, 100, 100, 25);
-        contenuLabel.setBounds(50, 150, 100, 25);
+        idLabel.setBounds(400 , 240 , 210 , 30);
+        objetLabel.setBounds(400 , 310 , 210 , 30);
+        contenuLabel.setBounds(400 , 400 , 210 , 30);
 
 
         // Add labels and text fields to frame
@@ -72,7 +76,7 @@ public class FicheAvis extends MyFrame {
 
 
         // Create "Enregistrer" button
-        MyButtons enregistrerBtn = new MyButtons("Enregistrer", Color.blue, Color.white, 600, 100, 150, 50);
+        MyButtons enregistrerBtn = new MyButtons("Enregistrer", Color.blue, Color.white, 90 , 270 , 150 , 50);
         add(enregistrerBtn);
 
         enregistrerBtn.addActionListener(e -> {
@@ -92,12 +96,11 @@ public class FicheAvis extends MyFrame {
                 // Exécuter la requête INSERT
                 ps.executeUpdate();
 
-                // Fermer la connexion
-                AvisDAO.closeConnection();
+
 
                 // Fermer la fenêtre actuelle et ouvrir la fenêtre GestionEtudiants
                 dispose();
-                GestionEtudiants frame = new GestionEtudiants();
+                GestionAvis frame = new GestionAvis();
             } catch (SQLException ex) {
                 ex.printStackTrace();
                 JOptionPane.showMessageDialog(null, "Erreur lors de l'enregistrement de l'avis.", "Erreur", JOptionPane.ERROR_MESSAGE);
@@ -109,7 +112,7 @@ public class FicheAvis extends MyFrame {
 
 
         //  "Retour" button
-        MyButtons retourBtn = new MyButtons("Retour",Color.blue , Color.WHITE, 600, 300, 150, 50);
+        MyButtons retourBtn = new MyButtons("Retour",Color.blue , Color.WHITE, 90 , 370 , 150 , 50);
         retourBtn.addActionListener(e -> {
             dispose();
             GestionAvis gestionavis = new GestionAvis();
@@ -117,7 +120,14 @@ public class FicheAvis extends MyFrame {
         add(retourBtn);
 
 
-        // Create "supprimer" button
+        // backgroud
+
+        JPanel imageContainer = new JPanel();
+        imageContainer.setBounds(0 , 0 , 1050 , 650);
+        JLabel sideImage = new JLabel();
+        sideImage.setIcon(new ImageIcon("images/03.jpg"));
+        imageContainer.add(sideImage);
+        add(imageContainer);
 
 
         setVisible(true);

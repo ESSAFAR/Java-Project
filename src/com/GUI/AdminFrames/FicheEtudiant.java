@@ -32,7 +32,7 @@ public class FicheEtudiant extends MyFrame {
 
         // Load and display student image
         JLabel imageLabel = new JLabel();
-       // imageLabel.setIcon(new ImageIcon((Image de etudiant));
+        // imageLabel.setIcon(new ImageIcon((Image de etudiant));
         imageLabel.setBounds(500, 50, 200, 200);
         add(imageLabel);
 
@@ -63,29 +63,29 @@ public class FicheEtudiant extends MyFrame {
         JLabel promotionLabel = new JLabel("Promotion:");
 
         // Set bounds for labels and text fields
-        nomLabel.setBounds(50, 50, 100, 25);
-        prenomLabel.setBounds(50, 100, 100, 25);
-        emailLabel.setBounds(50, 150, 100, 25);
-        phoneLabel.setBounds(50, 200, 150, 25);
-        nomField.setBounds(200, 50, 200, 25);
-        prenomField.setBounds(200, 100, 200, 25);
-        emailField.setBounds(200, 150, 290, 25);
+        nomLabel.setBounds(400, 50, 100, 25);
+        prenomLabel.setBounds(400, 100, 100, 25);
+        emailLabel.setBounds(400, 150, 100, 25);
+        phoneLabel.setBounds(400, 200, 150, 25);
+        nomField.setBounds(550, 50, 200, 25);
+        prenomField.setBounds(550, 100, 200, 25);
+        emailField.setBounds(550, 150, 290, 25);
         emailField.setEditable(false);
-        phoneField.setBounds(200, 200, 200, 25);
-        cinLabel.setBounds(50, 250, 100, 25);
-        genreLabel.setBounds(50, 300, 100, 25);
-        dateNaissanceLabel.setBounds(50, 350, 150, 25);
-        lieuNaissanceLabel.setBounds(50, 400, 150, 25);
-        nationaliteLabel.setBounds(50, 450, 100, 25);
-        adresseLabel.setBounds(50, 500, 100, 25);
-        promotionLabel.setBounds(50, 550, 100, 25);
-        cinField.setBounds(200, 250, 200, 25);
-        genreField.setBounds(200, 300, 200, 25);
-        dateNaissanceField.setBounds(200, 350, 200, 25);
-        lieuNaissanceField.setBounds(200, 400, 200, 25);
-        nationaliteField.setBounds(200, 450, 200, 25);
-        adresseField.setBounds(200, 500, 290, 25);
-        promotionField.setBounds(200, 550, 200, 25);
+        phoneField.setBounds(550, 200, 200, 25);
+        cinLabel.setBounds(400, 250, 100, 25);
+        genreLabel.setBounds(400, 300, 100, 25);
+        dateNaissanceLabel.setBounds(400, 350, 150, 25);
+        lieuNaissanceLabel.setBounds(400, 400, 150, 25);
+        nationaliteLabel.setBounds(400, 450, 100, 25);
+        adresseLabel.setBounds(400, 500, 100, 25);
+        promotionLabel.setBounds(400, 550, 100, 25);
+        cinField.setBounds(550, 250, 200, 25);
+        genreField.setBounds(550, 300, 200, 25);
+        dateNaissanceField.setBounds(550, 350, 200, 25);
+        lieuNaissanceField.setBounds(550, 400, 200, 25);
+        nationaliteField.setBounds(550, 450, 200, 25);
+        adresseField.setBounds(550, 500, 290, 25);
+        promotionField.setBounds(550, 550, 200, 25);
 
         // Add labels and text fields to frame
         add(nomLabel);
@@ -118,8 +118,7 @@ public class FicheEtudiant extends MyFrame {
 
 
         // Create "Enregistrer" button
-        MyButtons enregistrerBtn = new MyButtons("Enregistrer", Color.blue, Color.white, 600, 100, 150, 50);
-
+        MyButtons enregistrerBtn = new MyButtons("Enregistrer", Color.blue, Color.white, 90 , 170 , 150 , 50);
         enregistrerBtn.addActionListener(e -> {
             etudiant.setNom(nomField.getText());
             etudiant.setPrenom(prenomField.getText());
@@ -141,7 +140,7 @@ public class FicheEtudiant extends MyFrame {
 
 
         //  "Retour" button
-        MyButtons retourBtn = new MyButtons("Retour",Color.blue , Color.WHITE, 600, 300, 150, 50);
+        MyButtons retourBtn = new MyButtons("Retour",Color.blue , Color.WHITE, 90 , 370 , 150 , 50);
         retourBtn.addActionListener(e -> {
             dispose();
             if(auteurEstAdmin){
@@ -155,7 +154,7 @@ public class FicheEtudiant extends MyFrame {
 
 
         // Create "supprimer" button
-        MyButtons supprimer = new MyButtons("supprimer", Color.blue, Color.white, 600, 400, 150, 50);
+        MyButtons supprimer = new MyButtons("supprimer", Color.blue, Color.white, 90 , 270 , 150 , 50);
         supprimer.addActionListener(e -> {
             etudiant.setNom(nomField.getText());
             etudiant.setPrenom(prenomField.getText());
@@ -183,6 +182,9 @@ public class FicheEtudiant extends MyFrame {
             add(enregistrerBtn);
             add(supprimer);
         }
+
+
+
 
         setVisible(true);
 

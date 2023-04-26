@@ -66,9 +66,9 @@ public class GestionEtudiants extends MyFrame {
         add(Ajouter);
 
         // Delete all data
-        MyButtons clear = new MyButtons("Clear" , Color.blue , Color.white , 90 , 270 , 150 , 50);
+        MyButtons clear = new MyButtons("Suprimer tous les étudiant " , Color.blue , Color.white , 90 , 270 , 150 , 50);
         clear.addActionListener(e -> {
-            int confirmation = JOptionPane.showConfirmDialog(null, "Attention! tous les etudiants de cette promotion vont etre supprimes", "Attention!", JOptionPane.YES_NO_OPTION);
+            int confirmation = JOptionPane.showConfirmDialog(null, "Attention! tous les étudiants de cette promotion vont etre supprimes", "Attention!", JOptionPane.YES_NO_OPTION);
             if (confirmation == JOptionPane.YES_OPTION) {
                 String year = yearOptions[yearComboBox.getSelectedIndex()];
                 List<Etudiant> etudiants = EtudiantDAO.getListEtudiant().stream()
