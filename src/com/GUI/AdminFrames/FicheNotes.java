@@ -72,6 +72,7 @@ public class FicheNotes extends MyFrame {
                         throw new RuntimeException(ex);
                     }
                     tableModelListNotes.addRow(new Object[]{result[0], elementModule, result[1], note});
+                    tableModelListNotes.fireTableDataChanged();
 
 
                 } else {
