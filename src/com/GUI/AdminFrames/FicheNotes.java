@@ -82,6 +82,7 @@ public class FicheNotes extends MyFrame {
                     double doubleNewNote = Double.parseDouble(newNote);
                     if (newNote != null && !newNote.isEmpty() ) {
                         NoteDAO.updateNote(doubleNewNote, elementModule, matricule);
+
                     }
                 }
             }});
