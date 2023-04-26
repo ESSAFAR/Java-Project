@@ -5,17 +5,16 @@ import java.util.ArrayList;
 public class ElementModule {
     private String module;
     private String nom;
-    private ArrayList<Professeur> listProfesseurs;
-    private ArrayList<Etudiant> listEtudiants;
+    private Professeur professeur;
+
 
 
 
 
     //constructors
-    public ElementModule(String nom, ArrayList<Professeur> listProfesseurs, ArrayList<Etudiant> listEtudiants){
+    public ElementModule(String nom, Professeur professeur){
         setNom(nom);
-        setListEtudiants(listEtudiants);
-        setListProfesseurs(listProfesseurs);
+        setProfesseur(professeur);
     }
 
     public ElementModule() {
@@ -29,12 +28,11 @@ public class ElementModule {
     public void setNom(String nom) {
         this.nom = nom;
     }
-    public void setListEtudiants(ArrayList<Etudiant> listEtudiants) {
-        this.listEtudiants = listEtudiants;
+
+    public void setProfesseur(Professeur professeur) {
+        this.professeur = professeur;
     }
-    public void setListProfesseurs(ArrayList<Professeur> listProfesseurs) {
-        this.listProfesseurs = listProfesseurs;
-    }
+
     public void setModule(String module) {
         this.module = module;
     }
@@ -42,12 +40,11 @@ public class ElementModule {
 
 
     //getters
-    public ArrayList<Professeur> getListProfesseurs() {
-        return listProfesseurs;
+
+    public Professeur getProfesseur() {
+        return professeur;
     }
-    public ArrayList<Etudiant> getListEtudiants() {
-        return listEtudiants;
-    }
+
     public String getNom() {
         return nom;
     }

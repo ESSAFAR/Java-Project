@@ -1,5 +1,6 @@
 package com.GUI.AdminFrames;
 
+import com.DataBase.ElementModuleDAO;
 import com.DataBase.NoteDAO;
 import com.DataBase.EtudiantDAO;
 import com.Model2.Note;
@@ -46,22 +47,27 @@ public class FicheNotes extends MyFrame {
         });
 
 
-        //Boutton Ajouter une note
+//Boutton Ajouter une note
         MyButtons Ajouter = new MyButtons("Ajouter Note", Color.blue, Color.white, 90, 470, 150, 50);
         Ajouter.addActionListener(e -> {
             // Display a dialog box to prompt the user for the name of the element and the note
             String elementModule = JOptionPane.showInputDialog(null, "Entrez le nom de l'élément module:", "Ajouter une note", JOptionPane.PLAIN_MESSAGE);
             String note = String.valueOf(Double.parseDouble(JOptionPane.showInputDialog(null, "Entrez la note:", "Ajouter une note", JOptionPane.PLAIN_MESSAGE)));
             double noteDouble = Double.parseDouble(note);
-            // If the user entered a name and a note, add them to the table
+            // If the user entered a name and a note, check if the element module exists in the element_module table
             if (elementModule != null && !elementModule.isEmpty() && note != null && !note.isEmpty()) {
-                // Save the new note to the database
-                NoteDAO.saveNote(noteDouble,elementModule,matricule);
+                if (ElementModuleDAO.elementModuleExiste(elementModule) != 0) {
+                    // Save the new note to the database
+                    NoteDAO.saveNote(noteDouble, elementModule, matricule);
 
-                // Add the new note to the table
-                tableModelListNotes.addRow(new Object[]{"", elementModule, "", note});
+                    // Add the new note to the table
+                    tableModelListNotes.addRow(new Object[]{"", elementModule, "", note});
+                } else {
+                    JOptionPane.showMessageDialog(null, "L'élément module n'existe pas dans la base de données.", "Erreur", JOptionPane.ERROR_MESSAGE);
+                }
             }
         });
+
 
 
 
