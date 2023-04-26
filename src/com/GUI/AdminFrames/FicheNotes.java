@@ -118,5 +118,5 @@ public class FicheNotes extends MyFrame {
         this.add(scrollPaneListNotes,BorderLayout.CENTER);
         this.add(panelBouttons,BorderLayout.WEST);
         setVisible(true);
-    }
+}
 }
