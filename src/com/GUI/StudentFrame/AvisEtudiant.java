@@ -1,6 +1,6 @@
 package com.GUI.StudentFrame;
 
-import com.Model.Avis;
+import com.Model2.Avis;
 import com.Style.MyButtons;
 import com.Style.MyFrame;
 import com.DataBase.AvisDAO;

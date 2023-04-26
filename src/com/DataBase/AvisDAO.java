@@ -1,6 +1,6 @@
 package com.DataBase;
 
-import com.Model.Avis;
+import com.Model2.Avis;
 
 
 import java.sql.*;
