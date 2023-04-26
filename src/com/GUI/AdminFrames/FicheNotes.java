@@ -47,7 +47,7 @@ public class FicheNotes extends MyFrame {
         });
 
 
-//Boutton Ajouter une note
+        //Boutton Ajouter une note
         MyButtons Ajouter = new MyButtons("Ajouter Note", Color.blue, Color.white, 90, 470, 150, 50);
         Ajouter.addActionListener(e -> {
             // Display a dialog box to prompt the user for the name of the element and the note
