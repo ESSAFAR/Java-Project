@@ -98,6 +98,13 @@ public class GestionNotes extends MyFrame {
         this.add(scrollPaneListEtudiant,BorderLayout.CENTER);
         this.add(panelRetour,BorderLayout.WEST);
 
+        JPanel imageContainer = new JPanel();
+        imageContainer.setBounds(0 , 0 , 1050 , 650);
+        JLabel sideImage = new JLabel();
+        sideImage.setIcon(new ImageIcon("images/05.jpg"));
+        imageContainer.add(sideImage);
+        add(imageContainer);
+
         setVisible(true);
 
     }
